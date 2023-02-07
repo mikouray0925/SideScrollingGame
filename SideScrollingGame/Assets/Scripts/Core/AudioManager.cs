@@ -10,6 +10,12 @@ public class AudioManager : MonoBehaviour
 
     static float effectVolume = 1.0f;
 
+    public static AudioManager instance {get; private set;}
+
+    private void Awake() {
+        instance = this;
+    }
+
     public static float EffectVolume {
         get {
             return effectVolume;
