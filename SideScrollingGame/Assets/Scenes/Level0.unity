@@ -614,12 +614,14 @@ MonoBehaviour:
   groundCheckboxOffset: {x: 0.07, y: 0.09}
   groundCheckboxSize: {x: 0.79, y: 0.1}
   drawGroundCheckbox: 1
+  avoidGrounded: 0
   movementSpeed: 10
   speedMultiplier: 1
   acceleration: 12
   accelerationPow: 1
-  jumpForce: 16
+  jumpForce: {x: 8, y: 16}
   gravityScale: 1
   fallingGravityMultiplier: 2
   isJumping: 0
   jumpCutApplied: 0
+  avoidGroundedTime: 0.1
