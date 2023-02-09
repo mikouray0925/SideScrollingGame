@@ -5,19 +5,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 public static class SaveSystem
 {
     public const string gameSaveFolderName = "/MikouScrollerGame/";
-    public const string playerDataFileName = "player.data";
-
-    public static void SavePlayerData(PlayerData data) {
-        SaveData<PlayerData>(data, playerDataFileName);
-    }
-
-    public static PlayerData LoadPlayerData() {
-        return LoadData<PlayerData>(playerDataFileName);
-    }
-
-    public static bool HavePlayerData() {
-        return HaveSaveFile(playerDataFileName);
-    }
 
     #region UtilityFunctions
     // Do not modify them.
