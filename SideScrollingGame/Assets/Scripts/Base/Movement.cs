@@ -29,6 +29,12 @@ public class Movement : MonoBehaviour
     [SerializeField] protected bool  jumpCutApplied;
     [SerializeField] private   float avoidGroundedTime;
 
+    [Header ("Rolling parameters")]
+    [SerializeField] protected float rollingForce;
+    [SerializeField] protected bool  isRolling;
+    [SerializeField] protected float rollingCD;
+    [SerializeField] protected bool  rollingIsInCD;
+
     #region ComponentRef
     protected Rigidbody2D       rbody;
     
@@ -120,7 +126,7 @@ public class Movement : MonoBehaviour
     }
 
     protected void ReachTargetSpeedByForce() {
-        if (!isGrounded) return;
+        if (!isGrounded || isRolling) return;
         float speedDiff = TargetSpeed - rbody.velocity.x;
         float movementForce = Mathf.Pow(Mathf.Abs(speedDiff) * acceleration, accelerationPow) * Mathf.Sign(speedDiff);
         rbody.AddForce(movementForce * Vector2.right);
@@ -139,7 +145,7 @@ public class Movement : MonoBehaviour
     }
 
     protected bool AbleToJump() {
-        return isGrounded;
+        return isGrounded && !isRolling;
     }
 
     protected bool Jump() {
@@ -173,6 +179,36 @@ public class Movement : MonoBehaviour
     protected void ResetJump() {
         isJumping = false;
         jumpCutApplied = false;
+    }
+
+    #endregion
+
+    #region Roll
+
+    public bool AbleToRoll() {
+        return !isRolling && !rollingIsInCD;
+    }
+
+    public bool Roll() {
+        if (AbleToRoll()) {
+            rbody.AddForce(Mathf.Sign(transform.localScale.x) * rollingForce * Vector2.right, ForceMode2D.Impulse);
+            isRolling = true;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void StopRolling() {
+        if (isRolling) {
+            isRolling = false;
+            rollingIsInCD = true;
+            Invoke(nameof(ResetRollingIsInCD), rollingCD);
+        }
+    }
+
+    private void ResetRollingIsInCD() {
+        rollingIsInCD = false;
     }
 
     #endregion

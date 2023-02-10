@@ -28,6 +28,10 @@ public class HeroMovement : Movement
             CutoffJump();
         }
 
+        if (Input.GetKeyDown(KeyCode.LeftControl)) {
+            if(Roll()) anim.SetTrigger("roll");
+        }
+
         anim.SetBool("isGrounded", isGrounded);
         anim.SetBool("isRunning", Mathf.Abs(horizInput) > 0);
     }
