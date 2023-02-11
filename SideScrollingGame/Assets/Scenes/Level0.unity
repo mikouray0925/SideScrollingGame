@@ -466,7 +466,10 @@ GameObject:
   - component: {fileID: 1999984913}
   - component: {fileID: 1999984915}
   - component: {fileID: 1999984917}
-  m_Layer: 0
+  - component: {fileID: 1999984919}
+  - component: {fileID: 1999984918}
+  - component: {fileID: 1999984920}
+  m_Layer: 7
   m_Name: Hero_Hashashin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -623,10 +626,54 @@ MonoBehaviour:
   jumpForce: {x: 8, y: 16}
   gravityScale: 1
   fallingGravityMultiplier: 2
-  isJumping: 0
   jumpCutApplied: 0
   avoidGroundedTime: 0.1
   rollingForce: 10
-  isRolling: 0
   rollingCD: 0.8
   rollingIsInCD: 0
+--- !u!114 &1999984918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999984909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9f61ea8d794eb94684920d373a014cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackData: {fileID: 1999984919}
+  attackCD: 1
+--- !u!114 &1999984919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999984909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 535eac6e6e764c148a4212e4402d1e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  damageMultiplier: 1
+  cdMultiplier: 1
+--- !u!114 &1999984920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999984909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70a9160e87e8bc4b92538f011f508a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 20
+  currentHealth: 20
+  lifeRemain: 1
+  rebornPercentage: 0.3
+  hurtColor: {r: 1, g: 0.61960787, b: 0.61960787, a: 1}
