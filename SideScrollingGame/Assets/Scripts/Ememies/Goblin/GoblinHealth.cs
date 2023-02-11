@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeroHealth : Health
-{
-    [Header ("Color")]
-    [SerializeField] Color hurtColor;
-    
+public class GoblinHealth : Health
+{   
     Animator anim;
     
     private void Awake() {
@@ -22,15 +19,12 @@ public class HeroHealth : Health
     }
 
     protected override void OnHealthDecrease() {
-        MakeSpriteFlash(hurtColor, 0.1f);
     }
 
     protected override void OnReborn() {
-
     }
 
     protected override void OnLifeNumBecomeZero() {
-
     }
 
     protected override void OnTakingDamage(float damageVal, Vector2 damageDir, out float finalDamageVal) {

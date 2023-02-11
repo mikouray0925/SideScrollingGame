@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HeroNormalAttack : Attack
 {
+    [SerializeField] Overlap overlap;
+    
     Movement movement;
     Animator anim;
     bool attackIsInCD;
@@ -27,6 +29,14 @@ public class HeroNormalAttack : Attack
         } else {
             return false;
         }
+    }
+
+    private void ApplyNormalAttackDamage() {
+        HashSet<Health> healthSet = overlap.GetOverlapHealthComponents();
+        foreach (Health health in healthSet) {
+            health.TakeDamage(attackData.Damage, Mathf.Sign(transform.localScale.x) * Vector2.right);
+        }
+        healthSet.Clear();
     }
 
     private void FinishNormalAttack() {

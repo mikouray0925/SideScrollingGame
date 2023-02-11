@@ -452,6 +452,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1637434483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1637434484}
+  - component: {fileID: 1637434485}
+  m_Layer: 7
+  m_Name: NormalAttackOverlap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1637434484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637434483}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.217, y: 0.267, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1999984912}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1637434485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637434483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51bbbc68d2ec4ce48b5b5b0f03bdff17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawGizmos: 1
+  gizmosColor: {r: 1, g: 0, b: 0, a: 1}
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  radius: 0.27
 --- !u!1 &1644564796
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +515,8 @@ GameObject:
   - component: {fileID: 1644564801}
   - component: {fileID: 1644564800}
   - component: {fileID: 1644564799}
+  - component: {fileID: 1644564803}
+  - component: {fileID: 1644564802}
   m_Layer: 8
   m_Name: Goblin
   m_TagString: Untagged
@@ -596,6 +648,35 @@ CapsuleCollider2D:
   m_Offset: {x: 0.019572347, y: 0.64911044}
   m_Size: {x: 0.079627454, y: 0.30512905}
   m_Direction: 0
+--- !u!114 &1644564802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644564796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ce1a41b4979cd641b7daebccacf5e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 1644564803}
+--- !u!114 &1644564803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644564796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 582e85c0816f378468994a0b277b7b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  currentHealth: 10
+  lifeRemain: 1
+  rebornPercentage: 0
 --- !u!1 &1999984909
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,6 +694,7 @@ GameObject:
   - component: {fileID: 1999984919}
   - component: {fileID: 1999984918}
   - component: {fileID: 1999984920}
+  - component: {fileID: 1999984921}
   m_Layer: 7
   m_Name: Hero_Hashashin
   m_TagString: Untagged
@@ -680,10 +762,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999984909}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.97, z: 0}
+  m_LocalPosition: {x: 0.076, y: -3.837, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1637434484}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -789,6 +872,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackData: {fileID: 1999984919}
   attackCD: 1
+  overlap: {fileID: 1637434485}
 --- !u!114 &1999984919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -801,7 +885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535eac6e6e764c148a4212e4402d1e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 1
   damageMultiplier: 1
   cdMultiplier: 1
 --- !u!114 &1999984920
@@ -821,3 +905,16 @@ MonoBehaviour:
   lifeRemain: 1
   rebornPercentage: 0.3
   hurtColor: {r: 1, g: 0.61960787, b: 0.61960787, a: 1}
+--- !u!114 &1999984921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999984909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ce1a41b4979cd641b7daebccacf5e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 1999984920}

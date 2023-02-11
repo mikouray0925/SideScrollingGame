@@ -6,11 +6,11 @@ public class DamageablePart : MonoBehaviour
 {
     public Health health;
 
-    public static HashSet<Health> GetHealthComponents(Collider[] colliders) {
+    public static HashSet<Health> GetHealthComponents(Collider2D[] colliders) {
         HashSet<Health> healthSet = new HashSet<Health>();
-        foreach (Collider collider in colliders) {
+        foreach (Collider2D collider in colliders) {
             if (collider.TryGetComponent(out DamageablePart damageable)) {
-                healthSet.Add(damageable.health);
+                if (damageable.enabled) healthSet.Add(damageable.health);
             }
         }
         return healthSet;
