@@ -43,6 +43,12 @@ public class Movement : MonoBehaviour
 
     #region Basic
 
+    public void DefaultUpdate() {
+        FlipWithHorizInput();
+        CheckGround();
+        ApplyFallingGravity();
+    }
+
     protected void GrabNecessaryComponent()  {
         rbody = GetComponent<Rigidbody2D>();
     }

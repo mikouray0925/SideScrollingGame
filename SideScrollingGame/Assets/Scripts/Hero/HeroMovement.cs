@@ -17,9 +17,7 @@ public class HeroMovement : Movement
 
     void Update() {
         GrabInputsByInputSystem();
-        FlipWithHorizInput();
-        CheckGround();
-        ApplyFallingGravity();
+        DefaultUpdate();
 
         if (Input.GetButtonDown("Jump")) {
             if (Jump()) anim.SetTrigger("jump");
