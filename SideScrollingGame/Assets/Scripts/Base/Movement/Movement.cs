@@ -123,11 +123,16 @@ public class Movement : MonoBehaviour
         if (avoidGrounded) {
             isGrounded = false;
         } else {
-            RaycastHit2D hit = Physics2D.BoxCast(GroundCheckboxCenter, groundCheckboxSize, 0, Vector2.down, 0.1f, GameManager.groundLayers);
-            isGrounded = (hit.collider != null && Vector2.Dot(hit.normal, Vector2.up) > 0);
+            isGrounded = IsGrounded(Vector2.zero);
         }
         if (!oldGroundedVal && isGrounded) BackToGround();
         return isGrounded;
+    }
+
+    public bool IsGrounded(Vector2 offset, float downcastDistance = 0.1f) {
+        Vector2 origin = GroundCheckboxCenter + offset;
+        RaycastHit2D hit = Physics2D.BoxCast(origin, groundCheckboxSize, 0, Vector2.down, downcastDistance, GameManager.groundLayers);
+        return (hit.collider != null && Vector2.Dot(hit.normal, Vector2.up) > 0);
     }
 
     protected virtual void BackToGround() {
