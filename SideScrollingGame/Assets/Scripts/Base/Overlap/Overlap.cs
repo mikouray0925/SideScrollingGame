@@ -21,4 +21,14 @@ public class Overlap : MonoBehaviour
         colliders = null; // Let garbage collector release memory.
         return healthSet;
     }
+
+    private void OnDrawGizmos() {
+        if (!drawGizmos) return;
+        Gizmos.color = gizmosColor; 
+        OnDrawGizmosShape();
+    }
+
+    public virtual void OnDrawGizmosShape() {
+
+    }
 }

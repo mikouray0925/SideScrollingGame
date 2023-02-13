@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeroNormalAttack : Attack
+public class GoblinNormalAttack : Attack
 {
-    [SerializeField] Overlap overlap1;
-    [SerializeField] Overlap overlap2;
+    [SerializeField] Overlap overlap;
     
     Movement movement;
     Animator anim;
@@ -23,7 +22,7 @@ public class HeroNormalAttack : Attack
     public bool UnleashNormalAttack() {
         if (AbleToAttack()) {
             anim.SetTrigger("normalAttack");
-            movement.LockMovementForSeconds(0.5f);
+            movement.LockMovementForSeconds(0.4f);
             movement.Brake();
             attackIsInCD = true;
             Invoke(nameof(FinishAttackCD), AttackCD);
@@ -33,12 +32,8 @@ public class HeroNormalAttack : Attack
         }
     }
 
-    private void ApplyNormalAttackDamage1() {
-        ApplyDamage(overlap1, Mathf.Sign(transform.localScale.x) * Vector2.right);
-    }
-
-    private void ApplyNormalAttackDamage2() {
-        ApplyDamage(overlap2, Mathf.Sign(transform.localScale.x) * Vector2.right);
+    private void ApplyNormalAttackDamage() {
+        ApplyDamage(overlap, Mathf.Sign(transform.localScale.x) * Vector2.right);
     }
 
     private void FinishNormalAttack() {
@@ -50,6 +45,6 @@ public class HeroNormalAttack : Attack
     }
 
     public bool AbleToAttack() {
-        return !attackIsInCD && movement.isGrounded && !movement.isJumping && !movement.isRolling;
+        return !attackIsInCD && movement.isGrounded;
     }
 }

@@ -5,7 +5,9 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [Header ("Inputs")]
+    [Range (-1f, 1f)]
     [SerializeField] public  float horizInput;
+    [Range (-1f, 1f)]
     [SerializeField] public  float vertiInput;
     [SerializeField] private bool lockMovement;
 
@@ -66,13 +68,17 @@ public class Movement : MonoBehaviour
         vertiInput = Input.GetAxis("Vertical");
     }
 
+    public void Flip() {
+        transform.localScale = new Vector3(
+            -transform.localScale.x, 
+             transform.localScale.y, 
+             transform.localScale.z
+        );
+    }
+
     protected void FlipWithHorizInput() {
         if (Mathf.Abs(horizInput) > 0 && Mathf.Sign(horizInput) != Mathf.Sign(transform.localScale.x)) {
-            transform.localScale = new Vector3(
-                -transform.localScale.x, 
-                 transform.localScale.y, 
-                 transform.localScale.z
-            );
+            Flip();
         }
     }
 
@@ -83,6 +89,21 @@ public class Movement : MonoBehaviour
 
     public void UnlockMovement() {
         lockMovement = false;
+    }
+    
+    public void Brake() {
+        rbody.velocity = new Vector2(0, rbody.velocity.y);
+    }
+
+    // unsafe
+    public void BrakeByForce() {
+        if (Mathf.Abs(rbody.velocity.x) < 0.1f) return;
+        float signOfVelocity = Mathf.Sign(rbody.velocity.x);
+        float maxBrakeForce = rbody.mass * MovementSpeed * -signOfVelocity;
+        float brakeForce = rbody.mass * -rbody.velocity.x;
+        if (signOfVelocity > 0 && brakeForce > maxBrakeForce) brakeForce = maxBrakeForce;
+        if (signOfVelocity < 0 && brakeForce < maxBrakeForce) brakeForce = maxBrakeForce;
+        rbody.AddForce(brakeForce * Vector2.right, ForceMode2D.Impulse);
     }
 
     #endregion

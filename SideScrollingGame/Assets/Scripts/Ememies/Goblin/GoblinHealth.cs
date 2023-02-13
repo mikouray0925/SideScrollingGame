@@ -5,10 +5,14 @@ using UnityEngine;
 public class GoblinHealth : Health
 {   
     Animator anim;
+    Movement movement;
+    GoblinBehavior behavior;
     
     private void Awake() {
         rend = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        movement = GetComponent<Movement>();
+        behavior = GetComponent<GoblinBehavior>();
     }
 
     private void Update() {
@@ -25,10 +29,15 @@ public class GoblinHealth : Health
     }
 
     protected override void OnLifeNumBecomeZero() {
+        anim.SetTrigger("die");
+        behavior.enabled = false;
+        movement.horizInput = 0;
+        movement.enabled = false;
     }
 
     protected override void OnTakingDamage(float damageVal, Vector2 damageDir, out float finalDamageVal) {
         anim.SetTrigger("takeHit");
+        if (Mathf.Sign(damageDir.x) == Mathf.Sign(transform.localScale.x)) movement.Flip();
         finalDamageVal = damageVal;
     }
 }

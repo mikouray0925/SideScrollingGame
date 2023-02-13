@@ -18,4 +18,12 @@ public class Attack : MonoBehaviour
         }
         private set {}
     }
+
+    protected int ApplyDamage(Overlap overlap, Vector2 direction, float damageMultiplier = 1f) {
+        HashSet<Health> healthSet = overlap.GetOverlapHealthComponents();
+        foreach (Health health in healthSet) {
+            health.TakeDamage(attackData.Damage * damageMultiplier, direction);
+        }
+        return healthSet.Count;
+    }
 }
