@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OverlapCircle : Overlap
 {
-    [SerializeField] float radius;
+    [SerializeField] public float radius;
     
     public override Collider2D[] GetOverlapColliders() {
         return Physics2D.OverlapCircleAll(transform.position, radius, targetLayers);
