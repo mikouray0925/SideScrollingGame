@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
@@ -38,6 +39,9 @@ public class Movement : MonoBehaviour
     [SerializeField] protected float rollingCD;
     [SerializeField] private   bool  rollingIsInCD;
 
+    [Header ("References")]
+    [SerializeField] private RectTransform canvasTransform;
+
     #region ComponentRef
     protected Rigidbody2D       rbody;
     
@@ -74,6 +78,13 @@ public class Movement : MonoBehaviour
              transform.localScale.y, 
              transform.localScale.z
         );
+        if (canvasTransform && Mathf.Sign(transform.localScale.x) != Mathf.Sign(canvasTransform.localScale.x)) {
+            canvasTransform.localScale = new Vector3(
+                -canvasTransform.localScale.x, 
+                 canvasTransform.localScale.y, 
+                 canvasTransform.localScale.z
+            );
+        }
     }
 
     protected void FlipWithHorizInput() {

@@ -15,10 +15,6 @@ public class GoblinNormalAttack : Attack
         anim     = GetComponent<Animator>();
     }
 
-    private void Update() {
-        if (Input.GetButtonDown("Fire1")) UnleashNormalAttack();
-    }
-
     public bool UnleashNormalAttack() {
         if (AbleToAttack()) {
             anim.SetTrigger("normalAttack");

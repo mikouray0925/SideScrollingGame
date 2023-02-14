@@ -32,6 +32,7 @@ public class GoblinHealth : Health
         anim.SetTrigger("die");
         behavior.enabled = false;
         movement.horizInput = 0;
+        movement.Brake();
         movement.enabled = false;
     }
 
