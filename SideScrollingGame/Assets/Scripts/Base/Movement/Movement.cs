@@ -27,7 +27,7 @@ public class Movement : MonoBehaviour
 
     [Header ("Jump parameters")]
     [SerializeField] protected Vector2 jumpForce;
-    [SerializeField] protected float gravityScale;
+    [SerializeField] public    float gravityScale;
     [SerializeField] protected float fallingGravityMultiplier;
     [SerializeField] public    bool  isJumping {get; private set;}
     [SerializeField] private   bool  jumpCutApplied;

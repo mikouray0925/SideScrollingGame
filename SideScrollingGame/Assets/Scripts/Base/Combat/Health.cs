@@ -13,6 +13,9 @@ public class Health : MonoBehaviour
     [Range (0f, 1f)]
     [SerializeField] public float rebornPercentage;
 
+    [Header ("other")]
+    [SerializeField] public bool isInvincible;
+
     protected SpriteRenderer rend;
 
     #region HealthPoint
@@ -70,7 +73,7 @@ public class Health : MonoBehaviour
     #region Damage
 
     public void TakeDamage(float damageVal, Vector2 damageDir) {
-        if (lifeRemain <= 0) return;  
+        if (lifeRemain <= 0 || isInvincible) return;  
         OnTakingDamage(damageVal, damageDir, out float finalDamageVal);
         Hp -= finalDamageVal;
     }
@@ -90,10 +93,10 @@ public class Health : MonoBehaviour
 
     public IEnumerator SpriteFlashCoroutine(Color color, float duraction, float delay) {
         yield return new WaitForSeconds(delay);
-        Color originalColor = rend.color;
+        // Color originalColor = rend.color;
         rend.color = color;
         yield return new WaitForSeconds(duraction);
-        rend.color = originalColor;
+        rend.color = Color.white;
     }
 
     #endregion

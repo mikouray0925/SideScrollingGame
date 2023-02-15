@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HeroNormalAttack : Attack
 {
+    [Header ("Overlaps")]
     [SerializeField] Overlap overlap1;
     [SerializeField] Overlap overlap2;
     

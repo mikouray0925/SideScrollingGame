@@ -15,11 +15,12 @@ public class Overlap : MonoBehaviour
         return new Collider2D[0];
     }
 
-    public virtual HashSet<Health> GetOverlapHealthComponents() {
-        Collider2D[] colliders = GetOverlapColliders();
-        HashSet<Health> healthSet = DamageablePart.GetHealthComponents(colliders);
-        colliders = null; // Let garbage collector release memory.
-        return healthSet;
+    public List<DamageablePart> GetOverlapDamageableParts() {
+        return DamageablePart.GetDamageableParts(GetOverlapColliders());
+    }
+
+    public HashSet<Health> GetOverlapHealthComponents() {
+        return DamageablePart.GetHealthComponents(GetOverlapColliders());
     }
 
     private void OnDrawGizmos() {

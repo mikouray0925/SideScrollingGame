@@ -20,10 +20,10 @@ public class Attack : MonoBehaviour
         private set {}
     }
 
-    protected int ApplyDamage(Overlap overlap, Vector2 direction, float damageMultiplier = 1f) {
+    protected int ApplyDamage(Overlap overlap, Vector2 direction, float damageMultiplier = 1f, float damageAddend = 0) {
         HashSet<Health> healthSet = overlap.GetOverlapHealthComponents();
         foreach (Health health in healthSet) {
-            health.TakeDamage(damageData.Damage * damageMultiplier, direction);
+            health.TakeDamage(damageData.Damage * damageMultiplier + damageAddend, direction);
         }
         return healthSet.Count;
     }
