@@ -199,7 +199,7 @@ public class Movement : MonoBehaviour
     #region Jump
 
     protected void ApplyFallingGravity() {
-        if (rbody.velocity.y > 0) {
+        if (rbody.velocity.y < 0) {
             rbody.gravityScale = gravityScale * fallingGravityMultiplier;
         } else {
             rbody.gravityScale = gravityScale;
