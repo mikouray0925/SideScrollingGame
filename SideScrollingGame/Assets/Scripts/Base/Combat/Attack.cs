@@ -12,7 +12,7 @@ public class Attack : MonoBehaviour
     public float AttackCD {
         get {
             if (cdData) {
-                return attackCD * cdData.CooldownMultiplier;
+                return attackCD * cdData.Multiplier;
             } else {
                 return attackCD;
             }
