@@ -855,6 +855,7 @@ GameObject:
   - component: {fileID: 7399218280927256368}
   - component: {fileID: 7399218280927256396}
   - component: {fileID: 7399218280927256397}
+  - component: {fileID: 8035620169478663100}
   - component: {fileID: 7399218280927256395}
   - component: {fileID: 7399218280927256391}
   - component: {fileID: 7399218280927256390}
@@ -1027,7 +1028,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 7399218280927256396}
-  centerPoint: {fileID: 7399218281103265726}
+  centerType: 2
+  centerReplacement: {fileID: 7399218281103265726}
+--- !u!114 &8035620169478663100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7399218280927256371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e254a2eadb68a0428d45a34ae85ccc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMultiplier: 1
+  speed: 8
 --- !u!114 &7399218280927256395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1047,8 +1063,7 @@ MonoBehaviour:
   groundCheckboxSize: {x: 0.64, y: 0.03}
   drawGroundCheckbox: 1
   avoidGrounded: 0
-  movementSpeed: 6
-  speedMultiplier: 1
+  speedData: {fileID: 8035620169478663100}
   acceleration: 7
   accelerationPow: 1
   jumpForce: {x: 0, y: 0}
@@ -1072,10 +1087,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535eac6e6e764c148a4212e4402d1e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentMultiplier: 1
   damage: 1
-  damageMultiplier: 1
-  damageMultipliers:
-    _serializedList: []
 --- !u!114 &7399218280927256390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1088,9 +1101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a26836c21072740b9ba39e8efdc1d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cdMultiplier: 1
-  cdMultipliers:
-    _serializedList: []
+  currentMultiplier: 1
 --- !u!114 &7399218280927256392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1250,7 +1261,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7399218281103265727}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.684, z: 0}
+  m_LocalPosition: {x: 0, y: 0.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

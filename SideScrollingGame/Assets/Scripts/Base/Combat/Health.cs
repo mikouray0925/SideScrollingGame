@@ -30,6 +30,12 @@ public class Health : MonoBehaviour
         }
     }
 
+    //|=======================================================
+    //| The "value" will be clamped between 0 and "maxHealth".
+    //| Use "TakeDamage" function instead of "Hp -= x" 
+    //| while being attacked.
+    //| 
+    //|=======================================================
     public float Hp {
         get {
             return currentHealth;
@@ -72,6 +78,12 @@ public class Health : MonoBehaviour
 
     #region Damage
 
+    //|=======================================================
+    //| Take damage by attack.
+    //| If no life remains or "isInvincible" is true, 
+    //| this function won't work.
+    //| 
+    //|=======================================================
     public void TakeDamage(float damageVal, Vector2 damageDir) {
         if (lifeRemain <= 0 || isInvincible) return;  
         OnTakingDamage(damageVal, damageDir, out float finalDamageVal);

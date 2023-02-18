@@ -20,8 +20,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private   bool avoidGrounded;
 
     [Header ("Movement parameters")]
-    [SerializeField] private   float movementSpeed;
-    [SerializeField] private   float speedMultiplier;
+    [SerializeField] public    SpeedData speedData;
     [SerializeField] protected float acceleration;
     [SerializeField] protected float accelerationPow;
 
@@ -72,6 +71,7 @@ public class Movement : MonoBehaviour
         vertiInput = Input.GetAxis("Vertical");
     }
 
+    // inverse transform.localScale.x and canvasTransform.localScale.x
     public void Flip() {
         transform.localScale = new Vector3(
             -transform.localScale.x, 
@@ -87,21 +87,34 @@ public class Movement : MonoBehaviour
         }
     }
 
+    // flip if Abs(horizInput) > 0 and Sign(horizInput) != Sign(transform.localScale.x)
     protected void FlipWithHorizInput() {
         if (Mathf.Abs(horizInput) > 0 && Mathf.Sign(horizInput) != Mathf.Sign(transform.localScale.x)) {
             Flip();
         }
     }
 
+    //|=========================================================
+    //| When movement is locked, the character cannot move,
+    //| jump, and roll.
+    //| 
+    //| 
+    //|=========================================================
     public void LockMovementForSeconds(float duration) {
-        lockMovement = true;
-        Invoke(nameof(UnlockMovement), duration);
+        if (!lockMovement) {
+            lockMovement = true;
+            Invoke(nameof(UnlockMovement), duration);
+        }
+        else {
+            Debug.LogError("Cannot call LockMovementForSeconds when movement is locked.");
+        }
     }
 
     public void UnlockMovement() {
         lockMovement = false;
     }
     
+    // Set rbody.velocity.x to 0.
     public void Brake() {
         rbody.velocity = new Vector2(0, rbody.velocity.y);
     }
@@ -120,7 +133,7 @@ public class Movement : MonoBehaviour
     #endregion
 
     #region Ground
-
+    
     public Vector2 GroundCheckboxCenter {
         get {
             Vector2 center = transform.position;
@@ -129,6 +142,12 @@ public class Movement : MonoBehaviour
         private set {}
     }
 
+    //|=========================================================
+    //| An important part of movement "Update" process.
+    //| Check the character is grounded or not and store the
+    //| result. The result is useful for jumping, rolling, and
+    //| also Attacking.
+    //|=========================================================
     protected bool CheckGround() {
         bool oldGroundedVal = isGrounded;
         if (avoidGrounded) {
@@ -140,16 +159,29 @@ public class Movement : MonoBehaviour
         return isGrounded;
     }
 
+    //|=========================================================
+    //| Castdown the "GroundCheckbox". If the box hit the ground
+    //| layers, return true, else return false.
+    //| 
+    //| 
+    //|=========================================================
     public bool IsGrounded(Vector2 offset, float downcastDistance = 0.1f) {
         Vector2 origin = GroundCheckboxCenter + offset;
         RaycastHit2D hit = Physics2D.BoxCast(origin, groundCheckboxSize, 0, Vector2.down, downcastDistance, GameManager.groundLayers);
         return (hit.collider != null && Vector2.Dot(hit.normal, Vector2.up) > 0);
     }
 
+    //|=========================================================
+    //| If the "isGrounded" value changes from false to true, 
+    //| this will be called in "CheckGround" function.
+    //| 
+    //| 
+    //|=========================================================
     protected virtual void BackToGround() {
         if (isJumping) ResetJump();
     }
-
+    
+    // Use this only when jumping starts.
     private void ResetAvoidGrounded() {
         avoidGrounded = false;
     }
@@ -160,7 +192,7 @@ public class Movement : MonoBehaviour
 
     public float MovementSpeed {
         get {
-            return movementSpeed * speedMultiplier;
+            return speedData.Speed;
         }
         private set {}
     }
@@ -170,16 +202,6 @@ public class Movement : MonoBehaviour
             return horizInput * MovementSpeed;
         }
         private set {}
-    }
-
-    public void AddTempSpeedMultiplier(float multiplier, float duration) {
-        StartCoroutine(SpeedMultiplierCoroutine(multiplier, duration));
-    }
-
-    private IEnumerator SpeedMultiplierCoroutine(float multiplier, float duration) {
-        speedMultiplier *= multiplier;
-        yield return new WaitForSeconds(duration);
-        speedMultiplier /= multiplier;
     }
 
     public bool AbleToRun() {

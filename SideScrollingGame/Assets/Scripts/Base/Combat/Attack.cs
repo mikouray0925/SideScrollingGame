@@ -9,6 +9,12 @@ public class Attack : MonoBehaviour
     [SerializeField] public CooldownMultiplierData cdData;
     [SerializeField] private float attackCD;
 
+    //|=======================================================
+    //| Get the attack cooldown time(sec).
+    //| If cdData is set, then the time will be multiplied by
+    //| the multiplier of cdData<CooldownMultiplierData>.
+    //| 
+    //|=======================================================
     public float AttackCD {
         get {
             if (cdData) {
@@ -20,8 +26,33 @@ public class Attack : MonoBehaviour
         private set {}
     }
 
+    //|=========================================================
+    //| Let every <Health> component in "overlap" take damage.
+    //| Return how many <Health> take damage.
+    //| damage = Damage * damageMultiplier + damageAddend
+    //| "direction" is the direction where the damage go.
+    //|=========================================================
     protected int ApplyDamage(Overlap overlap, Vector2 direction, float damageMultiplier = 1f, float damageAddend = 0) {
-        HashSet<Health> healthSet = overlap.GetOverlapHealthComponents();
+        return ApplyDamage(overlap.GetOverlapHealthComponents(), direction, damageMultiplier, damageAddend);
+    }
+    
+    //|=========================================================
+    //| Let every <Health> component in "damageableParts" take damage.
+    //| Return how many <Health> take damage.
+    //| If you want to add force to <DamageablePart>, this is 
+    //| better.
+    //|=========================================================
+    protected int ApplyDamage(List<DamageablePart> damageableParts, Vector2 direction, float damageMultiplier = 1f, float damageAddend = 0) {
+        return ApplyDamage(DamageablePart.GetHealthComponents(damageableParts), direction, damageMultiplier, damageAddend);
+    }
+
+    //|=========================================================
+    //| Let every <Health> component in "healthSet" take damage.
+    //| Return how many <Health> take damage.
+    //| The base function of another two.
+    //| 
+    //|=========================================================
+    protected int ApplyDamage(HashSet<Health> healthSet, Vector2 direction, float damageMultiplier = 1f, float damageAddend = 0) {
         foreach (Health health in healthSet) {
             health.TakeDamage(damageData.Damage * damageMultiplier + damageAddend, direction);
         }
