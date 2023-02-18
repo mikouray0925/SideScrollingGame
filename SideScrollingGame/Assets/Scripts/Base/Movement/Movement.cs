@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour
     [SerializeField] public  float horizInput;
     [Range (-1f, 1f)]
     [SerializeField] public  float vertiInput;
-    [SerializeField] private bool lockMovement;
+    [SerializeField] public  bool lockMovement {get; private set;}
 
     [Header ("Ground check")]
     [SerializeField] private   Vector2 groundCheckboxOffset;
@@ -87,7 +87,12 @@ public class Movement : MonoBehaviour
         }
     }
 
-    // flip if Abs(horizInput) > 0 and Sign(horizInput) != Sign(transform.localScale.x)
+    //|=========================================================
+    //| This is a part of "Update" process.
+    //| Call "Flip()" if Abs(horizInput) > 0 and 
+    //| Sign(horizInput) != Sign(transform.localScale.x).
+    //| 
+    //|=========================================================
     protected void FlipWithHorizInput() {
         if (Mathf.Abs(horizInput) > 0 && Mathf.Sign(horizInput) != Mathf.Sign(transform.localScale.x)) {
             Flip();
@@ -177,11 +182,13 @@ public class Movement : MonoBehaviour
     //| 
     //| 
     //|=========================================================
-    protected virtual void BackToGround() {
+    private void BackToGround() {
         if (isJumping) ResetJump();
+        WhenBackToGround();
     }
+    protected virtual void WhenBackToGround() {}
     
-    // Use this only when jumping starts.
+    // Invoke this only when jumping starts.
     private void ResetAvoidGrounded() {
         avoidGrounded = false;
     }
@@ -204,10 +211,16 @@ public class Movement : MonoBehaviour
         private set {}
     }
 
-    public bool AbleToRun() {
-        return  isGrounded && !isRolling && !lockMovement;
+    public virtual bool AbleToRun() {
+        return isGrounded && !isRolling && !lockMovement;
     }
 
+    //|=========================================================
+    //| Using force to move instead of "transform.Translate"
+    //| can make the character move more natural.
+    //| This is a part of movement "FixedUpdate" process.
+    //| Don't put this into "Update".
+    //|=========================================================
     protected void ReachTargetSpeedByForce() {
         if (AbleToRun()) {
             float speedDiff = TargetSpeed - rbody.velocity.x;
@@ -220,6 +233,12 @@ public class Movement : MonoBehaviour
 
     #region Jump
 
+    //|=========================================================
+    //| In many platformer games, heavier falling gravity would
+    //| make the game look better. 
+    //| This is a part of movement "Update" process.
+    //| 
+    //|=========================================================
     protected void ApplyFallingGravity() {
         if (rbody.velocity.y < 0) {
             rbody.gravityScale = gravityScale * fallingGravityMultiplier;
@@ -228,27 +247,47 @@ public class Movement : MonoBehaviour
         }
     }
 
-    protected bool AbleToJump() {
+    public virtual bool AbleToJump() {
         return isGrounded && !isRolling && !lockMovement;
     }
 
+    //|=========================================================
+    //| Use "Rigidbody2D.AddForce" to jump.
+    //| Adding some horizontal force to reach "TargetSpeed" can
+    //| make jumping interact with honrizontal input, making it
+    //| more natural.
+    //|=========================================================
     protected bool Jump() {
         if (AbleToJump()) {
+            // Compute the honrizontal force
             float maxHorizForce = rbody.mass * (TargetSpeed - rbody.velocity.x);
             float horizForce = horizInput * jumpForce.x;
             if (Mathf.Abs(horizForce) > Mathf.Abs(maxHorizForce)) horizForce = maxHorizForce;
+
+            // Apply force
             Vector2 force = new Vector2(horizForce, jumpForce.y);
             rbody.AddForce(force, ForceMode2D.Impulse);
+
+            // Setup parameters for follow-up process
             isJumping = true;
             jumpCutApplied = false;
+
+            // Avoid grounded to make animator work.
             avoidGrounded = true;
             Invoke(nameof(ResetAvoidGrounded), avoidGroundedTime);
+
             return true;
         } else {   
             return false;
         }
     }
 
+    //|=========================================================
+    //| To achieve dynamic jumping height, we need to reduce the
+    //| velocity.y by half when jump key released.
+    //| Using force to implement feels more natural. 
+    //| 
+    //|=========================================================
     protected bool CutoffJump() {
         if (isJumping && !jumpCutApplied && rbody.velocity.y > 0) {
             Vector2 force = rbody.mass * rbody.velocity.y * 0.5f * Vector2.down;
@@ -269,10 +308,16 @@ public class Movement : MonoBehaviour
 
     #region Roll
 
-    public bool AbleToRoll() {
+    public virtual bool AbleToRoll() {
         return !isRolling && !rollingIsInCD && !lockMovement;
     }
 
+    //|=========================================================
+    //| Add rolling force to rbody to gave the character instant 
+    //| acceleration. If you don't want to roll too fast, 
+    //| "Brake()" before "Roll()".
+    //| 
+    //|=========================================================
     public bool Roll() {
         if (AbleToRoll()) {
             rbody.AddForce(Mathf.Sign(transform.localScale.x) * rollingForce * Vector2.right, ForceMode2D.Impulse);
@@ -283,6 +328,12 @@ public class Movement : MonoBehaviour
         }
     }
 
+    //|=========================================================
+    //| End rolling when rolling animation finishes.
+    //| Call this function at the end of the rolling animation.
+    //| 
+    //| 
+    //|=========================================================
     public void StopRolling() {
         if (isRolling) {
             isRolling = false;

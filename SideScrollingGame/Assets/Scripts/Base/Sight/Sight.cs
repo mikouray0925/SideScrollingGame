@@ -26,11 +26,23 @@ public class Sight : MonoBehaviour
         return false;
     }
 
-    protected bool CanSeeTarget(Vector2 endPos) {
-        return CanSeeTarget(endPos, out Transform target, out float distance);
+    //|=========================================================
+    //| Draw a line from "eyePoint" to "endPos", during the process: 
+    //| If hit the collider with "targetTag", return true.
+    //| If hit the collider with different tag or hit nothing,
+    //| return false.
+    //|=========================================================
+    protected bool LinecastHitTarget(Vector2 endPos) {
+        return LinecastHitTarget(endPos, out Transform target, out float distance);
     }
 
-    protected bool CanSeeTarget(Vector2 endPos, out Transform target, out float distance) {
+    //|=========================================================
+    //| Draw a line from "eyePoint" to "endPos", during the process: 
+    //| If hit the collider with "targetTag", return true.
+    //| If hit the collider with different tag or hit nothing,
+    //| return false.
+    //|=========================================================
+    protected bool LinecastHitTarget(Vector2 endPos, out Transform target, out float distance) {
         RaycastHit2D hit = Physics2D.Linecast(eyePoint.position, endPos, workingLayers);
         if (hit.collider != null) {
             if (drawGizmosDebug) {

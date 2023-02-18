@@ -29,7 +29,5 @@ public class Overlap : MonoBehaviour
         OnDrawGizmosShape();
     }
 
-    public virtual void OnDrawGizmosShape() {
-
-    }
+    public virtual void OnDrawGizmosShape() {}
 }

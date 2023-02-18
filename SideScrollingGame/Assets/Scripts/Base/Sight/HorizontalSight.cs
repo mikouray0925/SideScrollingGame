@@ -9,13 +9,13 @@ public class HorizontalSight : Sight
     public override bool CanSeeTarget() {
         Vector2 endPos = eyePoint.position;
         endPos.x += frontSightDistance * Mathf.Sign(transform.localScale.x);
-        return CanSeeTarget(endPos);
+        return LinecastHitTarget(endPos);
     }
 
     public override bool CanSeeTarget(out Transform target, out float distance) {
         Vector2 endPos = eyePoint.position;
         endPos.x += frontSightDistance * Mathf.Sign(transform.localScale.x);
-        return CanSeeTarget(endPos, out target, out distance);
+        return LinecastHitTarget(endPos, out target, out distance);
     }
 
     void OnDrawGizmosSelected() {
