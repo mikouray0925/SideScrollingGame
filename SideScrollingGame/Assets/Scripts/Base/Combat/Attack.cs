@@ -6,7 +6,7 @@ public class Attack : MonoBehaviour
 {
     [Header ("Basic")]
     [SerializeField] public DamageData damageData;
-    [SerializeField] public CooldownMultiplierData cdData;
+    [SerializeField] public CombinedMultiplier cdMultiplier;
     [SerializeField] private float attackCD;
 
     //|=======================================================
@@ -17,8 +17,8 @@ public class Attack : MonoBehaviour
     //|=======================================================
     public float AttackCD {
         get {
-            if (cdData) {
-                return attackCD * cdData.Multiplier;
+            if (cdMultiplier) {
+                return attackCD * cdMultiplier.Multiplier;
             } else {
                 return attackCD;
             }

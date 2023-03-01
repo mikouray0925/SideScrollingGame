@@ -30,7 +30,7 @@ public class SectorSight : Sight
             // Use DamageablePart.Center as the center of character body.
             if (collider.TryGetComponent<DamageablePart>(out DamageablePart damageable)) {
                 Vector2 toDamageable = damageable.Center - Vec2Util.ToVec2(eyePoint.position);
-                // Use Angle to check whether it is in the sector.
+                // Use Vector2.Angle to check whether it is in the sector.
                 if (Vector2.Angle(toControlPoint, toDamageable) < (angle / 2f)) {
                     if (LinecastHitTarget(damageable.Center, out target, out distance)) return true;
                 }
