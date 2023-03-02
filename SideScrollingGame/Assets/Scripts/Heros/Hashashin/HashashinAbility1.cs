@@ -11,11 +11,12 @@ public class HashashinAbility1 : Attack
     [Header ("Damageable")]
     [SerializeField] DamageablePart self;
     [SerializeField] List<DamageablePart> damageableList;
+
+    [Header ("End")]
+    [SerializeField] string attackClip2Name;
     
     Movement movement;
-    Animator anim;
 
-    bool attackIsInCD;
     Vector2 startPos;
     
     private void Awake() {
@@ -24,7 +25,22 @@ public class HashashinAbility1 : Attack
     }
 
     private void Update() {
+        if (isAttacking && !IsPlayingAttackAnimClip()) FinishAbility1();
         if (Input.GetButtonDown("Fire2")) UnleashAbility1();
+    }
+
+    public override bool IsPlayingAttackAnimClip() {
+        return anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == attackClipName || 
+               anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == attackClip2Name;
+    }
+
+    public override bool AbleToAttack() {
+        return 
+        !isAttacking &&
+        !attackCD.IsInCD && 
+        movement.isGrounded && 
+        !movement.isJumping && 
+        !movement.isRolling;
     }
 
     public bool UnleashAbility1() {
@@ -33,16 +49,12 @@ public class HashashinAbility1 : Attack
             anim.SetTrigger("ability1");
             movement.LockMovementForSeconds(2.3f);
             movement.Brake();
-            startPos = self.Center;
             movement.gravityScale = 0;
             self.health.isInvincible = true;
-            Invoke(nameof(ResetEverything), 2.3f);
-            attackIsInCD = true;
-            Invoke(nameof(FinishAttackCD), AttackCD);
-            return true;
-        } else {
-            return false;
-        }
+            startPos = self.Center;
+            isAttacking = true;
+        } 
+        return isAttacking;
     }
 
     private void ApplyAbility1Damage(int hitCount) {
@@ -73,20 +85,9 @@ public class HashashinAbility1 : Attack
     }
 
     private void FinishAbility1() {
-        ResetEverything();
-    }
-
-    private void ResetEverything() {
+        attackCD.StartCooldownCoroutine();
         movement.UnlockMovement();
         movement.gravityScale = 1f;
         self.health.isInvincible = false;
-    }
-
-    private void FinishAttackCD() {
-        attackIsInCD = false;
-    }
-
-    public bool AbleToAttack() {
-        return !attackIsInCD && movement.isGrounded && !movement.isJumping && !movement.isRolling;
     }
 }

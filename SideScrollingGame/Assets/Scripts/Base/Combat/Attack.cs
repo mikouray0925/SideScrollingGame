@@ -6,24 +6,19 @@ public class Attack : MonoBehaviour
 {
     [Header ("Basic")]
     [SerializeField] public DamageData damageData;
-    [SerializeField] public CombinedMultiplier cdMultiplier;
-    [SerializeField] private float attackCD;
+    [SerializeField] public CooldownSystem attackCD;
+    public bool isAttacking {get; protected set;}
 
-    //|=======================================================
-    //| Get the attack cooldown time(sec).
-    //| If cdData is set, then the time will be multiplied by
-    //| the multiplier of cdData<CooldownMultiplierData>.
-    //| 
-    //|=======================================================
-    public float AttackCD {
-        get {
-            if (cdMultiplier) {
-                return attackCD * cdMultiplier.Multiplier;
-            } else {
-                return attackCD;
-            }
-        }
-        private set {}
+    [Header ("Animation")]
+    [SerializeField] protected Animator anim;
+    [SerializeField] protected string attackClipName;
+
+    public virtual bool AbleToAttack() {
+        return !isAttacking && !attackCD.IsInCD;
+    }
+
+    public virtual bool IsPlayingAttackAnimClip() {
+        return anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == attackClipName;
     }
 
     //|=========================================================

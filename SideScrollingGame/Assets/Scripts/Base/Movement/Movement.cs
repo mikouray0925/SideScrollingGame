@@ -10,8 +10,11 @@ public class Movement : MonoBehaviour
     [SerializeField] public  float horizInput;
     [Range (-1f, 1f)]
     [SerializeField] public  float vertiInput;
-    [SerializeField] public  bool lockMovement {get; private set;}
 
+    [Header ("Movement lock")]
+    [SerializeField] private float lockMovementRemainingTime;
+    [SerializeField] public  bool  lockMovement {get; private set;}
+    
     [Header ("Ground check")]
     [SerializeField] private   Vector2 groundCheckboxOffset;
     [SerializeField] private   Vector2 groundCheckboxSize;
@@ -49,6 +52,7 @@ public class Movement : MonoBehaviour
     #region Basic
 
     public void DefaultUpdate() {
+        UpdateMovementLock();
         FlipWithHorizInput();
         CheckGround();
         ApplyFallingGravity();
@@ -98,26 +102,6 @@ public class Movement : MonoBehaviour
             Flip();
         }
     }
-
-    //|=========================================================
-    //| When movement is locked, the character cannot move,
-    //| jump, and roll.
-    //| 
-    //| 
-    //|=========================================================
-    public void LockMovementForSeconds(float duration) {
-        if (!lockMovement) {
-            lockMovement = true;
-            Invoke(nameof(UnlockMovement), duration);
-        }
-        else {
-            Debug.LogError("Cannot call LockMovementForSeconds when movement is locked.");
-        }
-    }
-
-    public void UnlockMovement() {
-        lockMovement = false;
-    }
     
     // Set rbody.velocity.x to 0.
     public void Brake() {
@@ -133,6 +117,43 @@ public class Movement : MonoBehaviour
         if (signOfVelocity > 0 && brakeForce > maxBrakeForce) brakeForce = maxBrakeForce;
         if (signOfVelocity < 0 && brakeForce < maxBrakeForce) brakeForce = maxBrakeForce;
         rbody.AddForce(brakeForce * Vector2.right, ForceMode2D.Impulse);
+    }
+
+    #endregion
+
+    #region Lock
+
+    //|=========================================================
+    //| An important part of movement "Update" process.
+    //| Check wether MovementLock needs to be unlocked at every 
+    //| frame. If yes, call "UnlockMovement()".
+    //| 
+    //|=========================================================
+    protected void UpdateMovementLock() {
+        if (lockMovementRemainingTime > 0) lockMovementRemainingTime -= Time.deltaTime;
+        if (lockMovementRemainingTime > 0) {
+            lockMovement = true;
+        } else {
+            UnlockMovement();
+        }
+    }
+
+    //|=========================================================
+    //| When movement is locked, the character cannot move,
+    //| jump, and roll.
+    //| 
+    //| 
+    //|=========================================================
+    public void LockMovementForSeconds(float duration) {
+        if (duration > lockMovementRemainingTime) {
+            lockMovementRemainingTime = duration;
+            lockMovement = true;
+        }
+    }
+
+    public void UnlockMovement() {
+        lockMovementRemainingTime = 0;
+        lockMovement = false;
     }
 
     #endregion

@@ -1115,6 +1115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizInput: 0
   vertiInput: 0
+  lockMovementRemainingTime: 0
   groundCheckboxOffset: {x: 0, y: 0.08}
   groundCheckboxSize: {x: 1, y: 0.05}
   drawGroundCheckbox: 1

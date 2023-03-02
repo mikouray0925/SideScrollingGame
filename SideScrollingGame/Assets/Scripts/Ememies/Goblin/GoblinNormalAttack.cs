@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class GoblinNormalAttack : Attack
 {
+    [Header ("Overlap")]
     [SerializeField] Overlap overlap;
     
     Movement movement;
-    Animator anim;
-    bool attackIsInCD;
     
     private void Awake() {
         movement = GetComponent<Movement>();
         anim     = GetComponent<Animator>();
+    }
+
+    private void Update() {
+        if (isAttacking && !IsPlayingAttackAnimClip()) FinishNormalAttack();
+    }
+
+    public override bool AbleToAttack() {
+        return !isAttacking && !attackCD.IsInCD && movement.isGrounded;
     }
 
     public bool UnleashNormalAttack() {
@@ -20,12 +27,9 @@ public class GoblinNormalAttack : Attack
             anim.SetTrigger("normalAttack");
             movement.LockMovementForSeconds(0.4f);
             movement.Brake();
-            attackIsInCD = true;
-            Invoke(nameof(FinishAttackCD), AttackCD);
-            return true;
-        } else {
-            return false;
-        }
+            isAttacking = true;
+        } 
+        return isAttacking;
     }
 
     private void ApplyNormalAttackDamage() {
@@ -34,13 +38,7 @@ public class GoblinNormalAttack : Attack
 
     private void FinishNormalAttack() {
         movement.UnlockMovement();
-    }
-
-    private void FinishAttackCD() {
-        attackIsInCD = false;
-    }
-
-    public bool AbleToAttack() {
-        return !attackIsInCD && movement.isGrounded;
+        attackCD.StartCooldownCoroutine();
+        isAttacking = false;
     }
 }

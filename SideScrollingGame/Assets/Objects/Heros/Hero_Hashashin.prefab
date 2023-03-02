@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 628608810917004484}
   - component: {fileID: 1872058194175931612}
   m_Layer: 7
-  m_Name: Cooldown
+  m_Name: CD_SpeedMultiplier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258,6 +258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8268815319835528396}
+  - component: {fileID: 2569393988997990849}
   m_Layer: 7
   m_Name: NormalAttack
   m_TagString: Untagged
@@ -282,6 +283,22 @@ Transform:
   m_Father: {fileID: 8268815320871770880}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2569393988997990849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8268815319835528395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b05c83adafbc9649a1d0b754dde519b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugClock: 0
+  cooldownTime: 0.4
+  cdSpeedMultiplier: {fileID: 1872058194175931612}
+  cooldownUpdatePeriod: 0.1
 --- !u!1 &8268815320187015198
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,6 +512,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8268815320754264893}
+  - component: {fileID: 2459669871351760257}
   m_Layer: 7
   m_Name: Ability1
   m_TagString: Untagged
@@ -519,6 +537,22 @@ Transform:
   m_Father: {fileID: 8268815320871770880}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2459669871351760257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8268815320754264892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b05c83adafbc9649a1d0b754dde519b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugClock: 0
+  cooldownTime: 2
+  cdSpeedMultiplier: {fileID: 1872058194175931612}
+  cooldownUpdatePeriod: 0.1
 --- !u!1 &8268815320802082375
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,7 +619,7 @@ GameObject:
   - component: {fileID: 8268815320871770885}
   - component: {fileID: 8268815320871770888}
   - component: {fileID: 8268815320871770889}
-  - component: {fileID: 8268815320871770886}
+  - component: {fileID: 3890939168154507791}
   - component: {fileID: 8268815320871770891}
   m_Layer: 7
   m_Name: Hero_Hashashin
@@ -735,6 +769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizInput: 0
   vertiInput: 0
+  lockMovementRemainingTime: 0
   groundCheckboxOffset: {x: 0.07, y: 0.09}
   groundCheckboxSize: {x: 0.79, y: 0.1}
   drawGroundCheckbox: 1
@@ -784,7 +819,7 @@ MonoBehaviour:
   health: {fileID: 8268815320871770888}
   centerType: 0
   centerReplacement: {fileID: 0}
---- !u!114 &8268815320871770886
+--- !u!114 &3890939168154507791
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -793,12 +828,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8268815320871770909}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9f61ea8d794eb94684920d373a014cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 2687f2d8fc5a65143959a655826fe85d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageData: {fileID: 7825161217541535524}
-  cdMultiplier: {fileID: 1872058194175931612}
-  attackCD: 1
+  attackCD: {fileID: 2569393988997990849}
+  anim: {fileID: 8268815320871770883}
+  attackClipName: AttackNormal
   overlap1: {fileID: 8268815321233786469}
   overlap2: {fileID: 8268815320705632697}
 --- !u!114 &8268815320871770891
@@ -814,12 +850,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageData: {fileID: 7825161217541535524}
-  cdMultiplier: {fileID: 1872058194175931612}
-  attackCD: 3
+  attackCD: {fileID: 2459669871351760257}
+  anim: {fileID: 8268815320871770883}
+  attackClipName: Ability1
   rangeOverlap: {fileID: 8268815319831487319}
   damageOverlap: {fileID: 8268815321072245818}
   self: {fileID: 8268815320871770889}
   damageableList: []
+  attackClip2Name: Ability1-back
 --- !u!1 &8268815321072245817
 GameObject:
   m_ObjectHideFlags: 0

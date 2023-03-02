@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5551927644177474532}
   - component: {fileID: 6270283426788088868}
   m_Layer: 8
-  m_Name: Cooldown
+  m_Name: CD_SpeedMultiplier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -655,7 +655,7 @@ GameObject:
   - component: {fileID: 7399218280332163044}
   - component: {fileID: 7399218280332163043}
   m_Layer: 8
-  m_Name: NormalAttackOverlap
+  m_Name: DamageOverlap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -668,7 +668,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7399218280332163045}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -677,8 +677,8 @@ Transform:
   - {fileID: 7399218281124593853}
   - {fileID: 7399218280237832140}
   - {fileID: 7399218281278660608}
-  m_Father: {fileID: 7399218280927256369}
-  m_RootOrder: 2
+  m_Father: {fileID: 6190388007637026113}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7399218280332163043
 MonoBehaviour:
@@ -1039,7 +1039,7 @@ Transform:
   m_Children:
   - {fileID: 7904645446981818110}
   - {fileID: 4353642489813797447}
-  - {fileID: 7399218280332163044}
+  - {fileID: 6190388007637026113}
   - {fileID: 7399218280487686307}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1195,8 +1195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582e85c0816f378468994a0b277b7b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 6
-  currentHealth: 6
+  maxHealth: 8
+  currentHealth: 8
   lifeRemain: 1
   rebornPercentage: 0
   isInvincible: 0
@@ -1228,8 +1228,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageData: {fileID: 8005682781226248108}
-  cdMultiplier: {fileID: 6270283426788088868}
-  attackCD: 2
+  attackCD: {fileID: 6886162383138391376}
+  anim: {fileID: 7399218280927256368}
+  attackClipName: AttackNormal
   overlap: {fileID: 7399218280332163043}
 --- !u!114 &7399218280927256389
 MonoBehaviour:
@@ -1679,3 +1680,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   multiplier: {fileID: 0}
+--- !u!1 &8202872953694355180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6190388007637026113}
+  - component: {fileID: 6886162383138391376}
+  m_Layer: 8
+  m_Name: NormalAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6190388007637026113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8202872953694355180}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7399218280332163044}
+  m_Father: {fileID: 7399218280927256369}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6886162383138391376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8202872953694355180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b05c83adafbc9649a1d0b754dde519b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugClock: 0
+  cooldownTime: 1
+  cdSpeedMultiplier: {fileID: 6270283426788088868}
+  cooldownUpdatePeriod: 0.1
