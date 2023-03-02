@@ -11,38 +11,39 @@ public class Movement : MonoBehaviour
     [Range (-1f, 1f)]
     [SerializeField] public  float vertiInput;
 
-    [Header ("Movement lock")]
-    [SerializeField] private float lockMovementRemainingTime;
-    [SerializeField] public  bool  lockMovement {get; private set;}
+    [Header ("Movement parameters")]
+    [SerializeField] public    SpeedData speedData;
+    [SerializeField] protected float acceleration;
+    [SerializeField] protected float accelerationPow;
     
     [Header ("Ground check")]
     [SerializeField] private   Vector2 groundCheckboxOffset;
     [SerializeField] private   Vector2 groundCheckboxSize;
     [SerializeField] protected bool drawGroundCheckbox;
-    [SerializeField] public    bool isGrounded {get; private set;}
-    [SerializeField] private   bool avoidGrounded;
-
-    [Header ("Movement parameters")]
-    [SerializeField] public    SpeedData speedData;
-    [SerializeField] protected float acceleration;
-    [SerializeField] protected float accelerationPow;
+    public  bool isGrounded {get; private set;}
+    private bool avoidGrounded;
 
     [Header ("Jump parameters")]
     [SerializeField] protected Vector2 jumpForce;
     [SerializeField] public    float gravityScale;
     [SerializeField] protected float fallingGravityMultiplier;
-    [SerializeField] public    bool  isJumping {get; private set;}
-    [SerializeField] private   bool  jumpCutApplied;
     [SerializeField] private   float avoidGroundedTime;
+    public  bool  isJumping {get; private set;}
+    private bool  jumpCutApplied;
 
     [Header ("Rolling parameters")]
     [SerializeField] protected float rollingForce;
-    [SerializeField] public    bool  isRolling {get; private set;}
     [SerializeField] protected float rollingCD;
-    [SerializeField] private   bool  rollingIsInCD;
+    [SerializeField] private   string rollingClipName;
+    public  bool  isRolling {get; private set;}
+    private bool  rollingIsInCD;
 
     [Header ("References")]
     [SerializeField] private RectTransform canvasTransform;
+
+    [Header ("Movement lock")]
+    [SerializeField] private float lockMovementRemainingTime;
+    public  bool  lockMovement {get; private set;}
 
     #region ComponentRef
     protected Rigidbody2D       rbody;
@@ -53,6 +54,7 @@ public class Movement : MonoBehaviour
 
     public void DefaultUpdate() {
         UpdateMovementLock();
+        UpdateRolling();
         FlipWithHorizInput();
         CheckGround();
         ApplyFallingGravity();
@@ -349,21 +351,31 @@ public class Movement : MonoBehaviour
         }
     }
 
-    //|=========================================================
-    //| End rolling when rolling animation finishes.
-    //| Call this function at the end of the rolling animation.
-    //| 
-    //| 
-    //|=========================================================
-    public void StopRolling() {
-        if (isRolling) {
-            isRolling = false;
-            rollingIsInCD = true;
-            Invoke(nameof(ResetRollingIsInCD), rollingCD);
+    public bool IsPlayingRollingAnimClip() {
+        if (TryGetComponent<Animator>(out Animator anim)) {
+            return anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == rollingClipName;
         }
+        return false;
     }
 
-    private void ResetRollingIsInCD() {
+    //|=========================================================
+    //| An important part of movement "Update" process.
+    //| End rolling when rolling animation finishes.
+    //| 
+    //| 
+    //|=========================================================
+    public void UpdateRolling() {
+        if (isRolling && !IsPlayingRollingAnimClip()) FinishRolling();
+    }
+
+    private void FinishRolling() {
+        if (!isRolling) return;
+        isRolling = false;
+        rollingIsInCD = true;
+        Invoke(nameof(FinishRollingCD), rollingCD);
+    }
+
+    private void FinishRollingCD() {
         rollingIsInCD = false;
     }
 

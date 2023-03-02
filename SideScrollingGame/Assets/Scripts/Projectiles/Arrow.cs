@@ -5,15 +5,20 @@ using UnityEngine;
 public class Arrow : Projectile
 {
     [SerializeField] float startFallingSpeed;
+    [SerializeField] float lifespan;
+    float remainingLifespan;
     bool isFalling;
     
     private void Awake() {
         GrabPhysicsComponents();
     }
 
-    public override void Launch() {
-        isFalling = false;
-        rb.gravityScale = 0;
+    private void Update() {
+        if (remainingLifespan > 0) {
+            remainingLifespan -= Time.deltaTime;
+        } else {
+            Deactivate();
+        }
     }
 
     private void FixedUpdate() {
@@ -28,5 +33,18 @@ public class Arrow : Projectile
             rb.gravityScale = 0;
             ApplyAirResistance();
         }
+    }
+
+    public override void Launch() {
+        isFalling = false;
+        rb.gravityScale = 0;
+        remainingLifespan = lifespan;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.collider.TryGetComponent<DamageablePart>(out DamageablePart damageable)) {
+            damageable.health.TakeDamage(damage, rb.velocity.normalized);
+        }
+        Deactivate();
     }
 }

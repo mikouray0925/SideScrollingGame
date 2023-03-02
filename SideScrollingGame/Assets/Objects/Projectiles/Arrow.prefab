@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6727791389031137599}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.5, y: 4.5, z: 1}
+  m_LocalScale: {x: 4.5, y: 4.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -149,3 +149,5 @@ MonoBehaviour:
   damage: 0
   airResistanceCoefficient: 0.0022
   startFallingSpeed: 40
+  lifespan: 2
+  remainingLifespan: 0

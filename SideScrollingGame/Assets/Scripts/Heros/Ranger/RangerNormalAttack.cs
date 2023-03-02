@@ -53,6 +53,7 @@ public class RangerNormalAttack : HeroNormalAttack
         }
         arrow.rb.velocity = facingSide * arrowStartSpeed * Vector2.right;
         arrow.damage = damageData.Damage;
+        arrow.Launch();
     }
 
     protected override void FinishNormalAttack() {

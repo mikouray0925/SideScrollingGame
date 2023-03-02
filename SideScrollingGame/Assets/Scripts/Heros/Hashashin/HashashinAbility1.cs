@@ -89,5 +89,6 @@ public class HashashinAbility1 : Attack
         movement.UnlockMovement();
         movement.gravityScale = 1f;
         self.health.isInvincible = false;
+        isAttacking = false;
     }
 }

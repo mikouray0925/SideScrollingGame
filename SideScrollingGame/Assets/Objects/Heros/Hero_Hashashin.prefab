@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e254a2eadb68a0428d45a34ae85ccc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 7
   multiplier: {fileID: 2431108774023838717}
 --- !u!1 &8040478254296937793
 GameObject:
@@ -769,23 +769,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizInput: 0
   vertiInput: 0
-  lockMovementRemainingTime: 0
+  speedData: {fileID: 9145021860808004466}
+  acceleration: 14
+  accelerationPow: 0.99
   groundCheckboxOffset: {x: 0.07, y: 0.09}
   groundCheckboxSize: {x: 0.79, y: 0.1}
   drawGroundCheckbox: 1
-  avoidGrounded: 0
-  speedData: {fileID: 9145021860808004466}
-  acceleration: 12
-  accelerationPow: 1
   jumpForce: {x: 8, y: 12}
   gravityScale: 1
   fallingGravityMultiplier: 1.6
-  jumpCutApplied: 0
   avoidGroundedTime: 0.1
   rollingForce: 10
   rollingCD: 0.8
-  rollingIsInCD: 0
+  rollingClipName: Roll
   canvasTransform: {fileID: 0}
+  lockMovementRemainingTime: 0
 --- !u!114 &8268815320871770888
 MonoBehaviour:
   m_ObjectHideFlags: 0
