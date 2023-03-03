@@ -8,7 +8,7 @@ public class SpeedData : MonoBehaviour
     [SerializeField] private float speed;
 
     [Header ("Value Adjuster")]
-    [SerializeField] private CombinedMultiplier multiplier;
+    [SerializeField] public CombinedMultiplier multiplier;
 
     public float Speed {
         get {

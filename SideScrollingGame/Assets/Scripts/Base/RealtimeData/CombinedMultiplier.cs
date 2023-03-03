@@ -7,8 +7,8 @@ public class CombinedMultiplier : MonoBehaviour
 {
     [Header ("Multiplier")]
     [SerializeField] private float currentMultiplier = 1f;
-    // [SerializeField][SerializedDictionary("Tag", "Multiplier")] 
-    private SerializedDictionary<string, float> multiplierDict;
+    [SerializeField][SerializedDictionary("Tag", "Multiplier")] 
+    private SerializedDictionary<string, float> multiplierDict = new SerializedDictionary<string, float>();
 
     public float Multiplier {
         get {

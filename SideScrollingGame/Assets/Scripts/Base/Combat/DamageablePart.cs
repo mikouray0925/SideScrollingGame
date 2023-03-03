@@ -9,7 +9,9 @@ using UnityEngine;
 //|=======================================================
 public class DamageablePart : MonoBehaviour
 {
+    [Header ("References")]
     public Health health;
+    public Transform impactPointHolder;
 
     enum CenterType {
         CenterOfCollider,

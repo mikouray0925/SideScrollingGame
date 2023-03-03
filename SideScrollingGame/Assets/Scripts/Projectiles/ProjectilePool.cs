@@ -10,8 +10,8 @@ public class ProjectilePool : MonoBehaviour
     
     private void Awake() {
         for (int i = 0; i < projectileStartingNum; i++) {
-            Projectile newProjectile = InstantiateNewProjectile();
-            projectileList.Add(newProjectile);
+            InstantiateNewProjectile();
+            
         }
     }
 
@@ -34,6 +34,7 @@ public class ProjectilePool : MonoBehaviour
     public Projectile InstantiateNewProjectile() {
         Projectile newProjectile = Instantiate(projectilePrefab, transform).GetComponent<Projectile>();
         newProjectile.Deactivate();
+        projectileList.Add(newProjectile);
         return newProjectile;
     }
 }

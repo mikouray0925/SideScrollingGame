@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentMultiplier: 1
+  multiplierDict:
+    _serializedList: []
 --- !u!1 &1729720070123410785
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,6 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1764439331809892551}
   - component: {fileID: 6356973886178493026}
+  - component: {fileID: 5984511471216370934}
   m_Layer: 8
   m_Name: Speed
   m_TagString: Untagged
@@ -90,7 +93,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  multiplier: {fileID: 0}
+  multiplier: {fileID: 5984511471216370934}
+--- !u!114 &5984511471216370934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729720070123410785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d35f229f2bda8443a4963121fe468d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMultiplier: 1
+  multiplierDict:
+    _serializedList: []
+--- !u!1 &4067512225893252240
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3156411917845096307}
+  m_Layer: 8
+  m_Name: ImpactPointHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3156411917845096307
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4067512225893252240}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7399218280927256369}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4440940962820359438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,6 +1090,7 @@ Transform:
   - {fileID: 4353642489813797447}
   - {fileID: 6190388007637026113}
   - {fileID: 7399218280487686307}
+  - {fileID: 3156411917845096307}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1212,6 +1262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 7399218280927256396}
+  impactPointHolder: {fileID: 3156411917845096307}
   centerType: 2
   centerReplacement: {fileID: 7399218281103265726}
 --- !u!114 &7399218280927256392

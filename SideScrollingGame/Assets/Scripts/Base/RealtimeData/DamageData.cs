@@ -9,7 +9,7 @@ public class DamageData : MonoBehaviour
     [SerializeField] private float damage;
 
     [Header ("Value Adjuster")]
-    [SerializeField] private CombinedMultiplier multiplier;
+    [SerializeField] public CombinedMultiplier multiplier;
 
     public float Damage {
         get {

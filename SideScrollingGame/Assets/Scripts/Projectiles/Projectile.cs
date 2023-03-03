@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour
     [Header ("Parameters")]
     [SerializeField] public float damage = 0;
     [SerializeField] public float airResistanceCoefficient;
+    [SerializeField] public float lifespan;
+    float remainingLifespan;
 
     public Collider2D col {get; protected set;}
     public Rigidbody2D rb {get; protected set;}
@@ -33,7 +35,7 @@ public class Projectile : MonoBehaviour
     }
 
     public virtual void Launch() {
-
+        ResetLifespan();
     }
 
     public virtual void Deactivate() {
@@ -55,5 +57,17 @@ public class Projectile : MonoBehaviour
         float speed = rb.velocity.magnitude;
         float speedSubtrahend = speed * speed * airResistanceCoefficient;
         rb.velocity = rb.velocity.normalized * (speed - speedSubtrahend);
+    }
+
+    protected void ResetLifespan() {
+        remainingLifespan = lifespan;
+    }
+
+    protected virtual void UpdateLifespan() {
+        if (remainingLifespan > 0) {
+            remainingLifespan -= Time.deltaTime;
+        } else {
+            Deactivate();
+        }
     }
 }

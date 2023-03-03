@@ -5,8 +5,9 @@ using UnityEngine;
 public class Arrow : Projectile
 {
     [SerializeField] float startFallingSpeed;
-    [SerializeField] float lifespan;
-    float remainingLifespan;
+    [SerializeField] GameObject impactPointPrefab;
+    [SerializeField] GameObject arrowHitPrefab;
+    
     bool isFalling;
     
     private void Awake() {
@@ -14,11 +15,7 @@ public class Arrow : Projectile
     }
 
     private void Update() {
-        if (remainingLifespan > 0) {
-            remainingLifespan -= Time.deltaTime;
-        } else {
-            Deactivate();
-        }
+        UpdateLifespan();
     }
 
     private void FixedUpdate() {
@@ -38,12 +35,24 @@ public class Arrow : Projectile
     public override void Launch() {
         isFalling = false;
         rb.gravityScale = 0;
-        remainingLifespan = lifespan;
+        ResetLifespan();
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.collider.TryGetComponent<DamageablePart>(out DamageablePart damageable)) {
             damageable.health.TakeDamage(damage, rb.velocity.normalized);
+            if (GameManager.impactEffectHolder && damageable.impactPointHolder) {
+                GameObject impactPoint = Instantiate(impactPointPrefab, transform.position, transform.rotation, damageable.impactPointHolder);
+                GameObject arrowHit = Instantiate(arrowHitPrefab, transform.position, transform.rotation, GameManager.impactEffectHolder);
+                if (transform.localScale.x < 0) {
+                    arrowHit.transform.localScale = new Vector3(
+                        -arrowHit.transform.localScale.x, 
+                         arrowHit.transform.localScale.y, 
+                         arrowHit.transform.localScale.z
+                    );
+                }
+                arrowHit.GetComponent<ImpactFollowTrasnform>().followingTransform = impactPoint.transform;
+            }
         }
         Deactivate();
     }
