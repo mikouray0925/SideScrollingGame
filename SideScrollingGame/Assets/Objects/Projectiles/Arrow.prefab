@@ -147,9 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  airResistanceCoefficient: 0.0022
+  airResistanceCoefficient: 0.0018
   lifespan: 2
   startFallingSpeed: 40
-  impactEffectHolder: {fileID: 0}
   impactPointPrefab: {fileID: 129586391826417193, guid: 89985df820e432846beafe6a0a864282, type: 3}
   arrowHitPrefab: {fileID: 3900636380562430317, guid: 75a573c9f445c434c888dae748dba214, type: 3}

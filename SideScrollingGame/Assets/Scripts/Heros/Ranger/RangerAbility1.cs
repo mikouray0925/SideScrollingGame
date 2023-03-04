@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangerAbility1 : Attack
+public class RangerAbility1 : HeroAbility1
 {
     [Header ("Arrow rain")]
     [SerializeField] ProjectilePool fallingArrowPool;
+    [SerializeField] Transform arrowLaunchPoint;
     [SerializeField] Transform localArrowStartPoint;
     [SerializeField] Transform arrowStartPoint;
     [SerializeField] float fallingRange;
@@ -19,18 +20,6 @@ public class RangerAbility1 : Attack
     [Header ("Root wave")]
     [SerializeField] RangerRootWave rootWave;
 
-    Movement movement;
-
-    private void Awake() {
-        movement = GetComponent<Movement>();
-        anim     = GetComponent<Animator>();
-    }
-
-    private void Update() {
-        if (isAttacking && !IsPlayingAttackAnimClip()) FinishAbility1();
-        if (Input.GetButtonDown("Fire2")) UnleashAbility1();
-    }
-
     public override bool AbleToAttack() {
         return 
         !isAttacking &&
@@ -40,7 +29,7 @@ public class RangerAbility1 : Attack
         !movement.isRolling;
     }
 
-    public bool UnleashAbility1() {
+    public override bool UnleashAbility1() {
         if (AbleToAttack()) {
             anim.SetTrigger("ability1");
             movement.LockMovementForSeconds(1.2f);
@@ -51,14 +40,21 @@ public class RangerAbility1 : Attack
     }
      
     private void StartArrowRain() {
-        arrowStartPoint.position = localArrowStartPoint.position;
+        float heightDiff = localArrowStartPoint.position.y - arrowLaunchPoint.position.y;
+        RaycastHit2D hit = Physics2D.Linecast(arrowLaunchPoint.position, arrowLaunchPoint.position + Vector3.up * heightDiff, GameManager.obstacleLayers);
+        if (hit.collider) {
+            arrowStartPoint.position = new Vector2(localArrowStartPoint.position.x, hit.point.y - 0.1f);
+        } else {
+            arrowStartPoint.position = localArrowStartPoint.position;
+        }
+        StartCoroutine(ArrowRainCoroutine());
+
         if (rootWave) {
             Vector3 pos = rootWave.transform.position;
             pos.x = arrowStartPoint.position.x;
             rootWave.transform.position = pos;
             rootWave.damage = damageData.Damage * 1.2f;
         }
-        StartCoroutine(ArrowRainCoroutine());
     }
 
     private IEnumerator ArrowRainCoroutine() {
@@ -81,7 +77,7 @@ public class RangerAbility1 : Attack
         }
     }
 
-    private void FinishAbility1() {
+    protected override void FinishAbility1() {
         attackCD.StartCooldownCoroutine();
         movement.UnlockMovement();
         isAttacking = false;

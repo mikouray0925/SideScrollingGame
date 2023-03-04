@@ -12,6 +12,9 @@ public class RangerRootWave : MonoBehaviour
     public Overlap damageOverlap;
     public float damage;
 
+    [Header ("Cooldown")]
+    public CooldownSystem cooldown;
+
     Animator anim;
     HashSet<Movement> affectedMovements = new HashSet<Movement>();
     
@@ -31,6 +34,7 @@ public class RangerRootWave : MonoBehaviour
     }
 
     public void Activate() {
+        if (cooldown.IsInCD) return;
         gameObject.SetActive(true);
         anim.SetTrigger("restart");
     }
@@ -62,5 +66,6 @@ public class RangerRootWave : MonoBehaviour
         }
         affectedMovements.Clear();
         gameObject.SetActive(false);
+        cooldown.StartCooldownCoroutine();
     }
 }

@@ -79,6 +79,8 @@ public class Movement : MonoBehaviour
 
     // inverse transform.localScale.x and canvasTransform.localScale.x
     public void Flip() {
+        if (lockMovement) return;
+
         transform.localScale = new Vector3(
             -transform.localScale.x, 
              transform.localScale.y, 

@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4da8f9d7ac15742ad01d82bd58a82d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifespan: 1.2
-  followingTransform: {fileID: 0}
+  lifespan: 2
   followPosition: 1
   followRotation: 1
+  followFlipping: 1

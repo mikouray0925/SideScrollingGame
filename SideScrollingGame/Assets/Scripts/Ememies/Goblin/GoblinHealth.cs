@@ -39,6 +39,8 @@ public class GoblinHealth : Health
     protected override void OnTakingDamage(float damageVal, Vector2 damageDir, out float finalDamageVal) {
         anim.SetTrigger("takeHit");
         if (Mathf.Sign(damageDir.x) == Mathf.Sign(transform.localScale.x)) movement.Flip();
+        movement.Brake();
+        movement.LockMovementForSeconds(0.2f);
         finalDamageVal = damageVal;
     }
 }

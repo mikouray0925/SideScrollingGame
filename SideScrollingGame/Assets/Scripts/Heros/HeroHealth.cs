@@ -8,10 +8,12 @@ public class HeroHealth : Health
     [SerializeField] Color hurtColor;
     
     Animator anim;
+    Movement movement;
     
     private void Awake() {
         rend = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        movement = GetComponent<Movement>();
     }
 
     private void Update() {
@@ -35,6 +37,8 @@ public class HeroHealth : Health
 
     protected override void OnTakingDamage(float damageVal, Vector2 damageDir, out float finalDamageVal) {
         anim.SetTrigger("takeHit");
+        movement.Brake();
+        movement.LockMovementForSeconds(0.2f);
         finalDamageVal = damageVal;
     }
 }
