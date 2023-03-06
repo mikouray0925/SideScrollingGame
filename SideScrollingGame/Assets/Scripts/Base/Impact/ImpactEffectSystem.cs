@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ImpactFollowTrasnform : MonoBehaviour
+public class ImpactEffectSystem : MonoBehaviour
 {
     [SerializeField] float lifespan;
+    [SerializeField] Transform followingTransform;
     public bool followPosition;
     public bool followRotation;
     public bool followFlipping;
     
-    Transform followingTransform;
     Vector3 lastFollowingScale;
 
     void Awake() {
@@ -21,7 +21,7 @@ public class ImpactFollowTrasnform : MonoBehaviour
             if (followPosition) transform.position = followingTransform.position;
             if (followRotation) transform.rotation = followingTransform.rotation;
             if (followFlipping && (Mathf.Sign(followingTransform.lossyScale.x) * Mathf.Sign(lastFollowingScale.x) < 0)) {
-                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y , transform.localScale.z);
+                Flip();
                 lastFollowingScale = followingTransform.lossyScale;
             } 
         }    
@@ -30,6 +30,10 @@ public class ImpactFollowTrasnform : MonoBehaviour
     public void Follow(Transform _followingTransform) {
         followingTransform = _followingTransform;
         lastFollowingScale = followingTransform.lossyScale;
+    }
+
+    public void Flip() {
+        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y , transform.localScale.z);
     }
 
     public void DestroyThisAndFollowing() {

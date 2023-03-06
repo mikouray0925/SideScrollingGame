@@ -938,6 +938,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3890939168154507791, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
+      propertyPath: impact1
+      value: 
+      objectReference: {fileID: 9099440507121795449, guid: 3ad086a57fe8cfe44950c969df1cb1ad, type: 3}
+    - target: {fileID: 3890939168154507791, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
+      propertyPath: impact2
+      value: 
+      objectReference: {fileID: 1621245140455146613, guid: 70f35653e356b954ab4893512d167f95, type: 3}
+    - target: {fileID: 3890939168154507791, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
+      propertyPath: impacts1.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890939168154507791, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
+      propertyPath: impacts1.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890939168154507791, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
+      propertyPath: impacts1.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890939168154507791, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
+      propertyPath: impacts1.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890939168154507791, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
+      propertyPath: impacts1.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8268815319831487319, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
       propertyPath: drawGizmos
       value: 0
@@ -992,7 +1020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8268815320871770909, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8268815321072245818, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
       propertyPath: drawGizmos
@@ -1883,7 +1911,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 467025732427686132, guid: 143e291f6638ef14188ec4ed973587e0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 467025732427686133, guid: 143e291f6638ef14188ec4ed973587e0, type: 3}
       propertyPath: m_RootOrder

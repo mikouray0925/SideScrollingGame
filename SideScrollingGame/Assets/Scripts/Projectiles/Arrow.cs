@@ -51,7 +51,7 @@ public class Arrow : Projectile
                          arrowHit.transform.localScale.z
                     );
                 }
-                arrowHit.GetComponent<ImpactFollowTrasnform>().Follow(impactPoint.transform);
+                arrowHit.GetComponent<ImpactEffectSystem>().Follow(impactPoint.transform);
             }
         }
         Deactivate();

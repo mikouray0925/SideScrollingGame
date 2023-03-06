@@ -8,6 +8,10 @@ public class HashashinNormalAttack : HeroNormalAttack
     [SerializeField] Overlap overlap1;
     [SerializeField] Overlap overlap2;
 
+    [Header ("Impact")]
+    [SerializeField] GameObject impact1;
+    [SerializeField] GameObject impact2;
+
     Movement movement;
 
     private void Awake() {
@@ -40,10 +44,23 @@ public class HashashinNormalAttack : HeroNormalAttack
     }
 
     private void ApplyNormalAttackDamage1() {
-        ApplyDamage(overlap1, Mathf.Sign(transform.localScale.x) * Vector2.right);
+        List<DamageablePart> damageableList = overlap1.GetOverlapDamageableParts();
+        foreach (DamageablePart damageable in damageableList) {
+            GameObject impact = Instantiate(impact1, GameManager.impactEffectHolder);
+            impact.transform.position = damageable.Center;
+            if (transform.localScale.x < 0) impact.GetComponent<ImpactEffectSystem>().Flip();
+        }
+        ApplyDamage(damageableList, Mathf.Sign(transform.localScale.x) * Vector2.right);
     }
 
     private void ApplyNormalAttackDamage2() {
+        List<DamageablePart> damageableList = overlap2.GetOverlapDamageableParts();
+        foreach (DamageablePart damageable in damageableList) {
+            GameObject impact = Instantiate(impact2, GameManager.impactEffectHolder);
+            impact.transform.position = damageable.Center;
+            if (transform.localScale.x < 0) impact.GetComponent<ImpactEffectSystem>().Flip();
+        }
+        ApplyDamage(damageableList, Mathf.Sign(transform.localScale.x) * Vector2.right);
         ApplyDamage(overlap2, Mathf.Sign(transform.localScale.x) * Vector2.right);
     }
 
