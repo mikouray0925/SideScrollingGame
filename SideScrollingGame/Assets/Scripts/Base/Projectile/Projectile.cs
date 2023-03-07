@@ -5,7 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [Header ("Parameters")]
-    [SerializeField] public float damage = 0;
+    [SerializeField] public Damage damage;
     [SerializeField] public float airResistanceCoefficient;
     [SerializeField] public float lifespan;
     float remainingLifespan;

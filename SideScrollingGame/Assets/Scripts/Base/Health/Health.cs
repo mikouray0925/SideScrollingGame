@@ -84,14 +84,23 @@ public class Health : MonoBehaviour
     //| this function won't work.
     //| 
     //|=======================================================
-    public void TakeDamage(float damageVal, Vector2 damageDir) {
+    public void TakeDamage(Damage damageInfo) {
         if (lifeRemain <= 0 || isInvincible) return;  
-        OnTakingDamage(damageVal, damageDir, out float finalDamageVal);
+        OnTakingDamage(damageInfo, out float finalDamageVal);
         Hp -= finalDamageVal;
     }
 
-    protected virtual void OnTakingDamage(float damageVal, Vector2 damageDir, out float finalDamageVal) {
-        finalDamageVal = damageVal;
+    protected void ProcessDamageDefault(Damage damageInfo) {
+        if (TryGetComponent<Rigidbody2D>(out Rigidbody2D _rb)) {
+            foreach (Damage.Force forceInfo in damageInfo.forces) {
+                _rb.AddForce(forceInfo.force, forceInfo.mode);
+            }
+        }
+    }
+
+    protected virtual void OnTakingDamage(Damage damageInfo, out float finalDamageVal) {
+        ProcessDamageDefault(damageInfo);
+        finalDamageVal = damageInfo.damage;
     }
 
     #endregion

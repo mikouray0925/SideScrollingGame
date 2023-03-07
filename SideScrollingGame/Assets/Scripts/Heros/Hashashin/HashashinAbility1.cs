@@ -58,15 +58,20 @@ public class HashashinAbility1 : Attack
     }
 
     private void ApplyAbility1Damage(int hitCount) {
+        Damage damageInfo = new Damage(this, damageData.Damage, Vector2.zero);
+
         switch (hitCount) {
         case 0:
-            ApplyDamage(damageOverlap, Vector2.down);
+            damageInfo.mainDirection = Vector2.down;
+            ApplyDamage(damageOverlap, damageInfo);
             break;
         case 1:
-            ApplyDamage(damageOverlap, Mathf.Sign(transform.localScale.x) * Vector2.left);
+            damageInfo.mainDirection = Mathf.Sign(transform.localScale.x) * Vector2.left;
+            ApplyDamage(damageOverlap, damageInfo);
             break;
         case 2:
-            ApplyDamage(damageOverlap, Mathf.Sign(transform.localScale.x) * Vector2.right);
+            damageInfo.mainDirection = Mathf.Sign(transform.localScale.x) * Vector2.right;
+            ApplyDamage(damageOverlap, damageInfo);
             break;
         }   
     }

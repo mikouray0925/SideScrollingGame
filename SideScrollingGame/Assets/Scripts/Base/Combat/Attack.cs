@@ -27,8 +27,8 @@ public class Attack : MonoBehaviour
     //| damage = Damage * damageMultiplier + damageAddend
     //| "direction" is the direction where the damage go.
     //|=========================================================
-    protected int ApplyDamage(Overlap overlap, Vector2 direction, float damageMultiplier = 1f, float damageAddend = 0) {
-        return ApplyDamage(overlap.GetOverlapHealthComponents(), direction, damageMultiplier, damageAddend);
+    protected int ApplyDamage(Overlap overlap, Damage damageInfo) {
+        return ApplyDamage(overlap.GetOverlapHealthComponents(), damageInfo);
     }
     
     //|=========================================================
@@ -37,8 +37,8 @@ public class Attack : MonoBehaviour
     //| If you want to add force to <DamageablePart>, this is 
     //| better.
     //|=========================================================
-    protected int ApplyDamage(List<DamageablePart> damageableParts, Vector2 direction, float damageMultiplier = 1f, float damageAddend = 0) {
-        return ApplyDamage(DamageablePart.GetHealthComponents(damageableParts), direction, damageMultiplier, damageAddend);
+    protected int ApplyDamage(List<DamageablePart> damageableParts, Damage damageInfo) {
+        return ApplyDamage(DamageablePart.GetHealthComponents(damageableParts), damageInfo);
     }
 
     //|=========================================================
@@ -47,9 +47,14 @@ public class Attack : MonoBehaviour
     //| The base function of another two.
     //| 
     //|=========================================================
-    protected int ApplyDamage(HashSet<Health> healthSet, Vector2 direction, float damageMultiplier = 1f, float damageAddend = 0) {
+    protected int ApplyDamage(HashSet<Health> healthSet, Damage damageInfo) {
+        if (!damageInfo.attacker) damageInfo.attacker = transform;
+        if (!damageInfo.attack) damageInfo.attack = this;
+        if (damageInfo.forces == null) damageInfo.forces = new List<Damage.Force>();
+        damageInfo.mainDirection.Normalize();
+
         foreach (Health health in healthSet) {
-            health.TakeDamage(damageData.Damage * damageMultiplier + damageAddend, direction);
+            health.TakeDamage(damageInfo);
         }
         return healthSet.Count;
     }

@@ -53,7 +53,7 @@ public class RangerAbility1 : HeroAbility1
             Vector3 pos = rootWave.transform.position;
             pos.x = arrowStartPoint.position.x;
             rootWave.transform.position = pos;
-            rootWave.damage = damageData.Damage * 1.2f;
+            rootWave.damage = new Damage(this, damageData.Damage, Vector2.down);
         }
     }
 
@@ -69,7 +69,7 @@ public class RangerAbility1 : HeroAbility1
             fallingArrow.Activate();
             fallingArrow.transform.position = new Vector3(x, y, 0);
             fallingArrow.rb.velocity = Vector2.zero;
-            fallingArrow.damage = damageData.Damage * 0.1f;
+            fallingArrow.damage = new Damage(this, damageData.Damage * 0.1f, Vector2.down);
             fallingArrow.rootWave = rootWave;
             fallingArrow.Launch();
 

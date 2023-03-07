@@ -33,7 +33,7 @@ public class GoblinNormalAttack : Attack
     }
 
     private void ApplyNormalAttackDamage() {
-        ApplyDamage(overlap, Mathf.Sign(transform.localScale.x) * Vector2.right);
+        ApplyDamage(overlap, new Damage(this, damageData.Damage, Mathf.Sign(transform.localScale.x) * Vector2.right));
     }
 
     private void FinishNormalAttack() {

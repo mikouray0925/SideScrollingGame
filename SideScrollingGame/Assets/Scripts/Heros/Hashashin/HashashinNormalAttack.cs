@@ -46,22 +46,23 @@ public class HashashinNormalAttack : HeroNormalAttack
     private void ApplyNormalAttackDamage1() {
         List<DamageablePart> damageableList = overlap1.GetOverlapDamageableParts();
         foreach (DamageablePart damageable in damageableList) {
-            GameObject impact = Instantiate(impact1, GameManager.impactEffectHolder);
+            ImpactEffectSystem impact = GameManager.SpawnImpactEffect(impact1);
             impact.transform.position = damageable.Center;
-            if (transform.localScale.x < 0) impact.GetComponent<ImpactEffectSystem>().Flip();
+            if (transform.localScale.x < 0) impact.Flip();
         }
-        ApplyDamage(damageableList, Mathf.Sign(transform.localScale.x) * Vector2.right);
+
+        ApplyDamage(damageableList, new Damage(this, damageData.Damage, Mathf.Sign(transform.localScale.x) * Vector2.right));
     }
 
     private void ApplyNormalAttackDamage2() {
         List<DamageablePart> damageableList = overlap2.GetOverlapDamageableParts();
         foreach (DamageablePart damageable in damageableList) {
-            GameObject impact = Instantiate(impact2, GameManager.impactEffectHolder);
+            ImpactEffectSystem impact = GameManager.SpawnImpactEffect(impact2);
             impact.transform.position = damageable.Center;
-            if (transform.localScale.x < 0) impact.GetComponent<ImpactEffectSystem>().Flip();
+            if (transform.localScale.x < 0) impact.Flip();
         }
-        ApplyDamage(damageableList, Mathf.Sign(transform.localScale.x) * Vector2.right);
-        ApplyDamage(overlap2, Mathf.Sign(transform.localScale.x) * Vector2.right);
+        
+        ApplyDamage(damageableList, new Damage(this, damageData.Damage, Mathf.Sign(transform.localScale.x) * Vector2.right));
     }
 
     protected override void FinishNormalAttack() {

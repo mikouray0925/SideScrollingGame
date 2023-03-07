@@ -35,10 +35,10 @@ public class HeroHealth : Health
 
     }
 
-    protected override void OnTakingDamage(float damageVal, Vector2 damageDir, out float finalDamageVal) {
+    protected override void OnTakingDamage(Damage damageInfo, out float finalDamageVal) {
         anim.SetTrigger("takeHit");
         movement.Brake();
         movement.LockMovementForSeconds(0.2f);
-        finalDamageVal = damageVal;
+        finalDamageVal = damageInfo.damage;
     }
 }

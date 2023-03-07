@@ -40,7 +40,11 @@ public class Arrow : Projectile
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.collider.TryGetComponent<DamageablePart>(out DamageablePart damageable)) {
-            damageable.health.TakeDamage(damage, rb.velocity.normalized);
+            if (damage != null) {
+                damage.mainDirection = rb.velocity.normalized;
+                damageable.health.TakeDamage(damage);
+            }
+            
             if (GameManager.impactEffectHolder && damageable.impactPointHolder) {
                 GameObject impactPoint = Instantiate(impactPointPrefab, transform.position, transform.rotation, damageable.impactPointHolder);
                 GameObject arrowHit = Instantiate(arrowHitPrefab, transform.position, transform.rotation, GameManager.impactEffectHolder);

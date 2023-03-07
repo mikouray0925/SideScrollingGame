@@ -10,7 +10,7 @@ public class RangerRootWave : MonoBehaviour
 
     [Header ("Damage")]
     public Overlap damageOverlap;
-    public float damage;
+    public Damage damage;
 
     [Header ("Cooldown")]
     public CooldownSystem cooldown;
@@ -42,7 +42,7 @@ public class RangerRootWave : MonoBehaviour
     private void ApplyDamage() {
         HashSet<Health> healthSet = damageOverlap.GetOverlapHealthComponents();
         foreach (Health health in healthSet) {
-            health.TakeDamage(damage, Vector2.down);
+            health.TakeDamage(damage);
         }
     }
 

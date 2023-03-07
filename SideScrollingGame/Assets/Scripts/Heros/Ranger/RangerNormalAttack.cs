@@ -52,7 +52,7 @@ public class RangerNormalAttack : HeroNormalAttack
             );
         }
         arrow.rb.velocity = facingSide * arrowStartSpeed * Vector2.right;
-        arrow.damage = damageData.Damage;
+        arrow.damage = new Damage(this, damageData.Damage, Vector2.right);
         arrow.Launch();
     }
 

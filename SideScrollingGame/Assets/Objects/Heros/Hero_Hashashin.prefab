@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentMultiplier: 1
+  multiplierDict:
+    _serializedList: []
 --- !u!114 &7825161217541535524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,6 +107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentMultiplier: 1
+  multiplierDict:
+    _serializedList: []
 --- !u!1 &6600022207382011997
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,6 +155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentMultiplier: 1
+  multiplierDict:
+    _serializedList: []
 --- !u!114 &9145021860808004466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51bbbc68d2ec4ce48b5b5b0f03bdff17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawGizmos: 1
+  drawGizmos: 0
   gizmosColor: {r: 1, g: 0.7688679, b: 0.7688679, a: 1}
   targetLayers:
     serializedVersion: 2
@@ -815,6 +821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 8268815320871770888}
+  impactPointHolder: {fileID: 0}
   centerType: 0
   centerReplacement: {fileID: 0}
 --- !u!114 &3890939168154507791
@@ -835,6 +842,8 @@ MonoBehaviour:
   attackClipName: AttackNormal
   overlap1: {fileID: 8268815321233786469}
   overlap2: {fileID: 8268815320705632697}
+  impact1: {fileID: 9099440507121795449, guid: 3ad086a57fe8cfe44950c969df1cb1ad, type: 3}
+  impact2: {fileID: 1621245140455146613, guid: 70f35653e356b954ab4893512d167f95, type: 3}
 --- !u!114 &8268815320871770891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,7 +909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591e51af0f92235469c5439afd374507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawGizmos: 1
+  drawGizmos: 0
   gizmosColor: {r: 1, g: 0, b: 0, a: 1}
   targetLayers:
     serializedVersion: 2

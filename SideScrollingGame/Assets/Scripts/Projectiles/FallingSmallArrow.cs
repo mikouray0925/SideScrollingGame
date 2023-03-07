@@ -28,7 +28,10 @@ public class FallingSmallArrow : Projectile
         }
 
         if (other.collider.TryGetComponent<DamageablePart>(out DamageablePart damageable)) {
-            damageable.health.TakeDamage(damage, Vector2.down);
+            if (damage != null) {
+                damage.mainDirection = Vector2.down;
+                damageable.health.TakeDamage(damage);
+            }
         }
         Deactivate();
     }
