@@ -13,10 +13,22 @@ public class Attack : MonoBehaviour
     [SerializeField] protected Animator anim;
     [SerializeField] protected string attackClipName;
 
+    //|=========================================================
+    //| Check every condition related to this <Attack> wether
+    //| it allow this <Attack> to perform.
+    //| Put every condition check in this function.
+    //| 
+    //|=========================================================
     public virtual bool AbleToAttack() {
         return !isAttacking && !attackCD.IsInCD;
     }
 
+    //|=========================================================
+    //| We often want to call "FinishAttack()" function when 
+    //| attack animation finishes. I implemented this by 
+    //| comparing the names of ".anim". This is the only I found
+    //| out to do this.
+    //|=========================================================
     public virtual bool IsPlayingAttackAnimClip() {
         return anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == attackClipName;
     }
