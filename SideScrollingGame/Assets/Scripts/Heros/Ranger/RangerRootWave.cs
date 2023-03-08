@@ -15,11 +15,16 @@ public class RangerRootWave : MonoBehaviour
     [Header ("Cooldown")]
     public CooldownSystem cooldown;
 
+    [Header ("Ground")]
+    [SerializeField] Transform[] groundCheckPoints;
+
     Animator anim;
+    Collider2D col;
     HashSet<Movement> affectedMovements = new HashSet<Movement>();
     
     private void Awake() {
         anim = GetComponent<Animator>();
+        col  = GetComponent<Collider2D>();
         gameObject.SetActive(false);
     }
 
@@ -33,10 +38,22 @@ public class RangerRootWave : MonoBehaviour
         }
     }
 
-    public void Activate() {
-        if (cooldown.IsInCD) return;
+    public void Activate() { 
+        if (!AbleToActivate()) return;
         gameObject.SetActive(true);
         anim.SetTrigger("restart");
+    }
+
+    public bool AbleToActivate() {
+        return !cooldown.IsInCD && HaveValidGroundSpace();
+    }
+
+    public bool HaveValidGroundSpace() {
+        foreach (Transform point in groundCheckPoints) {
+            RaycastHit2D hitInfo = Physics2D.Raycast(point.position, Vector2.down, 0.1f, GameManager.obstacleLayers);
+            if (!hitInfo.collider) return false;
+        }
+        return true; 
     }
 
     private void ApplyDamage() {

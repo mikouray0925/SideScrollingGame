@@ -1244,8 +1244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582e85c0816f378468994a0b277b7b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 8
-  currentHealth: 8
+  maxHealth: 16
+  currentHealth: 16
   lifeRemain: 1
   rebornPercentage: 0
   isInvincible: 0
