@@ -938,38 +938,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3890939168154507791, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
-      propertyPath: impact1
-      value: 
-      objectReference: {fileID: 9099440507121795449, guid: 3ad086a57fe8cfe44950c969df1cb1ad, type: 3}
-    - target: {fileID: 3890939168154507791, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
-      propertyPath: impact2
-      value: 
-      objectReference: {fileID: 1621245140455146613, guid: 70f35653e356b954ab4893512d167f95, type: 3}
-    - target: {fileID: 3890939168154507791, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
-      propertyPath: impacts1.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3890939168154507791, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
-      propertyPath: impacts1.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3890939168154507791, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
-      propertyPath: impacts1.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3890939168154507791, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
-      propertyPath: impacts1.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3890939168154507791, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
-      propertyPath: impacts1.Array.data[3]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8268815319831487319, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
-      propertyPath: drawGizmos
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8268815320871770880, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1020,10 +988,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8268815320871770909, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8268815321072245818, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
-      propertyPath: drawGizmos
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1356,42 +1320,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1655432230 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1342897335821355809, guid: 143e291f6638ef14188ec4ed973587e0, type: 3}
-  m_PrefabInstance: {fileID: 467025731739616112}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1655432232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1655432230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d35f229f2bda8443a4963121fe468d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentMultiplier: 1
-  multiplierDict:
-    _serializedList: []
---- !u!114 &1655432233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1655432230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b05c83adafbc9649a1d0b754dde519b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debugClock: 0
-  cooldownTime: 0.8
-  cdSpeedMultiplier: {fileID: 1655432232}
-  cooldownUpdatePeriod: 0.1
 --- !u!1001 &1673879144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1901,17 +1829,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1900312295, guid: 143e291f6638ef14188ec4ed973587e0, type: 3}
-      propertyPath: cooldown
-      value: 
-      objectReference: {fileID: 1655432233}
     - target: {fileID: 467025732427686132, guid: 143e291f6638ef14188ec4ed973587e0, type: 3}
       propertyPath: m_Name
       value: Hero_Ranger
-      objectReference: {fileID: 0}
-    - target: {fileID: 467025732427686132, guid: 143e291f6638ef14188ec4ed973587e0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 467025732427686133, guid: 143e291f6638ef14188ec4ed973587e0, type: 3}
       propertyPath: m_RootOrder
