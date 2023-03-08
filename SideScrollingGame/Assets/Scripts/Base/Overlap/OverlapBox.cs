@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OverlapBox : Overlap
 {
-    [SerializeField] Vector2 size;
+    [SerializeField] public Vector2 size;
     
     public override Collider2D[] GetOverlapColliders() {
         return Physics2D.OverlapBoxAll(transform.position, size, transform.eulerAngles.z, targetLayers);

@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class RangerAbility2 : HeroAbility2
 {
+    [Header ("paramters")]
+    [SerializeField] float baseLength;
+    [SerializeField] float elongationRate;
+    
     [Header ("animations")]
     [SerializeField] string readyClipName;
     [SerializeField] string fireClipName;
+
+    [Header ("References")]
+    [SerializeField] Transform firePoint;
+    [SerializeField] RangerBeam beam;
 
     bool isCharging;
     bool buttonReleased;
@@ -61,6 +69,10 @@ public class RangerAbility2 : HeroAbility2
         if (isAttacking && isCharging) {
             isCharging = false;
             anim.SetTrigger("ability2Fire");
+            float firingSide = Mathf.Sign(transform.localScale.x);
+            beam.Activate(firingSide, baseLength + (Time.time - chargingStartTime) * elongationRate,
+                          firePoint.position, 
+                          new Damage(this, damageData.Damage, firingSide * Vector2.right));
         }
     }
 
