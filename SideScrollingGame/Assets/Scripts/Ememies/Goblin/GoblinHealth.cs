@@ -37,6 +37,7 @@ public class GoblinHealth : Health
     }
 
     protected override void OnTakingDamage(Damage damageInfo, out float finalDamageVal) {
+        ProcessDamageDefault(damageInfo);
         anim.SetTrigger("takeHit");
         if (Mathf.Sign(damageInfo.mainDirection.x) == Mathf.Sign(transform.localScale.x)) movement.Flip();
         movement.Brake();

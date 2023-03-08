@@ -17,6 +17,7 @@ public class RangerBeam : MonoBehaviour
     public Damage damage;
 
     public void Activate(float firingSide, float length, Vector2 pos, Damage _damage) {
+        length = GetLengthBlockedByObstacle(firingSide, length, pos);
         Vector3 tempVec = transform.localScale;
         tempVec.x = firingSide * (length / spriteLength);
         transform.localScale = tempVec;
@@ -28,6 +29,14 @@ public class RangerBeam : MonoBehaviour
 
         gameObject.SetActive(true);
         anim.SetTrigger("restart");
+    }
+
+    private float GetLengthBlockedByObstacle(float firingSide, float length, Vector2 pos) {
+        RaycastHit2D hit = Physics2D.Linecast(pos, pos + firingSide * length * Vector2.right, GameManager.obstacleLayers);
+        if (hit.collider) {
+            return Mathf.Abs(hit.point.x - pos.x);
+        }
+        else return length;
     }
 
     private void ApplyDamage() {

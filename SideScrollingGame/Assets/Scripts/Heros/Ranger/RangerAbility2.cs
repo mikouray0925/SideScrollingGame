@@ -7,6 +7,9 @@ public class RangerAbility2 : HeroAbility2
     [Header ("paramters")]
     [SerializeField] float baseLength;
     [SerializeField] float elongationRate;
+    [SerializeField] float damageMultiplierRate;
+    [SerializeField] float basePower;
+    [SerializeField] float powerIncreaseRate;
     
     [Header ("animations")]
     [SerializeField] string readyClipName;
@@ -69,10 +72,21 @@ public class RangerAbility2 : HeroAbility2
         if (isAttacking && isCharging) {
             isCharging = false;
             anim.SetTrigger("ability2Fire");
+
             float firingSide = Mathf.Sign(transform.localScale.x);
-            beam.Activate(firingSide, baseLength + (Time.time - chargingStartTime) * elongationRate,
-                          firePoint.position, 
-                          new Damage(this, damageData.Damage, firingSide * Vector2.right));
+            float chargingTime = Time.time - chargingStartTime;
+
+            Damage damageInfo = new Damage(this, damageData.Damage, firingSide * Vector2.right);
+            damageInfo.damage *= 1f + damageMultiplierRate;
+
+            Damage.Force force = new Damage.Force(
+                firingSide * (basePower + powerIncreaseRate * chargingTime) * Vector2.right,
+                ForceMode2D.Force
+            );
+            damageInfo.forces.Add(force);
+
+            beam.Activate(firingSide, baseLength + chargingTime * elongationRate,
+                          firePoint.position, damageInfo);
         }
     }
 

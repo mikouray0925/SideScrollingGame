@@ -12,8 +12,13 @@ public class Damage
     public class Force {
         public Vector3 force;
         public ForceMode2D mode;
+
+        public Force(Vector3 _force, ForceMode2D _mode) {
+            force = _force;
+            mode  = _mode;
+        }
     }
-    public List<Force> forces;
+    public List<Force> forces = new List<Force>();
 
     public Damage() {}
 

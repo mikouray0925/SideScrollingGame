@@ -39,22 +39,26 @@ public class Arrow : Projectile
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
+        GameObject arrowHit = null;
+        if (GameManager.impactEffectHolder) {
+            arrowHit = Instantiate(arrowHitPrefab, transform.position, transform.rotation, GameManager.impactEffectHolder);
+            if (transform.localScale.x < 0) {
+                 arrowHit.transform.localScale = new Vector3(
+                -arrowHit.transform.localScale.x, 
+                 arrowHit.transform.localScale.y, 
+                 arrowHit.transform.localScale.z
+                );
+            }
+        }
+
         if (other.collider.TryGetComponent<DamageablePart>(out DamageablePart damageable)) {
             if (damage != null) {
                 damage.mainDirection = rb.velocity.normalized;
                 damageable.health.TakeDamage(damage);
             }
             
-            if (GameManager.impactEffectHolder && damageable.impactPointHolder) {
+            if (arrowHit && damageable.impactPointHolder) {
                 GameObject impactPoint = Instantiate(impactPointPrefab, transform.position, transform.rotation, damageable.impactPointHolder);
-                GameObject arrowHit = Instantiate(arrowHitPrefab, transform.position, transform.rotation, GameManager.impactEffectHolder);
-                if (transform.localScale.x < 0) {
-                    arrowHit.transform.localScale = new Vector3(
-                        -arrowHit.transform.localScale.x, 
-                         arrowHit.transform.localScale.y, 
-                         arrowHit.transform.localScale.z
-                    );
-                }
                 arrowHit.GetComponent<ImpactEffectSystem>().Follow(impactPoint.transform);
             }
         }

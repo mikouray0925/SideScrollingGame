@@ -62,7 +62,7 @@ GameObject:
   m_Layer: 0
   m_Name: ArrowRainStartPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -476,7 +476,7 @@ GameObject:
   m_Layer: 7
   m_Name: LocalArrowRainStartPoint
   m_TagString: Untagged
-  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1194,7 +1194,7 @@ SpriteRenderer:
   m_SortingLayerID: -350897315
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 71f145af34d87a342bcab708139ca3b4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 41f441661aad09b4cb380c113afa9605, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1286,7 +1286,7 @@ MonoBehaviour:
   gravityScale: 1
   fallingGravityMultiplier: 1.6
   avoidGroundedTime: 0.1
-  rollingForce: 10
+  rollingForce: 8
   rollingCD: 0.8
   rollingClipName: Roll
   canvasTransform: {fileID: 0}
@@ -1387,6 +1387,9 @@ MonoBehaviour:
   attackClipName: 
   baseLength: 3
   elongationRate: 20
+  damageMultiplierRate: 6
+  basePower: 0
+  powerIncreaseRate: 450
   readyClipName: Ability2-ready
   fireClipName: Ability2-fire
   firePoint: {fileID: 1572503277}

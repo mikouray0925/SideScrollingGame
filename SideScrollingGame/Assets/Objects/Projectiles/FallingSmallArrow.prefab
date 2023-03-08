@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2081444401693048713}
   - component: {fileID: 2081444401693048712}
   - component: {fileID: 8812466725680781969}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FallingSmallArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,6 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a526798656b1f4439b5e472905ff2fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
   airResistanceCoefficient: 0
   lifespan: 2
+  rootWave: {fileID: 0}
