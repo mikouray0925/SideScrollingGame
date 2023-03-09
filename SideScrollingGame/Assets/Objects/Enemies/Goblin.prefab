@@ -1041,7 +1041,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7399218280501218302}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.55, y: 1.087, z: 0}
+  m_LocalPosition: {x: 5.71, y: -0.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1230,6 +1230,7 @@ MonoBehaviour:
   rollingForce: 0
   rollingCD: 0
   rollingClipName: 
+  health: {fileID: 0}
   canvasTransform: {fileID: 7399218280487686307}
   lockMovementRemainingTime: 0
 --- !u!114 &7399218280927256396
@@ -1305,7 +1306,7 @@ MonoBehaviour:
   targetTag: Player
   eyePoint: {fileID: 7399218280112782873}
   controlPoint: {fileID: 7399218280501218301}
-  angle: 45
+  angle: 120
 --- !u!114 &7399218280927256393
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -35,7 +35,9 @@ public class Movement : MonoBehaviour
     [SerializeField] protected float rollingForce;
     [SerializeField] protected float rollingCD;
     [SerializeField] private   string rollingClipName;
+    [SerializeField] private   Health health;
     public  bool  isRolling {get; private set;}
+    private bool  isInInvinciblePeriod;
     private bool  rollingIsInCD;
 
     [Header ("References")]
@@ -353,6 +355,28 @@ public class Movement : MonoBehaviour
         }
     }
 
+    private void StartInvinciblePeriod() {
+        if (isRolling && health) {
+            isInInvinciblePeriod = true;
+            health.isInvincible  = true;
+        }
+    }
+
+    private void FinishInvinciblePeriod() {
+        if (isInInvinciblePeriod) {
+            isInInvinciblePeriod = false;
+            health.isInvincible  = false;
+        }
+    }
+
+    private void FinishRolling() {
+        if (!isRolling) return;
+        FinishInvinciblePeriod();
+        isRolling = false;
+        rollingIsInCD = true;
+        Invoke(nameof(FinishRollingCD), rollingCD);
+    }
+
     public bool IsPlayingRollingAnimClip() {
         if (TryGetComponent<Animator>(out Animator anim)) {
             return anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == rollingClipName;
@@ -367,14 +391,13 @@ public class Movement : MonoBehaviour
     //| 
     //|=========================================================
     public void UpdateRolling() {
-        if (isRolling && !IsPlayingRollingAnimClip()) FinishRolling();
-    }
-
-    private void FinishRolling() {
-        if (!isRolling) return;
-        isRolling = false;
-        rollingIsInCD = true;
-        Invoke(nameof(FinishRollingCD), rollingCD);
+        if (isRolling) {
+            if (!IsPlayingRollingAnimClip()) {
+                FinishRolling();
+                return;
+            }
+            if (isInInvinciblePeriod) health.isInvincible = true;
+        }
     }
 
     private void FinishRollingCD() {

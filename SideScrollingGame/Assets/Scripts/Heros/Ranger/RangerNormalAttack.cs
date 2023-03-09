@@ -44,6 +44,7 @@ public class RangerNormalAttack : HeroNormalAttack
         arrow.Activate();
         arrow.transform.position = arrowStartPoint.position;
         float facingSide = Mathf.Sign(transform.localScale.x);
+        arrow.transform.localRotation = Quaternion.identity;
         if (Mathf.Sign(arrow.transform.localScale.x) != facingSide) {
             arrow.transform.localScale = new Vector3(
                 -arrow.transform.localScale.x,

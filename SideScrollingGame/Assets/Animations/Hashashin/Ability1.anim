@@ -57,19 +57,21 @@ AnimationClip:
       value: {fileID: 21300000, guid: aecd9c9b6b974904c85789431b3a36fe, type: 3}
     - time: 1.5
       value: {fileID: 21300000, guid: f2a40111eba417847b6ac03d770b3410, type: 3}
-    - time: 1.5833334
+    - time: 1.5666667
+      value: {fileID: 21300000, guid: 44a78278fe062014a9b2de033d4151a7, type: 3}
+    - time: 1.6333333
       value: {fileID: 21300000, guid: 7fc8f2e85ab99124f821cd99fb24f57b, type: 3}
-    - time: 1.6666666
+    - time: 1.7166667
       value: {fileID: 21300000, guid: 3dcb5a26d0160b146b441b4ac86bf862, type: 3}
-    - time: 1.75
+    - time: 1.8
       value: {fileID: 21300000, guid: 5b84fc9f9b5a2594b9ab9667107ec513, type: 3}
-    - time: 1.8333334
+    - time: 1.8666667
       value: {fileID: 21300000, guid: 87392c6b9eff8db4a90f0e5c91baec69, type: 3}
-    - time: 1.9166666
+    - time: 1.95
       value: {fileID: 21300000, guid: 933d059e4ead7004090ab807abec8a24, type: 3}
-    - time: 2
+    - time: 2.0333333
       value: {fileID: 21300000, guid: 82959fc91a74f59448d267c0df03b015, type: 3}
-    - time: 2.0833333
+    - time: 2.1166666
       value: {fileID: 21300000, guid: 1ee3ab7638090ae4b868f01bfb614389, type: 3}
     attribute: m_Sprite
     path: 
@@ -109,6 +111,7 @@ AnimationClip:
     - {fileID: 21300000, guid: 6bfdc6885b9212a469f7253f7ee2953a, type: 3}
     - {fileID: 21300000, guid: aecd9c9b6b974904c85789431b3a36fe, type: 3}
     - {fileID: 21300000, guid: f2a40111eba417847b6ac03d770b3410, type: 3}
+    - {fileID: 21300000, guid: 44a78278fe062014a9b2de033d4151a7, type: 3}
     - {fileID: 21300000, guid: 7fc8f2e85ab99124f821cd99fb24f57b, type: 3}
     - {fileID: 21300000, guid: 3dcb5a26d0160b146b441b4ac86bf862, type: 3}
     - {fileID: 21300000, guid: 5b84fc9f9b5a2594b9ab9667107ec513, type: 3}
@@ -121,7 +124,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 2.1
+    m_StopTime: 2.1333332
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -162,28 +165,28 @@ AnimationClip:
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
-  - time: 1.5
+  - time: 1.5333333
     functionName: ApplyAbility1Damage
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
-  - time: 1.5833334
+  - time: 1.6333333
     functionName: TeleportToNext
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 2
     messageOptions: 0
-  - time: 1.75
+  - time: 1.8333334
     functionName: ApplyAbility1Damage
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 2
     messageOptions: 0
-  - time: 2.0833333
+  - time: 2.1166666
     functionName: TeleportBack
     data: 
     objectReferenceParameter: {fileID: 0}

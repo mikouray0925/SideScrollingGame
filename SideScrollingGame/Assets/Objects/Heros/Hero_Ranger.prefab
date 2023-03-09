@@ -1487,6 +1487,7 @@ MonoBehaviour:
   rollingForce: 8
   rollingCD: 0.8
   rollingClipName: Roll
+  health: {fileID: 467025732920404006}
   canvasTransform: {fileID: 0}
   lockMovementRemainingTime: 0
 --- !u!114 &467025732920404006
