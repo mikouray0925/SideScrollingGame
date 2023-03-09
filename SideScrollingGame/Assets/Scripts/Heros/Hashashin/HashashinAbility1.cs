@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HashashinAbility1 : Attack
+public class HashashinAbility1 : HeroAbility1
 {
     [Header ("Overlaps")]
     [SerializeField] Overlap rangeOverlap;
@@ -14,20 +14,8 @@ public class HashashinAbility1 : Attack
 
     [Header ("End")]
     [SerializeField] string attackClip2Name;
-    
-    Movement movement;
 
     Vector2 startPos;
-    
-    private void Awake() {
-        movement = GetComponent<Movement>();
-        anim     = GetComponent<Animator>();
-    }
-
-    private void Update() {
-        if (isAttacking && !IsPlayingAttackAnimClip()) FinishAbility1();
-        if (Input.GetButtonDown("Fire2")) UnleashAbility1();
-    }
 
     public override bool IsPlayingAttackAnimClip() {
         return anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == attackClipName || 
@@ -43,7 +31,7 @@ public class HashashinAbility1 : Attack
         !movement.isRolling;
     }
 
-    public bool UnleashAbility1() {
+    public override bool UnleashAbility1() {
         damageableList = rangeOverlap.GetOverlapDamageableParts();
         if (AbleToAttack() && damageableList.Count > 0) {
             anim.SetTrigger("ability1");
@@ -89,7 +77,7 @@ public class HashashinAbility1 : Attack
         anim.SetTrigger("ability1End");
     }
 
-    private void FinishAbility1() {
+    protected override void FinishAbility1() {
         attackCD.StartCooldownCoroutine();
         movement.UnlockMovement();
         movement.gravityScale = 1f;
