@@ -33,6 +33,10 @@ public class Attack : MonoBehaviour
         return anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == attackClipName;
     }
 
+    protected void AttackAnimStart() {
+        isAttacking = true;
+    }
+
     //|=========================================================
     //| Let every <Health> component in "overlap" take damage.
     //| Return how many <Health> take damage.

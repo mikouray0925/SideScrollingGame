@@ -74,10 +74,12 @@ public class Movement : MonoBehaviour
 
     #region Control
 
+    /*
     public void GrabInputsByInputSystem()  {
         horizInput = Input.GetAxis("Horizontal");
         vertiInput = Input.GetAxis("Vertical");
     }
+    */
 
     // inverse transform.localScale.x and canvasTransform.localScale.x
     public void Flip() {
@@ -315,7 +317,7 @@ public class Movement : MonoBehaviour
     //| Using force to implement feels more natural. 
     //| 
     //|=========================================================
-    protected bool CutoffJump() {
+    public bool CutoffJump() {
         if (isJumping && !jumpCutApplied && rbody.velocity.y > 0) {
             Vector2 force = rbody.mass * rbody.velocity.y * 0.5f * Vector2.down;
             rbody.AddForce(force, ForceMode2D.Impulse);
@@ -348,11 +350,14 @@ public class Movement : MonoBehaviour
     public bool Roll() {
         if (AbleToRoll()) {
             rbody.AddForce(Mathf.Sign(transform.localScale.x) * rollingForce * Vector2.right, ForceMode2D.Impulse);
-            isRolling = true;
             return true;
         } else {
             return false;
         }
+    }
+
+    public void RollingAnimStartEvent() {
+        isRolling = true;
     }
 
     private void StartInvinciblePeriod() {

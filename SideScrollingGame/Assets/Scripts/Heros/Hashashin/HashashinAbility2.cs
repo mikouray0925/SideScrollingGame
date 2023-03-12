@@ -25,7 +25,6 @@ public class HashashinAbility2 : HeroAbility2
             anim.SetTrigger("ability2");
             movement.LockMovementForSeconds(1f);
             movement.Brake();
-            isAttacking = true;
         } 
         return isAttacking;
     }

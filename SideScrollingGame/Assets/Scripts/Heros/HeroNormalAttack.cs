@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class HeroNormalAttack : Attack
 {
-    protected virtual void Update() {
-        if (Input.GetButtonDown("Fire1")) UnleashNormalAttack();
-    }
-
-    protected virtual bool UnleashNormalAttack() {
+    public virtual bool UnleashNormalAttack() {
         return false;
     }
+
+    protected void NormalAttackAnimStartEvent() {
+        isAttacking = true;
+    }
+
+    public virtual void ButtonReleaseAction() {}
 
     protected virtual void FinishNormalAttack() {}
 }

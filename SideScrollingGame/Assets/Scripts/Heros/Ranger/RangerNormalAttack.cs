@@ -16,9 +16,8 @@ public class RangerNormalAttack : HeroNormalAttack
         anim     = GetComponent<Animator>();
     }
 
-    protected override void Update() {
+    protected void Update() {
         if (isAttacking && !IsPlayingAttackAnimClip()) FinishNormalAttack();
-        base.Update();
     }
 
     public override bool AbleToAttack() {
@@ -29,12 +28,11 @@ public class RangerNormalAttack : HeroNormalAttack
             !movement.isRolling;
     }
 
-    protected override bool UnleashNormalAttack() {
+    public override bool UnleashNormalAttack() {
         if (AbleToAttack()) {
             anim.SetTrigger("normalAttack");
             movement.LockMovementForSeconds(1.1f);
             movement.Brake();
-            isAttacking = true;
         } 
         return isAttacking;
     }

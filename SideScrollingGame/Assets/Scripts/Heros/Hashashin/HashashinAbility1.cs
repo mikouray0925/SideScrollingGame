@@ -40,7 +40,6 @@ public class HashashinAbility1 : HeroAbility1
             movement.gravityScale = 0;
             self.health.isInvincible = true;
             startPos = self.Center;
-            isAttacking = true;
         } 
         return isAttacking;
     }

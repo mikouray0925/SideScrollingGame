@@ -34,7 +34,6 @@ public class RangerAbility1 : HeroAbility1
             anim.SetTrigger("ability1");
             movement.LockMovementForSeconds(1.2f);
             movement.Brake();
-            isAttacking = true;
         } 
         return isAttacking;
     }

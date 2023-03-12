@@ -16,19 +16,8 @@ public class HeroMovement : Movement
     }
 
     void Update() {
-        GrabInputsByInputSystem();
+        // GrabInputsByInputSystem();
         DefaultUpdate();
-
-        if (Input.GetButtonDown("Jump")) {
-            if (Jump()) anim.SetTrigger("jump");
-        } 
-        if (Input.GetButtonUp("Jump")) {
-            CutoffJump();
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftControl)) {
-            if(Roll()) anim.SetTrigger("roll");
-        }
 
         anim.SetBool("isGrounded", isGrounded);
         anim.SetBool("isRunning", Mathf.Abs(horizInput) > 0);
@@ -36,5 +25,13 @@ public class HeroMovement : Movement
 
     void FixedUpdate() {
         ReachTargetSpeedByForce();
+    }
+
+    public void JumpAction() {
+        if (Jump()) anim.SetTrigger("jump");
+    }
+
+    public void RollAction() {
+        if(Roll()) anim.SetTrigger("roll");
     }
 }

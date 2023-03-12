@@ -27,9 +27,12 @@ public class GoblinNormalAttack : Attack
             anim.SetTrigger("normalAttack");
             movement.LockMovementForSeconds(0.4f);
             movement.Brake();
-            isAttacking = true;
         } 
         return isAttacking;
+    }
+
+    private void NormalAttackAnimStartEvent() {
+        isAttacking = true;
     }
 
     private void ApplyNormalAttackDamage() {

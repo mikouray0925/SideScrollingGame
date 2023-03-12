@@ -5,8 +5,8 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [Header ("Components")]
-    [SerializeField] AudioSource musicPlayer;
-    [SerializeField] AudioSource uiPlayer;
+    [SerializeField] public AudioSource musicPlayer;
+    [SerializeField] public AudioSource uiPlayer;
 
     static float effectVolume = 1.0f;
 
@@ -30,7 +30,9 @@ public class AudioManager : MonoBehaviour
             return musicPlayer.volume;
         }
         set {
-            musicPlayer.volume = Mathf.Clamp(value, 0f, 1f);
+            if (instance) {
+                musicPlayer.volume = Mathf.Clamp(value, 0f, 1f);
+            }
         }
     }
 
@@ -39,7 +41,9 @@ public class AudioManager : MonoBehaviour
             return uiPlayer.volume;
         }
         set {
-            uiPlayer.volume = Mathf.Clamp(value, 0f, 1f);
+            if (instance) {
+                uiPlayer.volume = Mathf.Clamp(value, 0f, 1f);
+            }
         }
     }
 }

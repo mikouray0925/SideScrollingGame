@@ -13,12 +13,17 @@ public class HeroAbility1 : Attack
 
     protected virtual void Update() {
         if (isAttacking && !IsPlayingAttackAnimClip()) FinishAbility1();
-        if (Input.GetButtonDown("Fire2")) UnleashAbility1();
     }
 
     public virtual bool UnleashAbility1() {
         return false;
     }
+
+    protected void Ability1AnimStartEvent() {
+        isAttacking = true;
+    }
+
+    public virtual void ButtonReleaseAction() {}
 
     protected virtual void FinishAbility1() {}
 }
