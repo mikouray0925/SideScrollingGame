@@ -15,33 +15,31 @@ public class GoblinNormalAttack : Attack
     }
 
     private void Update() {
-        if (isAttacking && !IsPlayingAttackAnimClip()) FinishNormalAttack();
+        FinishAttackIfAnimNotPlaying();
     }
 
     public override bool AbleToAttack() {
         return !isAttacking && !attackCD.IsInCD && movement.isGrounded;
     }
 
-    public bool UnleashNormalAttack() {
+    public void UnleashNormalAttack() {
         if (AbleToAttack()) {
             anim.SetTrigger("normalAttack");
             movement.LockMovementForSeconds(0.4f);
             movement.Brake();
         } 
-        return isAttacking;
     }
 
     private void NormalAttackAnimStartEvent() {
-        isAttacking = true;
+        AttackAnimStart();
     }
 
     private void ApplyNormalAttackDamage() {
         ApplyDamage(overlap, new Damage(this, damageData.Damage, Mathf.Sign(transform.localScale.x) * Vector2.right));
     }
 
-    private void FinishNormalAttack() {
+    protected override void OnAttackFinish() {
         movement.UnlockMovement();
         attackCD.StartCooldownCoroutine();
-        isAttacking = false;
     }
 }

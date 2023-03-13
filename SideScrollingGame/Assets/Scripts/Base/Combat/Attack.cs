@@ -7,7 +7,7 @@ public class Attack : MonoBehaviour
     [Header ("Basic")]
     [SerializeField] public DamageData damageData;
     [SerializeField] public CooldownSystem attackCD;
-    public bool isAttacking {get; protected set;}
+    public bool isAttacking {get; private set;}
 
     [Header ("Animation")]
     [SerializeField] protected Animator anim;
@@ -36,6 +36,17 @@ public class Attack : MonoBehaviour
     protected void AttackAnimStart() {
         isAttacking = true;
     }
+
+    protected void FinishAttackIfAnimNotPlaying() {
+        if (isAttacking && !IsPlayingAttackAnimClip()) FinishAttack();
+    }
+
+    private void FinishAttack() {
+        isAttacking = false;
+        OnAttackFinish();
+    }
+
+    protected virtual void OnAttackFinish() {}
 
     //|=========================================================
     //| Let every <Health> component in "overlap" take damage.

@@ -24,7 +24,7 @@ public class RangerAbility2 : HeroAbility2
     float chargingStartTime;
 
     protected override void Update() {
-        if (isAttacking && !IsPlayingAttackAnimClip()) FinishAbility2();
+        base.Update();
         if (isCharging && buttonReleased) {
             Fire();
         }
@@ -48,14 +48,13 @@ public class RangerAbility2 : HeroAbility2
         !movement.isRolling;
     }
 
-    public override bool UnleashAbility2() {
+    public override void UnleashAbility2() {
         if (AbleToAttack()) {
             anim.SetTrigger("ability2");
             movement.LockMovementForSeconds(0.8f);
             movement.Brake();
         } 
         buttonReleased = false;
-        return isAttacking;
     }
 
     private void StartCharging() {
@@ -91,9 +90,8 @@ public class RangerAbility2 : HeroAbility2
         }
     }
 
-    protected override void FinishAbility2() {
+    protected override void OnAttackFinish() {
         attackCD.StartCooldownCoroutine();
         movement.UnlockMovement();
-        isAttacking = false;
     }
 }

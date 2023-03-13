@@ -12,17 +12,6 @@ public class HashashinNormalAttack : HeroNormalAttack
     [SerializeField] GameObject impact1;
     [SerializeField] GameObject impact2;
 
-    Movement movement;
-
-    private void Awake() {
-        movement = GetComponent<Movement>();
-        anim     = GetComponent<Animator>();
-    }
-
-    protected void Update() {
-        if (isAttacking && !IsPlayingAttackAnimClip()) FinishNormalAttack();
-    }
-
     public override bool AbleToAttack() {
         return 
             !isAttacking &&
@@ -32,13 +21,12 @@ public class HashashinNormalAttack : HeroNormalAttack
             !movement.isRolling;
     }
 
-    public override bool UnleashNormalAttack() {
+    public override void UnleashNormalAttack() {
         if (AbleToAttack()) {
             anim.SetTrigger("normalAttack");
             movement.LockMovementForSeconds(0.5f);
             movement.Brake();
         } 
-        return isAttacking;
     }
 
     private void ApplyNormalAttackDamage1() {
@@ -63,9 +51,8 @@ public class HashashinNormalAttack : HeroNormalAttack
         ApplyDamage(damageableList, new Damage(this, damageData.Damage, Mathf.Sign(transform.localScale.x) * Vector2.right));
     }
 
-    protected override void FinishNormalAttack() {
+    protected override void OnAttackFinish() {
         attackCD.StartCooldownCoroutine();
         movement.UnlockMovement();
-        isAttacking = false;
     }
 }

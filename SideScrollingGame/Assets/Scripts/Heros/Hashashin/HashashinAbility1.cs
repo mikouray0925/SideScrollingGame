@@ -31,7 +31,7 @@ public class HashashinAbility1 : HeroAbility1
         !movement.isRolling;
     }
 
-    public override bool UnleashAbility1() {
+    public override void UnleashAbility1() {
         damageableList = rangeOverlap.GetOverlapDamageableParts();
         if (AbleToAttack() && damageableList.Count > 0) {
             anim.SetTrigger("ability1");
@@ -41,7 +41,6 @@ public class HashashinAbility1 : HeroAbility1
             self.health.isInvincible = true;
             startPos = self.Center;
         } 
-        return isAttacking;
     }
 
     private void ApplyAbility1Damage(int hitCount) {
@@ -76,11 +75,10 @@ public class HashashinAbility1 : HeroAbility1
         anim.SetTrigger("ability1End");
     }
 
-    protected override void FinishAbility1() {
+    protected override void OnAttackFinish() {
         attackCD.StartCooldownCoroutine();
         movement.UnlockMovement();
         movement.gravityScale = 1f;
         self.health.isInvincible = false;
-        isAttacking = false;
     }
 }

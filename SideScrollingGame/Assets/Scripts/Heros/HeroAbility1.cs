@@ -12,18 +12,14 @@ public class HeroAbility1 : Attack
     }
 
     protected virtual void Update() {
-        if (isAttacking && !IsPlayingAttackAnimClip()) FinishAbility1();
+        FinishAttackIfAnimNotPlaying();
     }
 
-    public virtual bool UnleashAbility1() {
-        return false;
-    }
+    public virtual void UnleashAbility1() {}
 
     protected void Ability1AnimStartEvent() {
-        isAttacking = true;
+        AttackAnimStart();
     }
 
     public virtual void ButtonReleaseAction() {}
-
-    protected virtual void FinishAbility1() {}
 }

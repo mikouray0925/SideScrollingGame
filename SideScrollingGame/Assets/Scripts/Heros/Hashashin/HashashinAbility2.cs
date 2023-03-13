@@ -20,13 +20,12 @@ public class HashashinAbility2 : HeroAbility2
         !movement.isRolling;
     }
 
-    public override bool UnleashAbility2() {
+    public override void UnleashAbility2() {
         if (AbleToAttack()) {
             anim.SetTrigger("ability2");
             movement.LockMovementForSeconds(1f);
             movement.Brake();
         } 
-        return isAttacking;
     }
 
     private void ReleaseTornado() {
@@ -36,9 +35,8 @@ public class HashashinAbility2 : HeroAbility2
         tornado.Activate(tornadoStartPoint.position, facingSide, tornadoStartSpeed, damageInfo);
     }
 
-    protected override void FinishAbility2() {
+    protected override void OnAttackFinish() {
         attackCD.StartCooldownCoroutine();
         movement.UnlockMovement();
-        isAttacking = false;
     }
 }

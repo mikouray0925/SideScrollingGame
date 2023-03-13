@@ -29,13 +29,12 @@ public class RangerAbility1 : HeroAbility1
         !movement.isRolling;
     }
 
-    public override bool UnleashAbility1() {
+    public override void UnleashAbility1() {
         if (AbleToAttack()) {
             anim.SetTrigger("ability1");
             movement.LockMovementForSeconds(1.2f);
             movement.Brake();
         } 
-        return isAttacking;
     }
      
     private void StartArrowRain() {
@@ -76,10 +75,9 @@ public class RangerAbility1 : HeroAbility1
         }
     }
 
-    protected override void FinishAbility1() {
+    protected override void OnAttackFinish() {
         attackCD.StartCooldownCoroutine();
         movement.UnlockMovement();
-        isAttacking = false;
     }
 
     private void OnDrawGizmosSelected() {

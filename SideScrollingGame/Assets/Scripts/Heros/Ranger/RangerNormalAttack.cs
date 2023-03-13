@@ -8,17 +8,6 @@ public class RangerNormalAttack : HeroNormalAttack
     [SerializeField] ProjectilePool arrowPool;
     [SerializeField] Transform arrowStartPoint;
     [SerializeField] float arrowStartSpeed;
-    
-    Movement movement;
-
-    private void Awake() {
-        movement = GetComponent<Movement>();
-        anim     = GetComponent<Animator>();
-    }
-
-    protected void Update() {
-        if (isAttacking && !IsPlayingAttackAnimClip()) FinishNormalAttack();
-    }
 
     public override bool AbleToAttack() {
         return 
@@ -28,13 +17,12 @@ public class RangerNormalAttack : HeroNormalAttack
             !movement.isRolling;
     }
 
-    public override bool UnleashNormalAttack() {
+    public override void UnleashNormalAttack() {
         if (AbleToAttack()) {
             anim.SetTrigger("normalAttack");
             movement.LockMovementForSeconds(1.1f);
             movement.Brake();
         } 
-        return isAttacking;
     }
 
     private void LaunchArrow() {
@@ -55,9 +43,8 @@ public class RangerNormalAttack : HeroNormalAttack
         arrow.Launch();
     }
 
-    protected override void FinishNormalAttack() {
+    protected override void OnAttackFinish() {
         attackCD.StartCooldownCoroutine();
         movement.UnlockMovement();
-        isAttacking = false;
     }
 }

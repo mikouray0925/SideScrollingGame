@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class HeroNormalAttack : Attack
 {
-    public virtual bool UnleashNormalAttack() {
-        return false;
+    protected Movement movement;
+
+    protected virtual void Awake() {
+        movement = GetComponent<Movement>();
+        anim     = GetComponent<Animator>();
     }
 
+    protected virtual void Update() {
+        FinishAttackIfAnimNotPlaying();
+    }
+    
+    public virtual void UnleashNormalAttack() {}
+
     protected void NormalAttackAnimStartEvent() {
-        isAttacking = true;
+        AttackAnimStart();
     }
 
     public virtual void ButtonReleaseAction() {}
-
-    protected virtual void FinishNormalAttack() {}
 }
