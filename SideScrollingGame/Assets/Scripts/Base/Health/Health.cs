@@ -44,35 +44,26 @@ public class Health : MonoBehaviour
             if (lifeRemain <= 0) return;
 
             value = Mathf.Clamp(value, 0f, maxHealth);
+            float deltaHealth = value - currentHealth;
             if (value > currentHealth) {
-                OnHealthIncrease();
+                SendMessage("OnHealthIncrease", deltaHealth, SendMessageOptions.DontRequireReceiver);
             }
             if (value < currentHealth) {
-                OnHealthDecrease();
+                SendMessage("OnHealthDecrease", deltaHealth, SendMessageOptions.DontRequireReceiver);
             }  
-
             currentHealth = value;
+
             if (currentHealth == 0) {
                 lifeRemain--;
                 if (lifeRemain > 0) {
-                    OnReborn();
                     currentHealth = maxHealth * rebornPercentage;
+                    SendMessage("OnReborn", currentHealth, SendMessageOptions.DontRequireReceiver);
                 } else {
-                    OnLifeNumBecomeZero();
+                    SendMessage("OnLifeNumBecomeZero", null, SendMessageOptions.DontRequireReceiver);
                 }
             }
         }
     }
-
-    protected virtual void OnHealthIncrease() {}
-    protected virtual void OnHealthDecrease() {}
-
-    #endregion 
-
-    #region Life
-    
-    protected virtual void OnReborn() {}
-    protected virtual void OnLifeNumBecomeZero() {}
 
     #endregion 
 
@@ -86,7 +77,7 @@ public class Health : MonoBehaviour
     //|=======================================================
     public void TakeDamage(Damage damageInfo) {
         if (lifeRemain <= 0 || isInvincible) return;  
-        OnTakingDamage(damageInfo, out float finalDamageVal);
+        ProcessDamage(damageInfo, out float finalDamageVal);
         Hp -= finalDamageVal;
     }
 
@@ -98,7 +89,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    protected virtual void OnTakingDamage(Damage damageInfo, out float finalDamageVal) {
+    protected virtual void ProcessDamage(Damage damageInfo, out float finalDamageVal) {
         ProcessDamageDefault(damageInfo);
         finalDamageVal = damageInfo.damage;
     }

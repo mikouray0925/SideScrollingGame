@@ -15,20 +15,7 @@ public class GoblinHealth : Health
         behavior = GetComponent<GoblinBehavior>();
     }
 
-    private void Update() {
-    }
-
-    protected override void OnHealthIncrease() {
-
-    }
-
-    protected override void OnHealthDecrease() {
-    }
-
-    protected override void OnReborn() {
-    }
-
-    protected override void OnLifeNumBecomeZero() {
+    private void OnLifeNumBecomeZero() {
         anim.SetTrigger("die");
         behavior.enabled = false;
         movement.horizInput = 0;
@@ -36,7 +23,7 @@ public class GoblinHealth : Health
         movement.enabled = false;
     }
 
-    protected override void OnTakingDamage(Damage damageInfo, out float finalDamageVal) {
+    protected override void ProcessDamage(Damage damageInfo, out float finalDamageVal) {
         ProcessDamageDefault(damageInfo);
         anim.SetTrigger("takeHit");
         if (Mathf.Sign(damageInfo.mainDirection.x) == Mathf.Sign(transform.localScale.x)) movement.Flip();

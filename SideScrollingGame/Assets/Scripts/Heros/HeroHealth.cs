@@ -16,26 +16,11 @@ public class HeroHealth : Health
         movement = GetComponent<Movement>();
     }
 
-    private void Update() {
-    }
-
-    protected override void OnHealthIncrease() {
-
-    }
-
-    protected override void OnHealthDecrease() {
+    protected void OnHealthDecrease(float deltaHealth) {
         MakeSpriteFlash(hurtColor, 0.1f);
     }
 
-    protected override void OnReborn() {
-
-    }
-
-    protected override void OnLifeNumBecomeZero() {
-
-    }
-
-    protected override void OnTakingDamage(Damage damageInfo, out float finalDamageVal) {
+    protected override void ProcessDamage(Damage damageInfo, out float finalDamageVal) {
         anim.SetTrigger("takeHit");
         movement.Brake();
         movement.LockMovementForSeconds(0.2f);
