@@ -2,7 +2,7 @@
     "name": "PlayerControls",
     "maps": [
         {
-            "name": "Land",
+            "name": "Player",
             "id": "4f44dbfa-591f-40bf-a6e1-62bc19eec6fe",
             "actions": [
                 {
@@ -54,6 +54,15 @@
                     "name": "Ability2",
                     "type": "Button",
                     "id": "757b59f9-50a0-4e1d-94c5-4f173d400ead",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "e0e6dc1b-434a-4292-9270-504352c27f28",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -146,6 +155,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "NormalAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a4d70fa2-1621-413c-8b4d-d2d92635a04a",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

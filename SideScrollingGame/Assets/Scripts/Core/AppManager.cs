@@ -7,27 +7,52 @@ public class AppManager : MonoBehaviour
 {
     [SerializeField] GameObject core;
     public AudioManager audioManager;
-    public OptionMenu optionMenu;
+    public InterfaceUI optionMenu;
 
     public static AppManager instance {get; private set;}
+
+    public bool gamePaused {get; private set;}
+    public bool isChangingScene {get; private set;}
 
     private void Awake() {
         instance = this;
     }
 
-    public void ChangeScene(string sceneName) {
-        StartCoroutine(ChangingSceneCoroutine(sceneName));
+    public void TriggerGamePause() {
+        if (gamePaused) {
+            Time.timeScale = 1f;
+            optionMenu.Hide();
+            gamePaused = false;
+        } else {
+            Time.timeScale = 0f;
+            optionMenu.Show();
+            gamePaused = true;
+        }
     }
 
-    IEnumerator ChangingSceneCoroutine(string sceneName) {
+    public bool ChangeScene(string sceneName) {
+        if (isChangingScene) return false;
+        StartCoroutine(ChangingSceneCoroutine(sceneName, new List<GameObject>()));
+        return true;
+    }
+
+    IEnumerator ChangingSceneCoroutine(string sceneName, List<GameObject> objThatNeedToMove) {
+        isChangingScene = true;
+
         Scene currentScene = SceneManager.GetActiveScene();
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         while (!asyncLoad.isDone) {
             yield return null;
         }
 
-        SceneManager.MoveGameObjectToScene(core, SceneManager.GetSceneByName(sceneName));
+        Scene nextScene = SceneManager.GetSceneByName(sceneName);
+        SceneManager.MoveGameObjectToScene(core, nextScene);
+        foreach (GameObject obj in objThatNeedToMove) {
+            SceneManager.MoveGameObjectToScene(obj, nextScene);
+        }
+
         SceneManager.UnloadSceneAsync(currentScene);
+        isChangingScene = false;
     }
 
     public static void Quit() {   
