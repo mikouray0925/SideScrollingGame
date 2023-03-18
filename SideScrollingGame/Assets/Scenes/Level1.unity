@@ -1911,6 +1911,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hero_Ranger
       objectReference: {fileID: 0}
+    - target: {fileID: 467025732427686132, guid: 143e291f6638ef14188ec4ed973587e0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 467025732427686133, guid: 143e291f6638ef14188ec4ed973587e0, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1964,6 +1968,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4340137114330129127, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732856035941493004, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732856035941493004, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.13
+      objectReference: {fileID: 0}
     - target: {fileID: 7307258304285629713, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -2011,6 +2027,10 @@ PrefabInstance:
     - target: {fileID: 8007647023901492006, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
       propertyPath: m_Name
       value: Hero_Hashashin
+      objectReference: {fileID: 0}
+    - target: {fileID: 8007647023901492006, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
