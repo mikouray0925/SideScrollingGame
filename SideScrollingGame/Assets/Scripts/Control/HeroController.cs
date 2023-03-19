@@ -20,7 +20,15 @@ public class HeroController : MonoBehaviour
         }
     }
 
-    void Bind(HeroBrain hero) {
+    public void SetHeroPosTo(Vector3 toPos) {
+        bindingHero.movement.transform.position = toPos;
+    }
+
+    public bool IsBinded() {
+        return bindingHero != null;
+    }
+
+    public void Bind(HeroBrain hero) {
         input.actions["Jump"].started  += cxt => hero.movement.JumpAction();
         input.actions["Jump"].canceled += cxt => hero.movement.CutoffJump();
         input.actions["Roll"].started  += cxt => hero.movement.RollAction();

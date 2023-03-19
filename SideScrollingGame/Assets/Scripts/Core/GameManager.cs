@@ -11,19 +11,42 @@ public class GameManager : MonoBehaviour
 
     public static Transform impactEffectHolder {get; private set;}
 
+    [Header ("LayerMasks")]
     [SerializeField] private LayerMask _groundLayers;
     [SerializeField] private LayerMask _obstacleLayers;
     [SerializeField] private LayerMask _creatureLayers;
     [SerializeField] private LayerMask _enemyLayers;
+
+    [Header ("References")]
     [SerializeField] private Transform _impactEffectHolder;
 
+    [Header ("SceneSettings")]
+    [SerializeField] public Vector3 heroSpawnPos;
+
     void Awake() {
+        print("GameManager awaked.");
+
         groundLayers = _groundLayers;
         obstacleLayers = _obstacleLayers;
         creatureLayers = _creatureLayers;
         enemyLayers = _enemyLayers;
 
         impactEffectHolder = _impactEffectHolder;
+
+        if (AppManager.instance) {
+            AppManager.instance.currentGame = this;
+            if (AppManager.instance.localPlayer && 
+                AppManager.instance.localPlayer.heroController.IsBinded()) {
+                AppManager.instance.localPlayer.heroController.SetHeroPosTo(heroSpawnPos);
+                print("Successfully spawn hero.");
+            }
+            else {
+                Debug.LogError("Some instances of AppManager.localPlayer are not set.");
+            }
+        }
+        else {
+            Debug.LogError("The instance of AppManager is not set.");
+        }
     }
 
     public static bool InLayerMask(GameObject obj, LayerMask layerMask) {

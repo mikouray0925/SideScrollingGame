@@ -8,6 +8,7 @@ public class HeroSelectionBox : MonoBehaviour
     [SerializeField] float selectedScale = 1.2f;
     [SerializeField] float scalingTime = 0.2f;
     [SerializeField] HeroSelectionBoxRadio radio;
+    [SerializeField] GameObject heroPrefab;
 
     float currentScalingSpeed;
     bool isSelected = false;
@@ -26,12 +27,22 @@ public class HeroSelectionBox : MonoBehaviour
 
     public void TriggerSelect() {
         if (radio) radio.UnselectOthers(this);
-        if (!isSelected) {
-            isSelected = true;
-            currentScalingSpeed = 0;
+        if (isSelected) {
+            if (AppManager.instance && AppManager.instance.localPlayer) {
+                GameObject heroObj = Instantiate(heroPrefab);
+                AppManager.instance.objNeedToKeep.Add(heroObj);
+                AppManager.instance.localPlayer.heroController.Bind(heroObj.GetComponent<HeroBrain>());
+                AppManager.instance.PlayGameLevel("Level1");
+            } else {
+                if (!AppManager.instance) 
+                    Debug.LogError("The instance of AppManager is not set.");
+                if (!AppManager.instance.localPlayer)
+                    Debug.LogError("Some instance of AppManager.localPlayer is not set.");
+            }
         }
         else {
-
+            isSelected = true;
+            currentScalingSpeed = 0;
         }
     }
 

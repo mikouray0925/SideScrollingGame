@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     [Header ("References")]
     [SerializeField] PlayerInput input;
+    public HeroController heroController;
     
     private void Awake() {
         input.actions["Pause"].started += cxt => PauseGame(); 

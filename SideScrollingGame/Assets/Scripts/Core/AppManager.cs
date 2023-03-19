@@ -5,9 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class AppManager : MonoBehaviour
 {
+    [Header ("Core Objects")]
     [SerializeField] GameObject core;
     public AudioManager audioManager;
     public InterfaceUI optionMenu;
+
+    [Header ("Player")]
+    [SerializeField] GameObject playerPrefab;
+    [SerializeField] Transform playerHolder;
+    [SerializeField] public Player localPlayer;
+
+    [Header ("Game Objects")]
+    [SerializeField] public GameManager currentGame;
+    [SerializeField] public List<GameObject> objNeedToKeep = new List<GameObject>();
+
+    [Header ("SceneNames")]
+    [SerializeField] string chooseHeroSceneName;
 
     public static AppManager instance {get; private set;}
 
@@ -30,13 +43,40 @@ public class AppManager : MonoBehaviour
         }
     }
 
-    public bool ChangeScene(string sceneName) {
-        if (isChangingScene) return false;
-        StartCoroutine(ChangingSceneCoroutine(sceneName, new List<GameObject>()));
-        return true;
+    public void AddLocalPlayer() {
+        if (playerPrefab && playerHolder) {
+            localPlayer = Instantiate(playerPrefab, playerHolder).GetComponent<Player>();
+        }
+        else {
+            Debug.LogError("playerPrefab or playerHolder refernece is not set.");
+        }
     }
 
-    IEnumerator ChangingSceneCoroutine(string sceneName, List<GameObject> objThatNeedToMove) {
+    public void StartNewGame() {
+        if (localPlayer) {
+            ChangeScene(chooseHeroSceneName);
+        }
+    }
+
+    public void PlayGameLevel(string levelName) {
+        PlayGameLevel(levelName, new List<GameObject>());
+    }
+
+    public void PlayGameLevel(string levelName, List<GameObject> moreObjNeedToMove) {
+        if (isChangingScene) return;
+        StartCoroutine(ChangingSceneCoroutine(levelName, moreObjNeedToMove));
+    }
+
+    public void ChangeScene(string sceneName) {
+        ChangeScene(sceneName, new List<GameObject>());
+    }
+
+    public void ChangeScene(string sceneName, List<GameObject> moreObjNeedToMove) {
+        if (isChangingScene) return;
+        StartCoroutine(ChangingSceneCoroutine(sceneName, moreObjNeedToMove));
+    }
+
+    IEnumerator ChangingSceneCoroutine(string sceneName, List<GameObject> moreObjNeedToMove) {
         isChangingScene = true;
 
         Scene currentScene = SceneManager.GetActiveScene();
@@ -47,7 +87,10 @@ public class AppManager : MonoBehaviour
 
         Scene nextScene = SceneManager.GetSceneByName(sceneName);
         SceneManager.MoveGameObjectToScene(core, nextScene);
-        foreach (GameObject obj in objThatNeedToMove) {
+        foreach (GameObject obj in objNeedToKeep) {
+            SceneManager.MoveGameObjectToScene(obj, nextScene);
+        }
+        foreach (GameObject obj in moreObjNeedToMove) {
             SceneManager.MoveGameObjectToScene(obj, nextScene);
         }
 
