@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 //| There should be only one <AppManager> which is in the
 //| core obj. This is different from <GameManager> which
 //| manages a game level scene.
+//| Maybe this is not the best way to manage game.
+//| I've try my best to organize all.
 //|=======================================================
 public class AppManager : MonoBehaviour
 {
@@ -37,6 +39,12 @@ public class AppManager : MonoBehaviour
         instance = this;
     }
 
+    //|=======================================================
+    //| If "gamePaused" is true, try to continue the game.
+    //| If false, try to pause the game.
+    //| Very useful when ESC is hitted.
+    //| 
+    //|=======================================================
     public void TriggerGamePause() {
         if (gamePaused) {
             Time.timeScale = 1f;
@@ -49,6 +57,12 @@ public class AppManager : MonoBehaviour
         }
     }
 
+    //|=======================================================
+    //| Create a player obj and put it into playerHolder obj.
+    //| Set "localPlayer" to this player, means the player of
+    //| this computer is this one.
+    //| 
+    //|=======================================================
     public void AddLocalPlayer() {
         if (playerPrefab && playerHolder) {
             localPlayer = Instantiate(playerPrefab, playerHolder).GetComponent<Player>();
@@ -58,12 +72,24 @@ public class AppManager : MonoBehaviour
         }
     }
 
+    //|=======================================================
+    //| When the "NewGame" button is hitted, this will be called.
+    //| Set up everything for a new game.
+    //| 
+    //| 
+    //|=======================================================
     public void StartNewGame() {
         if (localPlayer) {
             ChangeScene(chooseHeroSceneName);
         }
     }
 
+    //|=======================================================
+    //| Load the game level scene. Set up everything for the 
+    //| game level in this func. 
+    //| Nothing is inplement yet.
+    //| 
+    //|=======================================================
     public void PlayGameLevel(string levelName) {
         PlayGameLevel(levelName, new List<GameObject>());
     }
@@ -82,6 +108,12 @@ public class AppManager : MonoBehaviour
         StartCoroutine(ChangingSceneCoroutine(sceneName, moreObjNeedToMove));
     }
 
+    //|=======================================================
+    //| I think a scene is enough for this game.
+    //| Multiple scene for big map is a challenge.
+    //| 
+    //| 
+    //|=======================================================
     IEnumerator ChangingSceneCoroutine(string sceneName, List<GameObject> moreObjNeedToMove) {
         isChangingScene = true;
 
