@@ -81,16 +81,18 @@ public class Health : MonoBehaviour
         Hp -= finalDamageVal;
     }
 
-    protected void ProcessDamageDefault(Damage damageInfo) {
+    //|=======================================================
+    //| When taking a <Damage>, we should process it, like 
+    //| calculate the damage should take, apply the forces in 
+    //| <Damage> to rb, play anim ...
+    //| Write these in this func.
+    //|=======================================================
+    protected virtual void ProcessDamage(Damage damageInfo, out float finalDamageVal) {
         if (TryGetComponent<Rigidbody2D>(out Rigidbody2D _rb)) {
             foreach (Damage.Force forceInfo in damageInfo.forces) {
                 _rb.AddForce(forceInfo.force, forceInfo.mode);
             }
         }
-    }
-
-    protected virtual void ProcessDamage(Damage damageInfo, out float finalDamageVal) {
-        ProcessDamageDefault(damageInfo);
         finalDamageVal = damageInfo.damage;
     }
 

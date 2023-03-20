@@ -24,11 +24,10 @@ public class GoblinHealth : Health
     }
 
     protected override void ProcessDamage(Damage damageInfo, out float finalDamageVal) {
-        ProcessDamageDefault(damageInfo);
+        base.ProcessDamage(damageInfo, out finalDamageVal);
         anim.SetTrigger("takeHit");
         if (Mathf.Sign(damageInfo.mainDirection.x) == Mathf.Sign(transform.localScale.x)) movement.Flip();
         movement.Brake();
         movement.LockMovementForSeconds(0.2f);
-        finalDamageVal = damageInfo.damage;
     }
 }

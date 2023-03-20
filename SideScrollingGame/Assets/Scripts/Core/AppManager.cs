@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//|=======================================================
+//| The global manager of this app.
+//| There should be only one <AppManager> which is in the
+//| core obj. This is different from <GameManager> which
+//| manages a game level scene.
+//|=======================================================
 public class AppManager : MonoBehaviour
 {
     [Header ("Core Objects")]

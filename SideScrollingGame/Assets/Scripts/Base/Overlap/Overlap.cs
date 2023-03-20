@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//|=======================================================
+//| We often want to know what colliders in a specified 
+//| range at a specific frame. This is useful when 
+//| applying damage.
+//| 
+//|=======================================================
 public class Overlap : MonoBehaviour
 {
     [Header ("gizmos")]

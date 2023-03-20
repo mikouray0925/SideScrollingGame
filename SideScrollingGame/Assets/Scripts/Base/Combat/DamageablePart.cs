@@ -5,7 +5,7 @@ using UnityEngine;
 //|=======================================================
 //| Multiple parts of one creature(chest, leg, ...)
 //| may share one common <Health> component.
-//| So I create this class.
+//| So I create this class. Mabe I should name this "IDamageable".
 //|=======================================================
 public class DamageablePart : MonoBehaviour
 {

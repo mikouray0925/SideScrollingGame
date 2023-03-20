@@ -7,11 +7,18 @@ public class Attack : MonoBehaviour
     [Header ("Basic")]
     [SerializeField] public DamageData damageData;
     [SerializeField] public CooldownSystem attackCD;
-    public bool isAttacking {get; private set;}
 
     [Header ("Animation")]
     [SerializeField] protected Animator anim;
     [SerializeField] protected string attackClipName;
+
+    //|=========================================================
+    //| Set "isAttacking" to true, when you want other scripts 
+    //| to know this creature is performing this <Attack>.
+    //| Then other script won't do things that should not
+    //| override this action. 
+    //|=========================================================
+    public bool isAttacking {get; private set;}
 
     //|=========================================================
     //| Check every condition related to this <Attack> wether
@@ -33,19 +40,43 @@ public class Attack : MonoBehaviour
         return anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == attackClipName;
     }
 
+    //|=========================================================
+    //| This is an event which should be put at the begining of  
+    //| the animation. Do not call this in script because when 
+    //| we start an animation by script, it may not actual start.
+    //| 
+    //|=========================================================
     protected void AttackAnimStart() {
         isAttacking = true;
     }
 
+    //|=========================================================
+    //| Put this function into Update().
+    //| "isAttack" shold be reset to false at some moment.
+    //| It's a good timing when attack anim finishes.
+    //| Also use a func "FinishAttack' to end is a good choice.
+    //|=========================================================
     protected void FinishAttackIfAnimNotPlaying() {
         if (isAttacking && !IsPlayingAttackAnimClip()) FinishAttack();
     }
 
+    //|=========================================================
+    //| Set "isAttacking" to false, then call "OnAttackFinish" 
+    //| to handle the last stage of this attack.
+    //| 
+    //| 
+    //|=========================================================
     private void FinishAttack() {
         isAttacking = false;
         OnAttackFinish();
     }
 
+    //|=========================================================
+    //| Handle the last stage of this attack in this func.
+    //| 
+    //| 
+    //| 
+    //|=========================================================
     protected virtual void OnAttackFinish() {}
 
     //|=========================================================

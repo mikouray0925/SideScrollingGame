@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//|=========================================================
+//| An interface of damage. Maybe I should name this "IDamage".
+//| Attack process:
+//| <Attack>new                    ↱ <Health>TakeDamage
+//|           ↳ <Damage> -> <DamageablePart>
+//|=========================================================
 public class Damage
 {
     public Transform attacker;
