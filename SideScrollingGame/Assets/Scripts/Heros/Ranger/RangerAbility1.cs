@@ -32,7 +32,7 @@ public class RangerAbility1 : HeroAbility1
     public override void UnleashAbility1() {
         if (AbleToAttack()) {
             anim.SetTrigger("ability1");
-            movement.LockMovementForSeconds(1.2f);
+            movement.movementLock.AddLock("ability1", 1.2f);
             movement.Brake();
         } 
     }
@@ -77,7 +77,7 @@ public class RangerAbility1 : HeroAbility1
 
     protected override void OnAttackFinish() {
         attackCD.StartCooldownCoroutine();
-        movement.UnlockMovement();
+        movement.movementLock.RemoveLock("ability1");
     }
 
     private void OnDrawGizmosSelected() {

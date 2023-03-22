@@ -32,7 +32,7 @@ public class CombinedMultiplier : MonoBehaviour
             currentMultiplier *= multiplier;
             return true;
         } else {
-            Debug.LogError("Try to add a multiplier with existed tag: " + tag);
+            Debug.LogWarning("Try to add a multiplier with existed tag: " + tag);
             return false;
         }
         
@@ -43,7 +43,7 @@ public class CombinedMultiplier : MonoBehaviour
             currentMultiplier /= multiplier;
             return true;
         } else {
-            Debug.LogError("Try to remove a multiplier with nonexistent tag: " + tag);
+            Debug.LogWarning("Try to remove a multiplier with nonexistent tag: " + tag);
             return false;
         }
     }

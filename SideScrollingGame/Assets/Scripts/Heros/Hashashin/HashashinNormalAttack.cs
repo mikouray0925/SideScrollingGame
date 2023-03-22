@@ -24,7 +24,7 @@ public class HashashinNormalAttack : HeroNormalAttack
     public override void UnleashNormalAttack() {
         if (AbleToAttack()) {
             anim.SetTrigger("normalAttack");
-            movement.LockMovementForSeconds(0.5f);
+            movement.movementLock.AddLock("normalAttack", 0.5f);
             movement.Brake();
         } 
     }
@@ -53,6 +53,6 @@ public class HashashinNormalAttack : HeroNormalAttack
 
     protected override void OnAttackFinish() {
         attackCD.StartCooldownCoroutine();
-        movement.UnlockMovement();
+        movement.movementLock.RemoveLock("normalAttack");
     }
 }

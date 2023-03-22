@@ -51,7 +51,7 @@ public class RangerAbility2 : HeroAbility2
     public override void UnleashAbility2() {
         if (AbleToAttack()) {
             anim.SetTrigger("ability2");
-            movement.LockMovementForSeconds(0.8f);
+            movement.movementLock.AddLock("ability2", 0.8f);
             movement.Brake();
         } 
         buttonReleased = false;
@@ -92,6 +92,6 @@ public class RangerAbility2 : HeroAbility2
 
     protected override void OnAttackFinish() {
         attackCD.StartCooldownCoroutine();
-        movement.UnlockMovement();
+        movement.movementLock.RemoveLock("ability2");
     }
 }

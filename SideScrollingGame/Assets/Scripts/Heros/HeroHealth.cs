@@ -23,7 +23,7 @@ public class HeroHealth : Health
     protected override void ProcessDamage(Damage damageInfo, out float finalDamageVal) {
         anim.SetTrigger("takeHit");
         movement.Brake();
-        movement.LockMovementForSeconds(0.2f);
+        movement.movementLock.AddLock("takeHit", 0.2f);
         finalDamageVal = damageInfo.damage;
     }
 }

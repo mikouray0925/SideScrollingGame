@@ -1139,8 +1139,9 @@ GameObject:
   - component: {fileID: 467025731865759404}
   - component: {fileID: 467025731865759406}
   - component: {fileID: 467025731865759405}
+  - component: {fileID: 1846191673015038163}
   m_Layer: 7
-  m_Name: Speed
+  m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1190,6 +1191,18 @@ MonoBehaviour:
   currentMultiplier: 1
   multiplierDict:
     _serializedList: []
+--- !u!114 &1846191673015038163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467025731865759403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8623e5759e1ce40b118b297f975b92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &467025732427686132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,6 +1519,7 @@ MonoBehaviour:
   rollingClipName: Roll
   health: {fileID: 467025732920404006}
   canvasTransform: {fileID: 0}
+  movementLock: {fileID: 1846191673015038163}
   lockMovementRemainingTime: 0
 --- !u!114 &467025732920404006
 MonoBehaviour:

@@ -44,8 +44,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private RectTransform canvasTransform;
 
     [Header ("Movement lock")]
-    [SerializeField] private float lockMovementRemainingTime;
-    public  bool  lockMovement {get; private set;}
+    [SerializeField] public CombinedLock movementLock;
 
     #region ComponentRef
     protected Rigidbody2D       rbody;
@@ -55,7 +54,6 @@ public class Movement : MonoBehaviour
     #region Basic
 
     public void DefaultUpdate() {
-        UpdateMovementLock();
         UpdateRolling();
         FlipWithHorizInput();
         CheckGround();
@@ -83,7 +81,7 @@ public class Movement : MonoBehaviour
 
     // inverse transform.localScale.x and canvasTransform.localScale.x
     public void Flip() {
-        if (lockMovement) return;
+        if (movementLock.IsLocked) return;
 
         transform.localScale = new Vector3(
             -transform.localScale.x, 
@@ -125,43 +123,6 @@ public class Movement : MonoBehaviour
         if (signOfVelocity > 0 && brakeForce > maxBrakeForce) brakeForce = maxBrakeForce;
         if (signOfVelocity < 0 && brakeForce < maxBrakeForce) brakeForce = maxBrakeForce;
         rbody.AddForce(brakeForce * Vector2.right, ForceMode2D.Impulse);
-    }
-
-    #endregion
-
-    #region Lock
-
-    //|=========================================================
-    //| An important part of movement "Update" process.
-    //| Check wether MovementLock needs to be unlocked at every 
-    //| frame. If yes, call "UnlockMovement()".
-    //| 
-    //|=========================================================
-    protected void UpdateMovementLock() {
-        if (lockMovementRemainingTime > 0) lockMovementRemainingTime -= Time.deltaTime;
-        if (lockMovementRemainingTime > 0) {
-            lockMovement = true;
-        } else {
-            UnlockMovement();
-        }
-    }
-
-    //|=========================================================
-    //| When movement is locked, the character cannot move,
-    //| jump, and roll.
-    //| 
-    //| 
-    //|=========================================================
-    public void LockMovementForSeconds(float duration) {
-        if (duration > lockMovementRemainingTime) {
-            lockMovementRemainingTime = duration;
-            lockMovement = true;
-        }
-    }
-
-    public void UnlockMovement() {
-        lockMovementRemainingTime = 0;
-        lockMovement = false;
     }
 
     #endregion
@@ -213,9 +174,8 @@ public class Movement : MonoBehaviour
     //|=========================================================
     private void BackToGround() {
         if (isJumping) ResetJump();
-        WhenBackToGround();
+        SendMessage("OnBackToGround", null, SendMessageOptions.DontRequireReceiver);
     }
-    protected virtual void WhenBackToGround() {}
     
     // Invoke this only when jumping starts.
     private void ResetAvoidGrounded() {
@@ -241,7 +201,7 @@ public class Movement : MonoBehaviour
     }
 
     public virtual bool AbleToRun() {
-        return isGrounded && !isRolling && !lockMovement;
+        return isGrounded && !isRolling && !movementLock.IsLocked;
     }
 
     //|=========================================================
@@ -277,7 +237,7 @@ public class Movement : MonoBehaviour
     }
 
     public virtual bool AbleToJump() {
-        return isGrounded && !isRolling && !lockMovement;
+        return isGrounded && !isRolling && !movementLock.IsLocked;
     }
 
     //|=========================================================
@@ -286,7 +246,7 @@ public class Movement : MonoBehaviour
     //| make jumping interact with honrizontal input, making it
     //| more natural.
     //|=========================================================
-    protected bool Jump() {
+    public bool Jump() {
         if (AbleToJump()) {
             // Compute the honrizontal force
             float maxHorizForce = rbody.mass * (TargetSpeed - rbody.velocity.x);
@@ -304,6 +264,8 @@ public class Movement : MonoBehaviour
             // Avoid grounded to make animator work.
             avoidGrounded = true;
             Invoke(nameof(ResetAvoidGrounded), avoidGroundedTime);
+
+            SendMessage("OnJumpStart", null, SendMessageOptions.DontRequireReceiver);
 
             return true;
         } else {   
@@ -338,7 +300,7 @@ public class Movement : MonoBehaviour
     #region Roll
 
     public virtual bool AbleToRoll() {
-        return !isRolling && !rollingIsInCD && !lockMovement;
+        return !isRolling && !rollingIsInCD && !movementLock.IsLocked;
     }
 
     //|=========================================================
@@ -350,6 +312,7 @@ public class Movement : MonoBehaviour
     public bool Roll() {
         if (AbleToRoll()) {
             rbody.AddForce(Mathf.Sign(transform.localScale.x) * rollingForce * Vector2.right, ForceMode2D.Impulse);
+            SendMessage("OnRollStart", null, SendMessageOptions.DontRequireReceiver);
             return true;
         } else {
             return false;

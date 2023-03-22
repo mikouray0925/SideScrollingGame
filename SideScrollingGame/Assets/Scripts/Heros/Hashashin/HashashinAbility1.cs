@@ -35,7 +35,7 @@ public class HashashinAbility1 : HeroAbility1
         damageableList = rangeOverlap.GetOverlapDamageableParts();
         if (AbleToAttack() && damageableList.Count > 0) {
             anim.SetTrigger("ability1");
-            movement.LockMovementForSeconds(2.3f);
+            movement.movementLock.AddLock("ability1", 2.3f);
             movement.Brake();
             movement.gravityScale = 0;
             self.health.isInvincible = true;
@@ -77,7 +77,7 @@ public class HashashinAbility1 : HeroAbility1
 
     protected override void OnAttackFinish() {
         attackCD.StartCooldownCoroutine();
-        movement.UnlockMovement();
+        movement.movementLock.RemoveLock("ability1");
         movement.gravityScale = 1f;
         self.health.isInvincible = false;
     }

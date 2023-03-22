@@ -29,9 +29,9 @@ public class HeroController : MonoBehaviour
     }
 
     public void Bind(HeroBrain hero) {
-        input.actions["Jump"].started  += cxt => hero.movement.JumpAction();
+        input.actions["Jump"].started  += cxt => hero.movement.Jump();
         input.actions["Jump"].canceled += cxt => hero.movement.CutoffJump();
-        input.actions["Roll"].started  += cxt => hero.movement.RollAction();
+        input.actions["Roll"].started  += cxt => hero.movement.Roll();
 
         input.actions["NormalAttack"].started  += cxt => hero.normalAttack.UnleashNormalAttack();
         input.actions["NormalAttack"].canceled += cxt => hero.normalAttack.ButtonReleaseAction();

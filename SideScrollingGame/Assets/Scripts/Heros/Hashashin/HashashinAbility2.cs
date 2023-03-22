@@ -23,7 +23,7 @@ public class HashashinAbility2 : HeroAbility2
     public override void UnleashAbility2() {
         if (AbleToAttack()) {
             anim.SetTrigger("ability2");
-            movement.LockMovementForSeconds(1f);
+            movement.movementLock.AddLock("ability2", 1f);
             movement.Brake();
         } 
     }
@@ -37,6 +37,6 @@ public class HashashinAbility2 : HeroAbility2
 
     protected override void OnAttackFinish() {
         attackCD.StartCooldownCoroutine();
-        movement.UnlockMovement();
+        movement.movementLock.RemoveLock("ability2");
     }
 }

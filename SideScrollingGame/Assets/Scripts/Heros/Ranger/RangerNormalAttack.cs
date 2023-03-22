@@ -20,7 +20,7 @@ public class RangerNormalAttack : HeroNormalAttack
     public override void UnleashNormalAttack() {
         if (AbleToAttack()) {
             anim.SetTrigger("normalAttack");
-            movement.LockMovementForSeconds(1.1f);
+            movement.movementLock.AddLock("normalAttack", 1.1f);
             movement.Brake();
         } 
     }
@@ -45,6 +45,6 @@ public class RangerNormalAttack : HeroNormalAttack
 
     protected override void OnAttackFinish() {
         attackCD.StartCooldownCoroutine();
-        movement.UnlockMovement();
+        movement.movementLock.RemoveLock("normalAttack");
     }
 }

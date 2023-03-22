@@ -25,7 +25,7 @@ public class GoblinNormalAttack : Attack
     public void UnleashNormalAttack() {
         if (AbleToAttack()) {
             anim.SetTrigger("normalAttack");
-            movement.LockMovementForSeconds(0.4f);
+            movement.movementLock.AddLock("normalAttack", 0.4f);
             movement.Brake();
         } 
     }
@@ -39,7 +39,7 @@ public class GoblinNormalAttack : Attack
     }
 
     protected override void OnAttackFinish() {
-        movement.UnlockMovement();
+        movement.movementLock.RemoveLock("normalAttack");
         attackCD.StartCooldownCoroutine();
     }
 }

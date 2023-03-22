@@ -28,6 +28,6 @@ public class GoblinHealth : Health
         anim.SetTrigger("takeHit");
         if (Mathf.Sign(damageInfo.mainDirection.x) == Mathf.Sign(transform.localScale.x)) movement.Flip();
         movement.Brake();
-        movement.LockMovementForSeconds(0.2f);
+        movement.movementLock.AddLock("takeHit", 0.2f);
     }
 }

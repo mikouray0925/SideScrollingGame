@@ -27,11 +27,11 @@ public class HeroMovement : Movement
         ReachTargetSpeedByForce();
     }
 
-    public void JumpAction() {
-        if (Jump()) anim.SetTrigger("jump");
+    private void OnJumpStart() {
+        anim.SetTrigger("jump");
     }
 
-    public void RollAction() {
-        if(Roll()) anim.SetTrigger("roll");
+    private void OnRollStart() {
+        anim.SetTrigger("roll");
     }
 }
