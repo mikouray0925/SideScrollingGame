@@ -7,6 +7,20 @@ public class InterfaceUI : MonoBehaviour
 {
     [SerializeField] UnityEvent onShow;
     [SerializeField] UnityEvent onHide;
+
+    public bool IsActive {
+        get {
+            return gameObject.activeSelf;
+        }
+        set {
+            if (!IsActive && value) {
+                Show();
+            }
+            if (IsActive && !value) {
+                Hide();
+            }
+        }
+    }
     
     public void Show() {
         gameObject.SetActive(true);

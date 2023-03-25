@@ -16,6 +16,7 @@ public class AppManager : MonoBehaviour
     [Header ("Core Objects")]
     [SerializeField] GameObject core;
     public AudioManager audioManager;
+    public InterfaceUI joystick;
     public InterfaceUI optionMenu;
 
     [Header ("Player")]
@@ -96,7 +97,9 @@ public class AppManager : MonoBehaviour
 
     public void PlayGameLevel(string levelName, List<GameObject> moreObjNeedToMove) {
         if (isChangingScene) return;
+        BroadcastMessage("BeforeChangingLevel", levelName, SendMessageOptions.DontRequireReceiver);
         StartCoroutine(ChangingSceneCoroutine(levelName, moreObjNeedToMove));
+        BroadcastMessage("AfterChangingLevel", levelName, SendMessageOptions.DontRequireReceiver);
     }
 
     public void ChangeScene(string sceneName) {
@@ -106,6 +109,10 @@ public class AppManager : MonoBehaviour
     public void ChangeScene(string sceneName, List<GameObject> moreObjNeedToMove) {
         if (isChangingScene) return;
         StartCoroutine(ChangingSceneCoroutine(sceneName, moreObjNeedToMove));
+    }
+
+    private void AfterChangingLevel(string levelName) {
+        joystick.IsActive = true;
     }
 
     //|=======================================================
