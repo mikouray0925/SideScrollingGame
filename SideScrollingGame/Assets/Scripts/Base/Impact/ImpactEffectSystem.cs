@@ -9,6 +9,7 @@ public class ImpactEffectSystem : MonoBehaviour
     public bool followPosition;
     public bool followRotation;
     public bool followFlipping;
+    public bool followDestroy;
     
     Vector3 lastFollowingScale;
 
@@ -24,7 +25,11 @@ public class ImpactEffectSystem : MonoBehaviour
                 Flip();
                 lastFollowingScale = followingTransform.lossyScale;
             } 
-        }    
+        }  
+
+        if (followingTransform == null && followDestroy) {
+            Destroy(gameObject);
+        }  
     }
 
     public void Follow(Transform _followingTransform) {

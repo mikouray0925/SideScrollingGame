@@ -119,6 +119,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifespan: 2
+  followingTransform: {fileID: 0}
   followPosition: 1
   followRotation: 1
   followFlipping: 1
+  followDestroy: 1

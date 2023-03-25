@@ -15,6 +15,7 @@ public class Movement : MonoBehaviour
     [SerializeField] public    SpeedData speedData;
     [SerializeField] protected float acceleration;
     [SerializeField] protected float accelerationPow;
+    [SerializeField] protected float maxMovingForce;
     
     [Header ("Ground check")]
     [SerializeField] private   Vector2 groundCheckboxOffset;
@@ -213,8 +214,9 @@ public class Movement : MonoBehaviour
     protected void ReachTargetSpeedByForce() {
         if (AbleToRun()) {
             float speedDiff = TargetSpeed - rbody.velocity.x;
-            float movementForce = Mathf.Pow(Mathf.Abs(speedDiff) * acceleration, accelerationPow) * Mathf.Sign(speedDiff);
-            rbody.AddForce(movementForce * Vector2.right);
+            float movingForce = Mathf.Pow(Mathf.Abs(speedDiff) * acceleration, accelerationPow) * Mathf.Sign(speedDiff);
+            if (movingForce > maxMovingForce) movingForce = maxMovingForce;
+            rbody.AddForce(movingForce * Vector2.right);
         }
     }
 
@@ -311,6 +313,7 @@ public class Movement : MonoBehaviour
     //|=========================================================
     public bool Roll() {
         if (AbleToRoll()) {
+            Brake();
             rbody.AddForce(Mathf.Sign(transform.localScale.x) * rollingForce * Vector2.right, ForceMode2D.Impulse);
             SendMessage("OnRollStart", null, SendMessageOptions.DontRequireReceiver);
             return true;

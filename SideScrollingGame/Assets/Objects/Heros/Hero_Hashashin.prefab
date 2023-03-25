@@ -847,7 +847,8 @@ MonoBehaviour:
   vertiInput: 0
   speedData: {fileID: 1042864981354528482}
   acceleration: 14
-  accelerationPow: 0.99
+  accelerationPow: 0.98
+  maxMovingForce: 28
   groundCheckboxOffset: {x: 0.07, y: 0.09}
   groundCheckboxSize: {x: 0.79, y: 0.1}
   drawGroundCheckbox: 1
@@ -861,7 +862,6 @@ MonoBehaviour:
   health: {fileID: 572216528803072795}
   canvasTransform: {fileID: 0}
   movementLock: {fileID: 360293455961752304}
-  lockMovementRemainingTime: 0
 --- !u!114 &572216528803072795
 MonoBehaviour:
   m_ObjectHideFlags: 0

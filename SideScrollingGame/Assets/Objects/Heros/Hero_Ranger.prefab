@@ -1506,7 +1506,8 @@ MonoBehaviour:
   vertiInput: 0
   speedData: {fileID: 467025731865759406}
   acceleration: 12
-  accelerationPow: 0.99
+  accelerationPow: 0.98
+  maxMovingForce: 24
   groundCheckboxOffset: {x: 0, y: 0.08}
   groundCheckboxSize: {x: 1, y: 0.05}
   drawGroundCheckbox: 1
@@ -1514,13 +1515,12 @@ MonoBehaviour:
   gravityScale: 1
   fallingGravityMultiplier: 1.6
   avoidGroundedTime: 0.1
-  rollingForce: 8
+  rollingForce: 12
   rollingCD: 0.8
   rollingClipName: Roll
   health: {fileID: 467025732920404006}
   canvasTransform: {fileID: 0}
   movementLock: {fileID: 1846191673015038163}
-  lockMovementRemainingTime: 0
 --- !u!114 &467025732920404006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1619,7 +1619,7 @@ MonoBehaviour:
   elongationRate: 20
   damageMultiplierRate: 6
   basePower: 0
-  powerIncreaseRate: 450
+  powerIncreaseRate: 160
   readyClipName: Ability2-ready
   fireClipName: Ability2-fire
   firePoint: {fileID: 1572503277}

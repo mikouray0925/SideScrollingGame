@@ -1192,8 +1192,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.019572347, y: 0.64911044}
-  m_Size: {x: 0.079627454, y: 0.30512905}
+  m_Offset: {x: 0.019572346, y: 0.64335644}
+  m_Size: {x: 0.079627454, y: 0.29362002}
   m_Direction: 0
 --- !u!50 &7399218280927256399
 Rigidbody2D:
@@ -1233,6 +1233,7 @@ MonoBehaviour:
   speedData: {fileID: 6356973886178493026}
   acceleration: 5
   accelerationPow: 1
+  maxMovingForce: 20
   groundCheckboxOffset: {x: -0.07, y: 2.4}
   groundCheckboxSize: {x: 0.77, y: 0.03}
   drawGroundCheckbox: 1
@@ -1246,7 +1247,6 @@ MonoBehaviour:
   health: {fileID: 0}
   canvasTransform: {fileID: 7399218280487686307}
   movementLock: {fileID: 7905543037635761691}
-  lockMovementRemainingTime: 0
 --- !u!114 &7399218280927256396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1264,6 +1264,8 @@ MonoBehaviour:
   lifeRemain: 1
   rebornPercentage: 0
   isInvincible: 0
+  destroyDelay: 0.5
+  impactPointHolder: {fileID: 3156411917845096307}
 --- !u!114 &7399218280927256397
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -52,14 +52,14 @@ public class Arrow : Projectile
         }
 
         if (other.collider.TryGetComponent<DamageablePart>(out DamageablePart damageable)) {
-            if (damage != null) {
-                damage.mainDirection = rb.velocity.normalized;
-                damageable.health.TakeDamage(damage);
-            }
-            
             if (arrowHit && damageable.impactPointHolder) {
                 GameObject impactPoint = Instantiate(impactPointPrefab, transform.position, transform.rotation, damageable.impactPointHolder);
                 arrowHit.GetComponent<ImpactEffectSystem>().Follow(impactPoint.transform);
+            }
+
+            if (damage != null) {
+                damage.mainDirection = rb.velocity.normalized;
+                damageable.health.TakeDamage(damage);
             }
         }
         Deactivate();
