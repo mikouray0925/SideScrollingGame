@@ -21,6 +21,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private   Vector2 groundCheckboxOffset;
     [SerializeField] private   Vector2 groundCheckboxSize;
     [SerializeField] protected bool drawGroundCheckbox;
+    [SerializeField] private   bool isGrounded_debug;
     public  bool isGrounded {get; private set;}
     private bool avoidGrounded;
 
@@ -152,6 +153,7 @@ public class Movement : MonoBehaviour
             isGrounded = IsGrounded(Vector2.zero);
         }
         if (!oldGroundedVal && isGrounded) BackToGround();
+        isGrounded_debug = isGrounded;
         return isGrounded;
     }
 

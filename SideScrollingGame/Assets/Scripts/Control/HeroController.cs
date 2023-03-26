@@ -8,7 +8,7 @@ public class HeroController : MonoBehaviour
     [Header ("References")]
     [SerializeField] PlayerInput input;
     [SerializeField] HeroBrain initBindingHero;
-    HeroBrain bindingHero;
+    public HeroBrain bindingHero {get; private set;}
 
     void Awake() {
         if (initBindingHero) Bind(initBindingHero);
@@ -22,6 +22,10 @@ public class HeroController : MonoBehaviour
 
     public void SetHeroPosTo(Vector3 toPos) {
         bindingHero.movement.transform.position = toPos;
+    }
+
+    public void MakeCameraFollowHero(CameraFollow camFollow) {
+        camFollow.followingTarget = bindingHero.movement.transform;
     }
 
     public bool IsBinded() {
