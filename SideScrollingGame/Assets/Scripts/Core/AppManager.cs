@@ -53,6 +53,7 @@ public class AppManager : MonoBehaviour
             gamePaused = false;
         } else {
             Time.timeScale = 0f;
+            MessageCenter.SpreadGlobalMsg("OnGameBeingPaused");
             optionMenu.Show();
             gamePaused = true;
         }
