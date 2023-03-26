@@ -5,7 +5,7 @@ using UnityEngine;
 public class GoblinHealth : Health
 {   
     [SerializeField] float destroyDelay;
-    [SerializeField] Transform impactPointHolder;
+    [SerializeField] Transform[] impactPointHolders;
     
     Collider2D col;
     Rigidbody2D rb;
@@ -32,8 +32,10 @@ public class GoblinHealth : Health
         rb.gravityScale = 0;
         col.enabled = false;
 
-        foreach (Transform t in impactPointHolder) {
-            Destroy(t.gameObject);
+        foreach (Transform holder in impactPointHolders) {
+            foreach (Transform t in holder) {
+                Destroy(t.gameObject);
+            }   
         }
     }
 
