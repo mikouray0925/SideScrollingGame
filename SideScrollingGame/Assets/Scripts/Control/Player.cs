@@ -18,4 +18,8 @@ public class Player : MonoBehaviour
             AppManager.instance.TriggerGamePause();
         }
     }
+
+    private void BeforeBackToMainMenu() {
+        heroController.Unbind();
+    }
 }

@@ -44,7 +44,21 @@ public class HeroController : MonoBehaviour
         bindingHero = hero;
     }
 
-    void Unbind() {
+    public void Unbind() { 
+        if (!bindingHero) return;
 
+        input.actions["Jump"].started  -= cxt => bindingHero.movement.Jump();
+        input.actions["Jump"].canceled -= cxt => bindingHero.movement.CutoffJump();
+        input.actions["Roll"].started  -= cxt => bindingHero.movement.Roll();
+
+        input.actions["NormalAttack"].started  -= cxt => bindingHero.normalAttack.UnleashNormalAttack();
+        input.actions["NormalAttack"].canceled -= cxt => bindingHero.normalAttack.ButtonReleaseAction();
+
+        input.actions["Ability1"].started  -= cxt => bindingHero.ability1.UnleashAbility1();
+        input.actions["Ability1"].canceled -= cxt => bindingHero.ability1.ButtonReleaseAction();
+        input.actions["Ability2"].started  -= cxt => bindingHero.ability2.UnleashAbility2();
+        input.actions["Ability2"].canceled -= cxt => bindingHero.ability2.ButtonReleaseAction();
+
+        bindingHero = null;
     }
 }

@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlobalMsgReceiver : MonoBehaviour
+public class MessageClient : MonoBehaviour
 {
     [SerializeField] bool doBroadcast = false;
     
     private void Awake() {
-        MessageCenter.allReceivers.Add(this);
+        MessageCenter.allClients.Add(this);
     }
 
     public void ReceiveMsg(string methodName, object value = null, SendMessageOptions option = SendMessageOptions.DontRequireReceiver) {
@@ -17,16 +17,7 @@ public class GlobalMsgReceiver : MonoBehaviour
         }
     }
 
-    /*
-    public void ReceiveMsg(string methodName, SendMessageOptions option = SendMessageOptions.DontRequireReceiver) {
-        if (gameObject.activeSelf) {
-            if (doBroadcast) BroadcastMessage(methodName, option);
-            else SendMessage(methodName, option);
-        }
-    }
-    */
-
     private void OnDestroy() {
-        MessageCenter.allReceivers.Remove(this);
+        MessageCenter.allClients.Remove(this);
     }
 }

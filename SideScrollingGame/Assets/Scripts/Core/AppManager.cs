@@ -28,7 +28,8 @@ public class AppManager : MonoBehaviour
     [SerializeField] public GameManager currentGame;
     [SerializeField] public List<GameObject> objNeedToKeep = new List<GameObject>();
 
-    [Header ("SceneNames")]
+    [Header ("Common Scene Names")]
+    [SerializeField] string mainMenuSceneName;
     [SerializeField] string chooseHeroSceneName;
 
     public static AppManager instance {get; private set;}
@@ -98,9 +99,22 @@ public class AppManager : MonoBehaviour
 
     public void PlayGameLevel(string levelName, List<GameObject> moreObjNeedToMove) {
         if (isChangingScene) return;
-        BroadcastMessage("BeforeChangingLevel", levelName, SendMessageOptions.DontRequireReceiver);
-        StartCoroutine(ChangingSceneCoroutine(levelName, moreObjNeedToMove));
-        BroadcastMessage("AfterChangingLevel", levelName, SendMessageOptions.DontRequireReceiver);
+        MessageCenter.SpreadGlobalMsg("BeforeChangingLevel", levelName);
+        ChangeScene(levelName, moreObjNeedToMove);
+        MessageCenter.SpreadGlobalMsg("AfterChangingLevel",  levelName);
+    }
+
+    private void AfterChangingLevel(string levelName) {
+        joystick.IsActive = true;
+    }
+
+    public void GoBackToMainMenu() {
+        if (isChangingScene) return;
+        joystick.IsActive = false;
+        objNeedToKeep.Clear();
+        MessageCenter.SpreadGlobalMsg("BeforeBackToMainMenu");
+        ChangeScene(mainMenuSceneName);
+        if (gamePaused) TriggerGamePause();
     }
 
     public void ChangeScene(string sceneName) {
@@ -110,10 +124,6 @@ public class AppManager : MonoBehaviour
     public void ChangeScene(string sceneName, List<GameObject> moreObjNeedToMove) {
         if (isChangingScene) return;
         StartCoroutine(ChangingSceneCoroutine(sceneName, moreObjNeedToMove));
-    }
-
-    private void AfterChangingLevel(string levelName) {
-        joystick.IsActive = true;
     }
 
     //|=======================================================
