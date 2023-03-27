@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LayerMask _enemyLayers;
 
     [Header ("References")]
-    [SerializeField] private Transform mainCamera;
     [SerializeField] private Transform _impactEffectHolder;
 
     [Header ("SceneSettings")]
@@ -39,7 +38,6 @@ public class GameManager : MonoBehaviour
             if (AppManager.instance.localPlayer && 
                 AppManager.instance.localPlayer.heroController.IsBinded()) {
                 AppManager.instance.localPlayer.heroController.SetHeroPosTo(heroSpawnPos);
-                AppManager.instance.localPlayer.heroController.MakeCameraFollowHero(mainCamera.GetComponent<CameraFollow>());
                 print("Successfully spawn hero.");
             }
             else {
