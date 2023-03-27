@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 163398717943646248}
   - component: {fileID: 6274085714014437133}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_Right
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3122774380997596325}
   - component: {fileID: 4160035179896040986}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_Left
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8669645438814416480}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PatrolArea
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -132,7 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5827246589562986043}
-  m_Layer: 0
+  - component: {fileID: 1003915277526466757}
+  m_Layer: 8
   m_Name: Goblin_Patrolling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,6 +157,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1003915277526466757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5820677187690334507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b4a815ea866f354ba728a3f4a0b4bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doBroadcast: 1
 --- !u!1001 &3106623704915148010
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -235,7 +249,8 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1465306054324054338, guid: 4e03fa2b8cf852749aec4d8012ace0ec, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4e03fa2b8cf852749aec4d8012ace0ec, type: 3}
 --- !u!4 &5599025599532803035 stripped
 Transform:

@@ -17,6 +17,22 @@ public class MessageClient : MonoBehaviour
         }
     }
 
+    public void ReceiveMsg(Message msg) {
+        if (!gameObject.activeSelf) {
+            return;
+        }
+        if (msg.filterByLayerMask && !GameManager.InLayerMask(gameObject, msg.layerMask)) {
+            return;
+        }
+        if (msg.filterByTag && gameObject.tag != msg.targetTag) {
+            return;
+        }
+
+        msg.onClientReceive(this);
+        if (doBroadcast) BroadcastMessage(msg.methodName, msg.value, msg.option);
+        else SendMessage(msg.methodName, msg.value, msg.option);
+    }
+
     private void OnDestroy() {
         MessageCenter.allClients.Remove(this);
     }

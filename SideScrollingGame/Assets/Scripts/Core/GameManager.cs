@@ -49,6 +49,12 @@ public class GameManager : MonoBehaviour
         else {
             Debug.LogError("The instance of AppManager is not set.");
         }
+        /*
+        Message deactivateAllEmeny = Message.DeactivatingOrder;
+        deactivateAllEmeny.filterByLayerMask = true;
+        deactivateAllEmeny.layerMask = enemyLayers;
+        MessageCenter.SpreadGlobalMsg(deactivateAllEmeny);
+        */
     }
 
     public static bool InLayerMask(GameObject obj, LayerMask layerMask) {
