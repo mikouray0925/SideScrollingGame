@@ -12,12 +12,12 @@ public class PageMark : MonoBehaviour
 
     public void ActivatePage() {
         if (inGroup) inGroup.CloseOtherPages(this);
-        onPage.Activate();
+        onPage.Show();
         img.color = new Color(1, 1, 1, 1);
     }
 
     public void DeactivatePage() {
-        onPage.Deactivate();
+        onPage.Hide();
         img.color = new Color(0.7f, 0.7f, 0.7f, 1);
     }
 }
