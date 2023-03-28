@@ -5,9 +5,18 @@ using UnityEngine;
 public class RangerNormalAttack : HeroNormalAttack
 {
     [Header ("Arrow")]
-    [SerializeField] ProjectilePool arrowPool;
+    [SerializeField] GameObject arrowPrefab;
+    [SerializeField] Transform arrowHolder;
     [SerializeField] Transform arrowStartPoint;
     [SerializeField] float arrowStartSpeed;
+
+    ObjPool<Arrow> arrowPool;
+
+    protected override void Awake() {
+        base.Awake();
+        arrowPool = new ObjPool<Arrow>(arrowPrefab, arrowHolder, 5);
+        arrowPool.onGet += SetupArrow;
+    }
 
     public override bool AbleToAttack() {
         return 
@@ -25,9 +34,8 @@ public class RangerNormalAttack : HeroNormalAttack
         } 
     }
 
-    private void LaunchArrow() {
-        Projectile arrow = arrowPool.GetInactiveProjectile();
-        arrow.Activate();
+    private void SetupArrow(Arrow arrow) {
+        arrow.inPool = arrowPool;
         arrow.transform.position = arrowStartPoint.position;
         float facingSide = Mathf.Sign(transform.localScale.x);
         arrow.transform.localRotation = Quaternion.identity;
@@ -40,7 +48,10 @@ public class RangerNormalAttack : HeroNormalAttack
         }
         arrow.rb.velocity = facingSide * arrowStartSpeed * Vector2.right;
         arrow.damage = new Damage(this, damageData.Damage, Vector2.right);
-        arrow.Launch();
+    }
+
+    private void LaunchArrow() {
+        arrowPool.Get().Launch();
     }
 
     protected override void OnAttackFinish() {

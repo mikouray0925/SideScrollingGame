@@ -737,7 +737,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1809547868}
-  - component: {fileID: 1809547869}
   m_Layer: 0
   m_Name: FallingArrowPool
   m_TagString: Untagged
@@ -760,21 +759,6 @@ Transform:
   m_Father: {fileID: 1672001007}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1809547869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809547867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 021edaccdcb1b3e4a83a520b89c249e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 2081444401693048715, guid: d203c873668def64fa05fc3a2bd19e6d, type: 3}
-  projectileStartingNum: 5
-  projectileList: []
 --- !u!1 &1946857924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,7 +1074,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 467025731846588400}
-  - component: {fileID: 467025731846588401}
   m_Layer: 0
   m_Name: ArrowPool
   m_TagString: Untagged
@@ -1113,21 +1096,6 @@ Transform:
   m_Father: {fileID: 467025732427686133}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &467025731846588401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 467025731846588175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 021edaccdcb1b3e4a83a520b89c249e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 6727791389031137599, guid: 15bac1729f08edf45bad0aa7dbe7742e, type: 3}
-  projectileStartingNum: 3
-  projectileList: []
 --- !u!1 &467025731865759403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1586,7 +1554,8 @@ MonoBehaviour:
   attackCD: {fileID: 467025731485044477}
   anim: {fileID: 467025732920404031}
   attackClipName: AttackNormal
-  arrowPool: {fileID: 467025731846588401}
+  arrowPrefab: {fileID: 6727791389031137599, guid: 15bac1729f08edf45bad0aa7dbe7742e, type: 3}
+  arrowHolder: {fileID: 467025731846588400}
   arrowStartPoint: {fileID: 467025731152889169}
   arrowStartSpeed: 60
 --- !u!114 &121634250
@@ -1605,7 +1574,8 @@ MonoBehaviour:
   attackCD: {fileID: 12758584}
   anim: {fileID: 467025732920404031}
   attackClipName: Ability1
-  fallingArrowPool: {fileID: 1809547869}
+  fallingArrowPrefab: {fileID: 2081444401693048715, guid: d203c873668def64fa05fc3a2bd19e6d, type: 3}
+  arrowHolder: {fileID: 1809547868}
   arrowLaunchPoint: {fileID: 366975131}
   localArrowStartPoint: {fileID: 1632085729}
   arrowStartPoint: {fileID: 31012076}

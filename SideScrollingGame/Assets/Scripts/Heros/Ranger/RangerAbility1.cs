@@ -5,7 +5,8 @@ using UnityEngine;
 public class RangerAbility1 : HeroAbility1
 {
     [Header ("Arrow rain")]
-    [SerializeField] ProjectilePool fallingArrowPool;
+    [SerializeField] GameObject fallingArrowPrefab;
+    [SerializeField] Transform arrowHolder;
     [SerializeField] Transform arrowLaunchPoint;
     [SerializeField] Transform localArrowStartPoint;
     [SerializeField] Transform arrowStartPoint;
@@ -20,6 +21,13 @@ public class RangerAbility1 : HeroAbility1
     [Header ("Root wave")]
     [SerializeField] RangerRootWave rootWave;
 
+    ObjPool<FallingSmallArrow> arrowPool;
+
+    protected override void Awake() {
+        base.Awake();
+        arrowPool = new ObjPool<FallingSmallArrow>(fallingArrowPrefab, arrowHolder, 15);
+    }
+    
     public override bool AbleToAttack() {
         return 
         !isAttacking &&
@@ -63,8 +71,8 @@ public class RangerAbility1 : HeroAbility1
         for (int i = 0; i < arrowNum; i++) {
             float x = Random.Range(minX, maxX);
 
-            FallingSmallArrow fallingArrow = fallingArrowPool.GetInactiveProjectile() as FallingSmallArrow;
-            fallingArrow.Activate();
+            FallingSmallArrow fallingArrow = arrowPool.Get();
+            fallingArrow.inPool = arrowPool;
             fallingArrow.transform.position = new Vector3(x, y, 0);
             fallingArrow.rb.velocity = Vector2.zero;
             fallingArrow.damage = new Damage(this, damageData.Damage * 0.1f, Vector2.down);

@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Projectile : MonoBehaviour
 {
-    [Header ("Parameters")]
+    [Header ("Base Parameters")]
     [SerializeField] public Damage damage;
     [SerializeField] public float airResistanceCoefficient;
     [SerializeField] public float lifespan;
@@ -30,16 +31,21 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public virtual void Activate() {
-        gameObject.SetActive(true);
+    public void Activate() {
+        if (!gameObject.activeSelf) {
+            gameObject.SetActive(true);
+        }
     }
 
     public virtual void Launch() {
         ResetLifespan();
     }
 
-    public virtual void Deactivate() {
-        gameObject.SetActive(false);
+    public void Deactivate() {
+        if (gameObject.activeSelf) {
+            BroadcastMessage("OnDeactivateThisProjectile", null, SendMessageOptions.DontRequireReceiver);
+            gameObject.SetActive(false);
+        }
     }
 
     protected virtual void RotationFollowVelocity() {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class FallingSmallArrow : Projectile
 {
     public RangerRootWave rootWave;
+    public ObjPool<FallingSmallArrow> inPool;
     
     private void Awake() {
         GrabPhysicsComponents();
@@ -34,5 +35,9 @@ public class FallingSmallArrow : Projectile
             }
         }
         Deactivate();
+    }
+
+    void OnDeactivateThisProjectile() {
+        if (inPool != null) inPool.Release(this);
     }
 }

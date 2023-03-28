@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Arrow : Projectile
 {
+    [Header ("Arrow")]
     [SerializeField] float startFallingSpeed;
     [SerializeField] GameObject impactPointPrefab;
     [SerializeField] GameObject arrowHitPrefab;
     
+    public ObjPool<Arrow> inPool;
     bool isFalling;
     
     private void Awake() {
@@ -63,5 +65,9 @@ public class Arrow : Projectile
             }
         }
         Deactivate();
+    }
+
+    void OnDeactivateThisProjectile() {
+        if (inPool != null) inPool.Release(this);
     }
 }

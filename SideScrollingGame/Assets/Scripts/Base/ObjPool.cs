@@ -4,25 +4,31 @@ using UnityEngine;
 
 public class ObjPool<T> where T: MonoBehaviour
 {
+    Transform pool;
     GameObject objPrefab;
-    Stack<T> availableObjects;
+    Stack<T> availableObjects = new Stack<T>();
     public delegate void ObjOperation(T obj);
     public ObjOperation onSpawn;
     public ObjOperation onGet;
     public ObjOperation onRelease;
 
-    public ObjPool(GameObject _objPrefab, int initNum) {
+    public ObjPool(GameObject _objPrefab, Transform _pool, int initNum) {
+        onSpawn += NullFunc;
+        onGet += NullFunc;
+        onRelease += NullFunc;
+
         objPrefab = _objPrefab;
+        pool = _pool;
         AvailableNum = initNum;
     }
 
-    T Get() {
+    public T Get() {
         T obj;
         if (!availableObjects.TryPop(out obj)) {
             if (Spawn()) {
                 obj = availableObjects.Pop();
             } else {
-                Debug.LogError("Get obj failed.");
+                Debug.LogError("Spawn obj failed.");
                 return null;
             }
         } 
@@ -32,7 +38,7 @@ public class ObjPool<T> where T: MonoBehaviour
         return obj;
     }
 
-    void Release(T obj) {
+    public void Release(T obj) {
         onRelease(obj);
         obj.gameObject.SetActive(false);
         availableObjects.Push(obj);
@@ -55,8 +61,8 @@ public class ObjPool<T> where T: MonoBehaviour
 
     private bool Spawn() {
         GameObject gameObj;
-        if (GameManager.objectPool) {
-            gameObj = GameObject.Instantiate(objPrefab, GameManager.objectPool);
+        if (pool) {
+            gameObj = GameObject.Instantiate(objPrefab, pool);
         } else {
             Debug.LogError("Object pool is not set.");
             return false;
@@ -72,4 +78,6 @@ public class ObjPool<T> where T: MonoBehaviour
             return false;
         }
     }
+
+    void NullFunc(T obj) {}
 }
