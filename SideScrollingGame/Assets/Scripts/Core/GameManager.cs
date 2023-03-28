@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static LayerMask creatureLayers {get; private set;}
     public static LayerMask enemyLayers {get; private set;}
 
+    public static Transform objectPool {get; private set;}
     public static Transform impactEffectHolder {get; private set;}
 
     [Header ("LayerMasks")]
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     [Header ("References")]
     [SerializeField] private Transform mainCamera;
+    [SerializeField] private Transform _objectPool;
     [SerializeField] private Transform _impactEffectHolder;
 
     [Header ("SceneSettings")]
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
         creatureLayers = _creatureLayers;
         enemyLayers = _enemyLayers;
 
+        objectPool = _objectPool;
         impactEffectHolder = _impactEffectHolder;
 
         if (AppManager.instance) {
