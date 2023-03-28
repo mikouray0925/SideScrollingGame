@@ -2216,7 +2216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b4a815ea866f354ba728a3f4a0b4bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doBroadcast: 1
+  nextStepOfReceive: 1
 --- !u!224 &752378799 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3031503687985060774, guid: ba1846410a10c5c44975821d833c23d3, type: 3}

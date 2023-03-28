@@ -20,17 +20,6 @@ public class Message
         value = _value;
     }
 
-    /*
-    public static Message ActivatingMsg {
-        get {
-            Message msg = new Message("");
-            msg.onClientReceive += ActivateClient;
-            return msg;
-        }
-        private set {}
-    }
-    */
-
     public static Message DeactivatingOrder {
         get {
             Message msg = new Message("");
@@ -39,12 +28,6 @@ public class Message
         }
         private set {}
     }
-
-    /*
-    static void ActivateClient(MessageClient client) {
-        client.gameObject.SetActive(true);
-    }
-    */
 
     static void DeactivateClient(MessageClient client) {
         client.gameObject.SetActive(false);

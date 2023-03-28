@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class MessageClient : MonoBehaviour
 {
-    [SerializeField] bool doBroadcast = false;
+    public enum NextStepOfReceive {
+        SendToSelf,
+        Broadcast,
+        SendUpwards
+    }
+    [SerializeField] public NextStepOfReceive nextStepOfReceive;
     
     private void Awake() {
         MessageCenter.allClients.Add(this);
@@ -12,25 +17,34 @@ public class MessageClient : MonoBehaviour
 
     public void ReceiveMsg(string methodName, object value = null, SendMessageOptions option = SendMessageOptions.DontRequireReceiver) {
         if (gameObject.activeSelf) {
-            if (doBroadcast) BroadcastMessage(methodName, value, option);
-            else SendMessage(methodName, value, option);
+            switch (nextStepOfReceive) {
+            case NextStepOfReceive.SendToSelf:
+                SendMessage(methodName, value, option);
+                break;
+            case NextStepOfReceive.Broadcast:
+                BroadcastMessage(methodName, value, option);
+                break;
+            case NextStepOfReceive.SendUpwards:
+                SendMessageUpwards(methodName, value, option);
+                break;
+            }
         }
     }
 
-    public void ReceiveMsg(Message msg) {
+    public bool ReceiveMsg(Message msg) {
         if (!gameObject.activeSelf) {
-            return;
+            return false;
         }
         if (msg.filterByLayerMask && !GameManager.InLayerMask(gameObject, msg.layerMask)) {
-            return;
+            return false;
         }
         if (msg.filterByTag && gameObject.tag != msg.targetTag) {
-            return;
+            return false;
         }
 
         msg.onClientReceive(this);
-        if (doBroadcast) BroadcastMessage(msg.methodName, msg.value, msg.option);
-        else SendMessage(msg.methodName, msg.value, msg.option);
+        ReceiveMsg(msg.methodName, msg.value, msg.option);
+        return true;
     }
 
     private void OnDestroy() {

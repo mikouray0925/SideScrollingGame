@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b4a815ea866f354ba728a3f4a0b4bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doBroadcast: 1
+  nextStepOfReceive: 1
 --- !u!114 &12529972197755019
 MonoBehaviour:
   m_ObjectHideFlags: 0
