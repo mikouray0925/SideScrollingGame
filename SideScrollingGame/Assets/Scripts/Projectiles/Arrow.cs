@@ -68,6 +68,6 @@ public class Arrow : Projectile
     }
 
     void OnDeactivateThisProjectile() {
-        if (inPool != null) inPool.Release(this);
+        if (inPool != null) inPool.Recycle(this);
     }
 }

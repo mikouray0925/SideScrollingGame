@@ -6,16 +6,19 @@ public class ObjPool<T> where T: MonoBehaviour
 {
     Transform pool;
     GameObject objPrefab;
-    Stack<T> availableObjects = new Stack<T>();
+    List<T> availableObjects = new List<T>();
     public delegate void ObjOperation(T obj);
     public ObjOperation onSpawn;
     public ObjOperation onGet;
-    public ObjOperation onRelease;
+    public ObjOperation onRecycle;
+    public delegate bool ObjJudgement(T obj);
+    public ObjJudgement isAvailable;
 
     public ObjPool(GameObject _objPrefab, Transform _pool, int initNum) {
-        onSpawn += NullFunc;
-        onGet += NullFunc;
-        onRelease += NullFunc;
+        onSpawn += Deactivate;
+        onGet += Activate;
+        onRecycle += Deactivate;
+        isAvailable = IsAvailableDefault;
 
         objPrefab = _objPrefab;
         pool = _pool;
@@ -23,25 +26,38 @@ public class ObjPool<T> where T: MonoBehaviour
     }
 
     public T Get() {
-        T obj;
-        if (!availableObjects.TryPop(out obj)) {
+        T result = null;
+        Queue<T> unavailableObj = new Queue<T>();
+        while (availableObjects.Count > 0) {
+            T obj = availableObjects[0];
+            availableObjects.RemoveAt(0);
+            if (isAvailable(obj)) {
+                result = obj;
+                break;
+            } else {
+                unavailableObj.Enqueue(obj);
+            }
+        }
+        while (unavailableObj.Count > 0) {
+            availableObjects.Add(unavailableObj.Dequeue());
+        }
+
+        if (!result) {
             if (Spawn()) {
-                obj = availableObjects.Pop();
+                result = availableObjects[0];
+                availableObjects.RemoveAt(0);
             } else {
                 Debug.LogError("Spawn obj failed.");
-                return null;
             }
-        } 
+        }
 
-        obj.gameObject.SetActive(true);
-        onGet(obj);
-        return obj;
+        if (result) onGet(result);
+        return result;
     }
 
-    public void Release(T obj) {
-        onRelease(obj);
-        obj.gameObject.SetActive(false);
-        availableObjects.Push(obj);
+    public void Recycle(T obj) {
+        onRecycle(obj);
+        availableObjects.Insert(0, obj);
     }
 
     public int AvailableNum {
@@ -70,8 +86,7 @@ public class ObjPool<T> where T: MonoBehaviour
         
         if (gameObj.TryGetComponent<T>(out T newObj)) {
             onSpawn(newObj);
-            gameObj.SetActive(false);
-            availableObjects.Push(newObj);
+            availableObjects.Insert(0, newObj);
             return true;
         } else {
             Debug.LogError(typeof(T).ToString() + " cannot be found in " + gameObj.name);
@@ -79,5 +94,19 @@ public class ObjPool<T> where T: MonoBehaviour
         }
     }
 
-    void NullFunc(T obj) {}
+    public static bool IsAvailableDefault(T obj) {
+        if (obj) {
+            return !obj.gameObject.activeSelf;
+        } else {
+            return false;
+        }
+    }
+
+    public static void Activate(T obj) {
+        obj.gameObject.SetActive(true);
+    }
+
+    public static void Deactivate(T obj) {
+        obj.gameObject.SetActive(false);
+    }
 }
