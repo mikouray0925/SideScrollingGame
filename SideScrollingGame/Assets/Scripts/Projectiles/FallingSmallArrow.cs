@@ -19,7 +19,7 @@ public class FallingSmallArrow : Projectile
         List<ContactPoint2D> contacts = new List<ContactPoint2D>();
         int contactNum = other.GetContacts(contacts);
         if (rootWave && !rootWave.IsActive && contactNum > 0 &&
-            GameManager.InLayerMask(other.collider.gameObject, GameManager.groundLayers)) {
+            LayerUtil.Judge(other.collider).IsInMask(GameManager.groundLayers)) {
             if (Vector2.Dot(contacts[0].normal, Vector2.up) > 0.9f) {
                 Vector3 pos = rootWave.transform.position;
                 pos.y = contacts[0].point.y;

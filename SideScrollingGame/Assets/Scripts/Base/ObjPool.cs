@@ -7,12 +7,33 @@ public class ObjPool<T> where T: MonoBehaviour
     Transform pool;
     GameObject objPrefab;
     List<T> availableObjects = new List<T>();
+
     public delegate void ObjOperation(T obj);
     public ObjOperation onSpawn;
     public ObjOperation onGet;
     public ObjOperation onRecycle;
+    
     public delegate bool ObjJudgement(T obj);
     public ObjJudgement isAvailable;
+
+    public HashSet<T> notYetRecycled;
+    private bool keepTrackOfObj = true;
+    public bool KeepTrackOfObj {
+        get {
+            return keepTrackOfObj;
+        }
+        set {
+            if (value) {
+                keepTrackOfObj = true;
+            } else {
+                if (notYetRecycled.Count == 0) {
+                    keepTrackOfObj = false;
+                } else {
+                    Debug.LogError("Cannot turn off tracking obj when there are obj not yet recycled.");
+                }
+            }
+        }
+    }
 
     public ObjPool(GameObject _objPrefab, Transform _pool, int initNum) {
         onSpawn += Deactivate;
@@ -51,13 +72,29 @@ public class ObjPool<T> where T: MonoBehaviour
             }
         }
 
-        if (result) onGet(result);
+        if (result) {
+            if (keepTrackOfObj) notYetRecycled.Add(result);
+            onGet(result);
+        }
         return result;
     }
 
     public void Recycle(T obj) {
-        onRecycle(obj);
-        availableObjects.Insert(0, obj);
+        if (keepTrackOfObj) {
+            if (notYetRecycled.Remove(obj)) {
+                onRecycle(obj);
+                availableObjects.Insert(0, obj);
+            }
+        } else {
+            onRecycle(obj);
+            availableObjects.Insert(0, obj);
+        }
+        
+    }
+
+    public IEnumerator RecycleAfterSeconds(T obj, float waitTime) {
+        yield return new WaitForSeconds(waitTime);
+        Recycle(obj);
     }
 
     public int AvailableNum {

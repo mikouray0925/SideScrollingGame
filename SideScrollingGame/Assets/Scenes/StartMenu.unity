@@ -3572,7 +3572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioManager: {fileID: 1694109115}
-  sceneController: {fileID: 0}
+  sceneController: {fileID: 1267371560}
   currentGame: {fileID: 0}
   joystick: {fileID: 1779988446}
   optionMenu: {fileID: 1550717727}

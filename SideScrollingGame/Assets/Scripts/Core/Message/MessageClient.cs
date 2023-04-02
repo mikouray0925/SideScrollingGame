@@ -35,7 +35,7 @@ public class MessageClient : MonoBehaviour
         if (!gameObject.activeSelf) {
             return false;
         }
-        if (msg.filterByLayerMask && !GameManager.InLayerMask(gameObject, msg.layerMask)) {
+        if (msg.filterByLayerMask && !LayerUtil.Judge(gameObject).IsInMask(msg.layerMask)) {
             return false;
         }
         if (msg.filterByTag && gameObject.tag != msg.targetTag) {

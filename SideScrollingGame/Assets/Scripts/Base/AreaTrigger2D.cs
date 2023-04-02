@@ -19,21 +19,21 @@ public class AreaTrigger2D : MonoBehaviour
     [SerializeField] public UnityEvent<Collider2D> onExit_collider;
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (GameManager.InLayerMask(other.gameObject, layerMask)) {
+        if (LayerUtil.Judge(other).IsInMask(layerMask)) {
             onEnter.Invoke();
             onEnter_collider.Invoke(other);
         }
     }
 
     private void OnTriggerStay2D(Collider2D other) {
-        if (GameManager.InLayerMask(other.gameObject, layerMask)) {
+        if (LayerUtil.Judge(other).IsInMask(layerMask)) {
             onStay.Invoke();
             onStay_collider.Invoke(other);
         }
     }
     
     private void OnTriggerExit2D(Collider2D other) {
-        if (GameManager.InLayerMask(other.gameObject, layerMask)) {
+        if (LayerUtil.Judge(other).IsInMask(layerMask)) {
             onExit.Invoke();
             onExit_collider.Invoke(other);
         }

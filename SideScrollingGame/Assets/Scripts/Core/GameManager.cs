@@ -61,10 +61,6 @@ public class GameManager : MonoBehaviour
         MessageCenter.SpreadGlobalMsg(deactivateAllEmeny);
     }
 
-    public static bool InLayerMask(GameObject obj, LayerMask layerMask) {
-        return ((1 << obj.layer & layerMask) != 0);
-    }
-
     public static ImpactEffectSystem SpawnImpactEffect(GameObject impactPrefab) {
         if (!impactEffectHolder) return null;
         GameObject impact = Instantiate(impactPrefab, impactEffectHolder);
