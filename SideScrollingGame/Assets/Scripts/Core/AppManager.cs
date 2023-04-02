@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 //|=======================================================
 //| The global manager of this app.
@@ -14,31 +13,26 @@ using UnityEngine.SceneManagement;
 public class AppManager : MonoBehaviour
 {
     [Header ("Core Objects")]
-    [SerializeField] GameObject core;
-    public AudioManager audioManager;
+    [SerializeField] AudioManager audioManager;
+    [SerializeField] SceneController sceneController;
+    public GameManager currentGame;
 
     [Header ("UI Canvas")]
     public InterfaceUI joystick;
     public InterfaceUI optionMenu;
-    public LoadingScreen loadingScreen;
 
     [Header ("Player")]
     [SerializeField] GameObject playerPrefab;
     [SerializeField] Transform playerHolder;
     [SerializeField] public Player localPlayer;
 
-    [Header ("Game Objects")]
-    [SerializeField] public GameManager currentGame;
-    [SerializeField] public List<GameObject> objNeedToKeep = new List<GameObject>();
-
-    [Header ("Common Scene Names")]
+    [Header ("Core Scene Names")]
     [SerializeField] string mainMenuSceneName;
     [SerializeField] string chooseHeroSceneName;
 
     public static AppManager instance {get; private set;}
 
     public bool gamePaused {get; private set;}
-    public bool isChangingScene {get; private set;}
 
     private void Awake() {
         instance = this;
@@ -86,7 +80,7 @@ public class AppManager : MonoBehaviour
     //|=======================================================
     public void StartNewGame() {
         if (localPlayer) {
-            ChangeScene(chooseHeroSceneName);
+            sceneController.ChangeScene(chooseHeroSceneName);
         }
     }
 
@@ -101,9 +95,9 @@ public class AppManager : MonoBehaviour
     }
 
     public void PlayGameLevel(string levelName, List<GameObject> moreObjNeedToMove) {
-        if (isChangingScene) return;
+        if (sceneController.isChangingScene) return;
         MessageCenter.SpreadGlobalMsg("BeforeChangingLevel", levelName);
-        ChangeScene(levelName, moreObjNeedToMove);
+        sceneController.ChangeScene(levelName, moreObjNeedToMove);
         MessageCenter.SpreadGlobalMsg("AfterChangingLevel",  levelName);
     }
 
@@ -112,58 +106,15 @@ public class AppManager : MonoBehaviour
     }
 
     public void GoBackToMainMenu() {
-        if (isChangingScene) return;
+        if (sceneController.isChangingScene) return;
         joystick.IsActive = false;
-        objNeedToKeep.Clear();
+        sceneController.objNeedToKeep.Clear();
         MessageCenter.SpreadGlobalMsg("BeforeBackToMainMenu");
-        ChangeScene(mainMenuSceneName);
+        sceneController.ChangeScene(mainMenuSceneName);
         if (gamePaused) TriggerGamePause();
     }
 
-    public void ChangeScene(string sceneName) {
-        ChangeScene(sceneName, new List<GameObject>(), true);
-    }
-
-    public void ChangeScene(string sceneName, bool showLoadingScreen) {
-        ChangeScene(sceneName, new List<GameObject>(), showLoadingScreen);
-    }
-
-    public void ChangeScene(string sceneName, List<GameObject> moreObjNeedToMove, bool showLoadingScreen = true) {
-        if (isChangingScene) return;
-        StartCoroutine(ChangingSceneCoroutine(sceneName, moreObjNeedToMove, showLoadingScreen));
-    }
-
-    //|=======================================================
-    //| I think a scene is enough for this game.
-    //| Multiple scene for big map is a challenge.
-    //| 
-    //| 
-    //|=======================================================
-    IEnumerator ChangingSceneCoroutine(string sceneName, List<GameObject> moreObjNeedToMove, bool showLoadingScreen = true) {
-        isChangingScene = true;
-        if (showLoadingScreen) loadingScreen.Show();
-
-        Scene currentScene = SceneManager.GetActiveScene();
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-        while (!asyncLoad.isDone) {
-            loadingScreen.progressSlider.value = asyncLoad.progress;
-            yield return null;
-        }
-
-        Scene nextScene = SceneManager.GetSceneByName(sceneName);
-        SceneManager.MoveGameObjectToScene(core, nextScene);
-        foreach (GameObject obj in objNeedToKeep) {
-            SceneManager.MoveGameObjectToScene(obj, nextScene);
-        }
-        foreach (GameObject obj in moreObjNeedToMove) {
-            SceneManager.MoveGameObjectToScene(obj, nextScene);
-        }
-
-        SceneManager.UnloadSceneAsync(currentScene);
-        isChangingScene = false;
-        if (showLoadingScreen) loadingScreen.Hide();
-    }
-
+    
     public static void Quit() {   
         Application.Quit();
     }

@@ -808,8 +808,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1344136146}
-        m_TargetAssemblyTypeName: AppManager, Assembly-CSharp
+      - m_Target: {fileID: 1267371560}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
         m_MethodName: ChangeScene
         m_Mode: 5
         m_Arguments:
@@ -1827,7 +1827,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 702125384}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &580641459 stripped
 RectTransform:
@@ -2277,6 +2277,7 @@ Transform:
   m_Children:
   - {fileID: 1344136145}
   - {fileID: 1694109112}
+  - {fileID: 1267371559}
   - {fileID: 564526568}
   - {fileID: 1550717723}
   - {fileID: 1779988442}
@@ -2678,7 +2679,7 @@ RectTransform:
   m_Children:
   - {fileID: 1911998140}
   m_Father: {fileID: 702125384}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3389,6 +3390,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246837431}
   m_CullTransparentMesh: 1
+--- !u!1 &1267371558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1267371559}
+  - component: {fileID: 1267371560}
+  m_Layer: 0
+  m_Name: SceneController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1267371559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267371558}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 702125384}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1267371560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267371558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 489216eabfc5b244e889c8098eaa8a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  core: {fileID: 702125383}
+  loadingScreen: {fileID: 850517685}
+  objNeedToKeep: []
 --- !u!1 &1297014782
 GameObject:
   m_ObjectHideFlags: 0
@@ -3523,16 +3571,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdd2e30ddaa091647b875d93e389bab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  core: {fileID: 702125383}
   audioManager: {fileID: 1694109115}
+  sceneController: {fileID: 0}
+  currentGame: {fileID: 0}
   joystick: {fileID: 1779988446}
   optionMenu: {fileID: 1550717727}
-  loadingScreen: {fileID: 850517685}
   playerPrefab: {fileID: 12529972197755015, guid: 4e5555d1efe3e4c4283105fe84026329, type: 3}
   playerHolder: {fileID: 564526568}
   localPlayer: {fileID: 0}
-  currentGame: {fileID: 0}
-  objNeedToKeep: []
   mainMenuSceneName: MainMenu
   chooseHeroSceneName: ChooseHero
 --- !u!224 &1351989853 stripped
@@ -4016,7 +4062,7 @@ RectTransform:
   - {fileID: 1493253669}
   - {fileID: 389644763}
   m_Father: {fileID: 702125384}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4677,7 +4723,7 @@ RectTransform:
   - {fileID: 1338020387}
   - {fileID: 1351989853}
   m_Father: {fileID: 702125384}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
