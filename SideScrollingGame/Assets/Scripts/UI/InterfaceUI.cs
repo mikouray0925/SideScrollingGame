@@ -5,8 +5,9 @@ using UnityEngine.Events;
 
 public class InterfaceUI : MonoBehaviour
 {
-    [SerializeField] UnityEvent onShow;
-    [SerializeField] UnityEvent onHide;
+    [Header ("Base Events")]
+    public UnityEvent onShow;
+    public UnityEvent onHide;
 
     public bool IsActive {
         get {

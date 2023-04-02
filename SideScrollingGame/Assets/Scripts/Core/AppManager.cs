@@ -16,8 +16,11 @@ public class AppManager : MonoBehaviour
     [Header ("Core Objects")]
     [SerializeField] GameObject core;
     public AudioManager audioManager;
+
+    [Header ("UI Canvas")]
     public InterfaceUI joystick;
     public InterfaceUI optionMenu;
+    public LoadingScreen loadingScreen;
 
     [Header ("Player")]
     [SerializeField] GameObject playerPrefab;
@@ -118,12 +121,16 @@ public class AppManager : MonoBehaviour
     }
 
     public void ChangeScene(string sceneName) {
-        ChangeScene(sceneName, new List<GameObject>());
+        ChangeScene(sceneName, new List<GameObject>(), true);
     }
 
-    public void ChangeScene(string sceneName, List<GameObject> moreObjNeedToMove) {
+    public void ChangeScene(string sceneName, bool showLoadingScreen) {
+        ChangeScene(sceneName, new List<GameObject>(), showLoadingScreen);
+    }
+
+    public void ChangeScene(string sceneName, List<GameObject> moreObjNeedToMove, bool showLoadingScreen = true) {
         if (isChangingScene) return;
-        StartCoroutine(ChangingSceneCoroutine(sceneName, moreObjNeedToMove));
+        StartCoroutine(ChangingSceneCoroutine(sceneName, moreObjNeedToMove, showLoadingScreen));
     }
 
     //|=======================================================
@@ -132,12 +139,14 @@ public class AppManager : MonoBehaviour
     //| 
     //| 
     //|=======================================================
-    IEnumerator ChangingSceneCoroutine(string sceneName, List<GameObject> moreObjNeedToMove) {
+    IEnumerator ChangingSceneCoroutine(string sceneName, List<GameObject> moreObjNeedToMove, bool showLoadingScreen = true) {
         isChangingScene = true;
+        if (showLoadingScreen) loadingScreen.Show();
 
         Scene currentScene = SceneManager.GetActiveScene();
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         while (!asyncLoad.isDone) {
+            loadingScreen.progressSlider.value = asyncLoad.progress;
             yield return null;
         }
 
@@ -152,6 +161,7 @@ public class AppManager : MonoBehaviour
 
         SceneManager.UnloadSceneAsync(currentScene);
         isChangingScene = false;
+        if (showLoadingScreen) loadingScreen.Hide();
     }
 
     public static void Quit() {   

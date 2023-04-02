@@ -42,7 +42,9 @@ public class MessageClient : MonoBehaviour
             return false;
         }
 
-        msg.onClientReceive(this);
+        if (msg.onClientReceive != null) {
+            msg.onClientReceive(this);
+        }
         ReceiveMsg(msg.methodName, msg.value, msg.option);
         return true;
     }
