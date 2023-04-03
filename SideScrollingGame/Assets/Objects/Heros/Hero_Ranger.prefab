@@ -1233,6 +1233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc10953c98fc54b468f3e2dca56cb46b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 467025732920404006}
   movement: {fileID: 467025732920404004}
   normalAttack: {fileID: 467025732920404007}
   ability1: {fileID: 121634250}

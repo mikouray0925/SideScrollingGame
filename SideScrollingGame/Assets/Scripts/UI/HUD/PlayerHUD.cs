@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerHUD : InterfaceUI
 {
     [Header ("References")]
+    [SerializeField] HealthBar healthBar;
     [SerializeField] AttackInfoDisplay ability1;
     [SerializeField] AttackInfoDisplay ability2;
     
@@ -15,6 +16,7 @@ public class PlayerHUD : InterfaceUI
     }
 
     public void Bind(HeroBrain hero) {
+        healthBar.health = hero.health;
         ability1.atk = hero.ability1;
         ability2.atk = hero.ability2;
         bindingHero = hero;

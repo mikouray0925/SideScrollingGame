@@ -1305,6 +1305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc10953c98fc54b468f3e2dca56cb46b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 572216528803072795}
   movement: {fileID: 8541475009226100262}
   normalAttack: {fileID: 5537795121930394369}
   ability1: {fileID: 4974484535034787794}
