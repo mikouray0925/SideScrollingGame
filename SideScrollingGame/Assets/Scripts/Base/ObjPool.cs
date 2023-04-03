@@ -16,7 +16,7 @@ public class ObjPool<T> where T: MonoBehaviour
     public delegate bool ObjJudgement(T obj);
     public ObjJudgement isAvailable;
 
-    public HashSet<T> notYetRecycled;
+    public HashSet<T> notYetRecycled = new HashSet<T>();
     private bool keepTrackOfObj = true;
     public bool KeepTrackOfObj {
         get {

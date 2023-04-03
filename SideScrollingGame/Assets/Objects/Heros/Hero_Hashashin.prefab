@@ -238,7 +238,7 @@ MonoBehaviour:
   debugClock: 0
   cooldownTime: 1
   cdSpeedMultiplier: {fileID: 5181893135957760008}
-  cooldownUpdatePeriod: 0.1
+  cooldownUpdatePeriod: 0.05
 --- !u!1 &897293608190591152
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,7 +572,7 @@ MonoBehaviour:
   debugClock: 0
   cooldownTime: 0.4
   cdSpeedMultiplier: {fileID: 5181893135957760008}
-  cooldownUpdatePeriod: 0.1
+  cooldownUpdatePeriod: 0.05
 --- !u!1 &2661066755402715580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,7 +1190,7 @@ MonoBehaviour:
   debugClock: 0
   cooldownTime: 2
   cdSpeedMultiplier: {fileID: 5181893135957760008}
-  cooldownUpdatePeriod: 0.1
+  cooldownUpdatePeriod: 0.05
 --- !u!1 &7906748573076508321
 GameObject:
   m_ObjectHideFlags: 0

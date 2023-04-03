@@ -30,8 +30,9 @@ public class HeroSelectionBox : MonoBehaviour
         if (isSelected) {
             if (AppManager.instance && AppManager.instance.localPlayer) {
                 GameObject heroObj = Instantiate(heroPrefab);
-                SceneController.instance.objNeedToKeep.Add(heroObj);
-                AppManager.instance.localPlayer.heroController.Bind(heroObj.GetComponent<HeroBrain>());
+                HeroBrain hero = heroObj.GetComponent<HeroBrain>();
+                AppManager.instance.LocalHero = hero;
+                AppManager.instance.playerHUD.Bind(hero);
                 AppManager.instance.PlayGameLevel("Level1");
             } else {
                 if (!AppManager.instance) 

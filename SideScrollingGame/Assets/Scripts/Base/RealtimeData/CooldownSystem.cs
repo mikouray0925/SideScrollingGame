@@ -52,7 +52,7 @@ public class CooldownSystem : MonoBehaviour
         private set {}
     }
 
-    public float CooldownRemainingProp {
+    public float CooldownRemainingRatio {
         get {
             return cdRemainingTime / cooldownTime;
         }
@@ -80,6 +80,7 @@ public class CooldownSystem : MonoBehaviour
             cdRemainingTime -= (Time.time - lastCheckTime) * cdSpeedMultiplier.Multiplier;
             lastCheckTime = Time.time;
         }
+        cdRemainingTime = 0;
         isInCD = false;
     }
 }

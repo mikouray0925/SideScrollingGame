@@ -18,6 +18,7 @@ public class AppManager : MonoBehaviour
     public GameManager currentGame;
 
     [Header ("UI Canvas")]
+    public PlayerHUD playerHUD;
     public InterfaceUI joystick;
     public InterfaceUI optionMenu;
 
@@ -72,6 +73,36 @@ public class AppManager : MonoBehaviour
         }
     }
 
+    public HeroBrain LocalHero {
+        get {
+            if (localPlayer != null &&
+                localPlayer.heroController.bindingHero != null) {
+                    return localPlayer.heroController.bindingHero;
+            } else {
+                return null;
+            }
+        }
+        set {
+            if (value != null) {
+                if (localPlayer.heroController.bindingHero == null) {
+                    SceneController.instance.objNeedToKeep.Add(value.gameObject);
+                    localPlayer.heroController.Bind(value);
+                    // playerHUD.Bind(value);
+                } else {
+                    Debug.LogError("Local player has already binded a hero.");
+                }        
+            } else {
+                Debug.LogError("Use UnbindLocalHero() to unbind instead of setting null.");
+            }
+        }
+    }
+
+    public void UnbindLocalHero() {
+        SceneController.instance.objNeedToKeep.Remove(LocalHero.gameObject);
+        if (playerHUD.bindingHero == LocalHero) playerHUD.Unbind();
+        localPlayer.heroController.Unbind();
+    }
+
     //|=======================================================
     //| When the "NewGame" button is hitted, this will be called.
     //| Set up everything for a new game.
@@ -102,12 +133,15 @@ public class AppManager : MonoBehaviour
     }
 
     private void AfterChangingLevel(string levelName) {
-        joystick.IsActive = true;
+        joystick.Show();
+        playerHUD.Show();
     }
 
     public void GoBackToMainMenu() {
         if (sceneController.isChangingScene) return;
-        joystick.IsActive = false;
+        playerHUD.Unbind();
+        playerHUD.Hide();
+        joystick.Hide();
         sceneController.objNeedToKeep.Clear();
         MessageCenter.SpreadGlobalMsg("BeforeBackToMainMenu");
         sceneController.ChangeScene(mainMenuSceneName);
