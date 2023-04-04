@@ -12,6 +12,8 @@ public class InventoryUI : Page
 
     public Inventory bindingInventory {get; private set;} = null;
 
+    public Inventory.ItemSlot cursorSlot {get; private set;} = new Inventory.ItemSlot(-1);
+
     private void Awake() {
         instance = this;
     }

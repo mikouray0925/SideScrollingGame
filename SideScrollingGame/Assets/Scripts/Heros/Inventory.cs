@@ -27,36 +27,70 @@ public class Inventory : MonoBehaviour
 
     public class ItemSlot {
         public int index {get; private set;}
-        public Item item {get; private set;} = null;
+        private Item item = null;
         public delegate void ItemOperation(Item i);
         public ItemOperation onItemEnter;
         public ItemOperation onItemLeave;
+        public delegate bool ItemJudgement(Item i);
+        public ItemJudgement isValidItem;
 
         public ItemSlot(int _index) {
             index = _index;
+        }
+
+        public Sprite ItemIcon {
+            get {
+                if (item != null) {
+                    return item.icon;
+                }
+                return null;
+            }
+            private set {}
+        }
+
+        public Item ItemCopy {
+            get {
+                if (item != null) {
+                    return Instantiate(item);
+                }
+                return null;
+            }
+            private set {}
         }
 
         public bool Empty() {
             return item == null;
         }
 
-        public Item TakeItem() {
+        public Item TakeOutItem() {
             if (item != null) {
                 Item _item = item;
                 item = null;
-                onItemLeave(item);
+                if (onItemLeave != null) onItemLeave(item);
                 return _item;
             } else {
                 return null;
             }
         }
 
+        public bool AbleToAdd(Item _item) {
+            if (isValidItem != null) {
+                return isValidItem(_item);
+            } else {
+                return true;
+            }
+        }
+
         public bool Add(Item _item) {
+            if (_item == null) return false;
             if (item == null) {
-               item = _item;
-               onItemEnter(item);
-               return true;
-           } else {
+                if (isValidItem != null && !isValidItem(_item)) {
+                    return false;
+                } 
+                item = _item;
+                if (onItemEnter != null) onItemEnter(item);
+                return true;
+            } else {
                 return false;
             }
         }
