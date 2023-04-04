@@ -11,11 +11,18 @@ public class Player : MonoBehaviour
     
     private void Awake() {
         input.actions["Pause"].started += cxt => PauseGame(); 
+        input.actions["ShowInfo"].started += cxt => ShowInfoPages(); 
     }
 
     private void PauseGame() {
         if(AppManager.instance) {
             AppManager.instance.TriggerGamePause();
+        }
+    }
+
+    private void ShowInfoPages() {
+        if (heroController.bindingHero != null) {
+
         }
     }
 
