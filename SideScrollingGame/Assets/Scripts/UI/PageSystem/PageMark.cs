@@ -6,17 +6,19 @@ using UnityEngine.UI;
 public class PageMark : MonoBehaviour
 {
     [Header ("References")]
-    [SerializeField] PageMarkGroup inGroup; 
     [SerializeField] public Page onPage;
     [SerializeField] Image img;
 
-    public void ActivatePage() {
-        if (inGroup) inGroup.CloseOtherPages(this);
+    public void ShowPage() {
+        if (transform.parent && 
+            transform.parent.TryGetComponent<PageMarkGroup>(out PageMarkGroup group)) {
+            group.CloseOtherPages(this);
+        }
         onPage.Show();
         img.color = new Color(1, 1, 1, 1);
     }
 
-    public void DeactivatePage() {
+    public void HidePage() {
         onPage.Hide();
         img.color = new Color(0.7f, 0.7f, 0.7f, 1);
     }

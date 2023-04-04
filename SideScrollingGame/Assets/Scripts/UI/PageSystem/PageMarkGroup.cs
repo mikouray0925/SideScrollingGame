@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PageMarkGroup : MonoBehaviour
 {
-    public PageMark[] pageMarks;
-
-    public void CloseOtherPages(PageMark markOnCurrent) {
-        foreach(PageMark mark in pageMarks) {
-            if (mark != markOnCurrent) {
-                mark.DeactivatePage();
-            } 
+    public void CloseOtherPages(PageMark except) {
+        foreach (Transform child in transform) {
+            if (child.TryGetComponent<PageMark>(out PageMark pageMark) &&
+                pageMark != except) {
+                pageMark.HidePage();
+            }
         }
     }
 }

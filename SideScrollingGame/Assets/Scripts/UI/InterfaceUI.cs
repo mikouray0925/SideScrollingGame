@@ -25,11 +25,17 @@ public class InterfaceUI : MonoBehaviour
     
     public void Show() {
         gameObject.SetActive(true);
-        onShow.Invoke();
     }
 
     public void Hide() {
         gameObject.SetActive(false);
+    }
+
+    private void OnEnable() {
+        onShow.Invoke();
+    }
+
+    private void OnDisable() {
         onHide.Invoke();
     }
 }
