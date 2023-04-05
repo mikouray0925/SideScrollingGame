@@ -6,12 +6,26 @@ using AYellowpaper.SerializedCollections;
 [CreateAssetMenu(fileName = "NewItem", menuName = "Item/Base")]
 public class Item : ScriptableObject
 {
+    public enum Type {
+        Unspecified,
+        Potion,
+        Helmet,
+        ChestPlate,
+        Leggings,
+        Shoes,
+        Ring,
+        Necklace,
+        Wristband
+    }
+    
     [Header ("Base")]
     public int id;
     public string itemName;
     public string description;
     public Sprite icon;
     public bool usable;
+    public bool wearable;
+    public Type type;
 
     [Header ("Data")]
     [SerializeField][SerializedDictionary("name", "bool")] 
@@ -53,5 +67,13 @@ public class Item : ScriptableObject
 
     protected virtual void OnUsedByHero(HeroBrain user, out Item usedItem) {
         usedItem = this;
+    }
+
+    public virtual void OnPutOnByHero(HeroBrain wearer) {}
+
+    public virtual void OnTakenOffFromHero(HeroBrain wearer) {}
+
+    public static bool IsUsable(Item item) {
+        return item != null && item.usable;
     }
 }

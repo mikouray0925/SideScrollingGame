@@ -11,6 +11,7 @@ public class HeroBrain : MonoBehaviour
     public HeroAbility1 ability1;
     public HeroAbility2 ability2;
     
+    public Inventory inventory;
     public ItemPicker picker;
     public ItemDropper dropper;
 }

@@ -4,23 +4,49 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [Range (6, 42)]
-    [SerializeField] int initSize = 33;
-    [Range (0, 42)]
-    [SerializeField] int fixedSlotNum;
+    [SerializeField] HeroBrain onHero;
+    [Range (0, 50)]
+    [SerializeField] int initSize = 41;
+    public Item.Type[] wearableItems = new Item.Type[10];
+    [Range (0, 50)]
+    [SerializeField] int quickSlotNum = 4;
     public List<ItemSlot> slots;
 
     private void Awake() {
         slots = new List<ItemSlot>(initSize);
-        for (int i = 0; i < initSize; i++) {
+
+        for (int i = 0; i < wearableItems.Length; i++) {
+            slots.Add(new WearableItemSlot(i, wearableItems[i], onHero));
+        }
+        for (int i = QuickSlotsStartIndex; i < QuickSlotsStartIndex + quickSlotNum; i++) {
+            ItemSlot newSlot = new ItemSlot(i);
+            newSlot.isValidItem = Item.IsUsable;
+            slots.Add(newSlot);
+        }
+        for (int i = slots.Count; i < initSize; i++) {
             slots.Add(new ItemSlot(i));
         }
+
         InventoryUI.instance.Bind(this);
+    }
+
+    public int QuickSlotsStartIndex {
+        get {
+            return wearableItems.Length;
+        }
+        private set {}
+    }
+
+    public int QuickSlotNum {
+        get {
+            return quickSlotNum;
+        }
+        private set {}
     }
 
     public int ScrollerStartIndex {
         get {
-            return fixedSlotNum;
+            return wearableItems.Length + quickSlotNum;
         }
         private set {}
     }
@@ -120,6 +146,31 @@ public class Inventory : MonoBehaviour
             slot1.item = slot2.item;
             slot2.item = temp;
             return true;
+        }
+    }
+
+    public class WearableItemSlot : ItemSlot {
+        Item.Type type;
+        HeroBrain onHero;
+
+        public WearableItemSlot(int _index, Item.Type _type, HeroBrain _onHero) : base(_index) {
+            type = _type;
+            onHero = _onHero;
+            isValidItem = IsWearableAndRightType;
+            onItemEnter += CallItemPutOnEvent;
+            onItemLeave += CallItemTakenOffEvent;
+        }
+
+        public bool IsWearableAndRightType(Item item) {
+            return item.wearable && item.type == type;
+        }
+
+        private void CallItemPutOnEvent(Item item) {
+            item.OnPutOnByHero(onHero);
+        }
+
+        private void CallItemTakenOffEvent(Item item) {
+            item.OnTakenOffFromHero(onHero);
         }
     }
 }

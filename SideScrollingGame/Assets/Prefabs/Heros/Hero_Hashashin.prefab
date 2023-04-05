@@ -1391,6 +1391,7 @@ MonoBehaviour:
   normalAttack: {fileID: 5537795121930394369}
   ability1: {fileID: 4974484535034787794}
   ability2: {fileID: 1154986555}
+  inventory: {fileID: 4203330720396401066}
   picker: {fileID: 5134522455878022089}
   dropper: {fileID: 3595052082951174472}
 --- !u!114 &4203330720396401066
@@ -1405,5 +1406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b32c468a63adf843915409258ad9cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initSize: 33
-  fixedSlotNum: 6
+  onHero: {fileID: 82011966311819101}
+  initSize: 41
+  wearableItems: 02000000030000000400000005000000070000000800000008000000060000000600000006000000
+  quickSlotNum: 4

@@ -23,4 +23,9 @@ public class ItemSlotUI : MonoBehaviour
         if (displayingSlot == null) return;
         Inventory.ItemSlot.SwapItem(CursorItemSlot.instance.Slot, displayingSlot);
     }
+
+    public void RightClickEvent() {
+        if (displayingSlot == null) return;
+        Item.LocalHeroUseItem(displayingSlot);
+    }
 }
