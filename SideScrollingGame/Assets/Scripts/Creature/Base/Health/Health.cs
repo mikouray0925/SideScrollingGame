@@ -67,6 +67,10 @@ public class Health : MonoBehaviour
 
     #endregion 
 
+    public void Heal(float val) {
+        Hp += val;
+    }
+
     #region Damage
 
     //|=======================================================
