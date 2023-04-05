@@ -308,6 +308,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ring1
       objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6692138803582905172, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1458,6 +1474,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9217074525245560528, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
   m_PrefabInstance: {fileID: 1710196927}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &210012086 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3451375726596478191, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+  m_PrefabInstance: {fileID: 1710196927}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640bb70522a91614fa4c61fcce2ecbcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &225682827
 GameObject:
   m_ObjectHideFlags: 0
@@ -1616,6 +1643,22 @@ PrefabInstance:
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Shoes
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6692138803582905172, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Sprite
@@ -1923,6 +1966,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9217074525245560528, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
   m_PrefabInstance: {fileID: 1161642333}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &343576235 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3451375726596478191, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+  m_PrefabInstance: {fileID: 1161642333}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640bb70522a91614fa4c61fcce2ecbcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &357404799
 GameObject:
   m_ObjectHideFlags: 0
@@ -2489,6 +2543,22 @@ PrefabInstance:
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Leggings
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6692138803582905172, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Sprite
@@ -4206,6 +4276,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Helmet
       objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6692138803582905172, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -4969,6 +5055,22 @@ PrefabInstance:
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Wristband1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6692138803582905172, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Sprite
@@ -6037,6 +6139,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9217074525245560528, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
   m_PrefabInstance: {fileID: 158448287}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1356638322 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3451375726596478191, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+  m_PrefabInstance: {fileID: 158448287}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640bb70522a91614fa4c61fcce2ecbcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1392455048 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9217074525245560528, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
@@ -6063,6 +6176,22 @@ PrefabInstance:
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: ChestPlate
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6692138803582905172, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Sprite
@@ -6409,6 +6538,22 @@ PrefabInstance:
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Necklace
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6692138803582905172, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Sprite
@@ -7354,6 +7499,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9217074525245560528, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
   m_PrefabInstance: {fileID: 10816367}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1711302102 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3451375726596478191, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+  m_PrefabInstance: {fileID: 10816367}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640bb70522a91614fa4c61fcce2ecbcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1714098102
 GameObject:
   m_ObjectHideFlags: 0
@@ -8076,6 +8232,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ring3
       objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6692138803582905172, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -8778,7 +8950,19 @@ MonoBehaviour:
       m_Calls: []
   onHide:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1906206985}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: DropCursorItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   wearableItemSlots:
   - {fileID: 1392455049}
   - {fileID: 1932282352}
@@ -8791,10 +8975,10 @@ MonoBehaviour:
   - {fileID: 1927064972}
   - {fileID: 359364830}
   quickSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 210012086}
+  - {fileID: 1356638322}
+  - {fileID: 343576235}
+  - {fileID: 1711302102}
   slotPrefeb_Scroller: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
   slotHolder_Scroller: {fileID: 1115935707}
 --- !u!1001 &1906710914
@@ -9070,6 +9254,22 @@ PrefabInstance:
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Ring2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6692138803582905172, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Sprite
@@ -9406,6 +9606,22 @@ PrefabInstance:
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Wristband2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6692138803582905172, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Sprite

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Ring
   m_EditorClassIdentifier: 
   id: 0
-  itemName: 
+  itemName: Ring
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: -1844816063, guid: 1530cd42bc913934495e719504d7c749, type: 3}
   usable: 0
-  wearable: 0
-  type: 0
+  wearable: 1
+  type: 6
   boolData:
     _serializedList: []
   floatData:
