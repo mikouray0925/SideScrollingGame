@@ -89,6 +89,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShowInfoPages"",
+                    ""type"": ""Button"",
+                    ""id"": ""79de056b-3a7c-489b-8ccb-9d465451a0f2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -278,6 +287,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4a8263d3-182f-42b8-9a4c-8f52bb5798e4"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""856263ed-086a-4577-b080-04d871c84a47"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShowInfoPages"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dfeecb8a-abde-4ab4-a34b-a50c2c6cbb9a"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShowInfoPages"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -293,6 +335,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Ability1 = m_Player.FindAction("Ability1", throwIfNotFound: true);
         m_Player_Ability2 = m_Player.FindAction("Ability2", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_ShowInfoPages = m_Player.FindAction("ShowInfoPages", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -359,6 +402,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Ability1;
     private readonly InputAction m_Player_Ability2;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_ShowInfoPages;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -370,6 +414,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Ability1 => m_Wrapper.m_Player_Ability1;
         public InputAction @Ability2 => m_Wrapper.m_Player_Ability2;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @ShowInfoPages => m_Wrapper.m_Player_ShowInfoPages;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -400,6 +445,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @ShowInfoPages.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShowInfoPages;
+                @ShowInfoPages.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShowInfoPages;
+                @ShowInfoPages.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShowInfoPages;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -425,6 +473,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @ShowInfoPages.started += instance.OnShowInfoPages;
+                @ShowInfoPages.performed += instance.OnShowInfoPages;
+                @ShowInfoPages.canceled += instance.OnShowInfoPages;
             }
         }
     }
@@ -438,5 +489,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnAbility1(InputAction.CallbackContext context);
         void OnAbility2(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnShowInfoPages(InputAction.CallbackContext context);
     }
 }

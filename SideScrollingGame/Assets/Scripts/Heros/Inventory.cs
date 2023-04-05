@@ -94,5 +94,25 @@ public class Inventory : MonoBehaviour
                 return false;
             }
         }
+
+        public static bool MoveItem(ItemSlot src, ItemSlot dest) {
+            if (src.Empty() || !dest.Empty()) return false;
+            if (dest.AbleToAdd(src.item)) {
+                dest.Add(src.TakeOutItem());
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public static bool SwapItem(ItemSlot slot1, ItemSlot slot2) {
+            if ( slot1.Empty() &&  slot2.Empty()) return true;
+            if (!slot1.Empty() && !slot2.AbleToAdd(slot1.item)) return false;
+            if (!slot2.Empty() && !slot1.AbleToAdd(slot2.item)) return false;
+            Item temp = slot1.item;
+            slot1.item = slot2.item;
+            slot2.item = temp;
+            return true;
+        }
     }
 }
