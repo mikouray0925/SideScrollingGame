@@ -15,10 +15,12 @@ public class AppManager : MonoBehaviour
     [Header ("Core Objects")]
     [SerializeField] AudioManager audioManager;
     [SerializeField] SceneController sceneController;
+    [SerializeField] GlobalSettings globalSettings;
     public GameManager currentGame;
 
     [Header ("UI Canvas")]
     public PlayerHUD playerHUD;
+    public InterfaceUI playerInfoPages;
     public InterfaceUI joystick;
     public InterfaceUI optionMenu;
 
@@ -37,6 +39,7 @@ public class AppManager : MonoBehaviour
 
     private void Awake() {
         instance = this;
+        globalSettings.SetThis();
     }
 
     //|=======================================================

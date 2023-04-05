@@ -32,7 +32,7 @@ public class RangerBeam : MonoBehaviour
     }
 
     private float GetLengthBlockedByObstacle(float firingSide, float length, Vector2 pos) {
-        RaycastHit2D hit = Physics2D.Linecast(pos, pos + firingSide * length * Vector2.right, GameManager.obstacleLayers);
+        RaycastHit2D hit = Physics2D.Linecast(pos, pos + firingSide * length * Vector2.right, GlobalSettings.obstacleLayers);
         if (hit.collider) {
             return Mathf.Abs(hit.point.x - pos.x);
         }

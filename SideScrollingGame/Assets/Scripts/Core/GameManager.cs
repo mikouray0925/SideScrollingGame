@@ -4,24 +4,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static LayerMask groundLayers {get; private set;}
-    public static LayerMask obstacleLayers {get; private set;}
-    public static LayerMask creatureLayers {get; private set;}
-    public static LayerMask enemyLayers {get; private set;}
-
-    public static Transform objectPool {get; private set;}
+    public Transform objectPool {get; private set;}
     public static Transform impactEffectHolder {get; private set;}
-
-    [Header ("LayerMasks")]
-    [SerializeField] private LayerMask _groundLayers;
-    [SerializeField] private LayerMask _obstacleLayers;
-    [SerializeField] private LayerMask _creatureLayers;
-    [SerializeField] private LayerMask _enemyLayers;
+    public Transform itemDropHolder {get; private set;}
 
     [Header ("References")]
     [SerializeField] private Transform mainCamera;
     [SerializeField] private Transform _objectPool;
     [SerializeField] private Transform _impactEffectHolder;
+    [SerializeField] private Transform _itemDropHolder;
 
     [Header ("SceneSettings")]
     [SerializeField] public Vector3 heroSpawnPos;
@@ -29,13 +20,9 @@ public class GameManager : MonoBehaviour
     void Awake() {
         print("GameManager awaked.");
 
-        groundLayers = _groundLayers;
-        obstacleLayers = _obstacleLayers;
-        creatureLayers = _creatureLayers;
-        enemyLayers = _enemyLayers;
-
         objectPool = _objectPool;
         impactEffectHolder = _impactEffectHolder;
+        itemDropHolder = _itemDropHolder;
 
         if (AppManager.instance) {
             AppManager.instance.currentGame = this;
@@ -57,7 +44,7 @@ public class GameManager : MonoBehaviour
     public void DeactivateAllEmeny() {
         Message deactivateAllEmeny = Message.DeactivatingOrder;
         deactivateAllEmeny.filterByLayerMask = true;
-        deactivateAllEmeny.layerMask = enemyLayers;
+        deactivateAllEmeny.layerMask = GlobalSettings.enemyLayers;
         MessageCenter.SpreadGlobalMsg(deactivateAllEmeny);
     }
 

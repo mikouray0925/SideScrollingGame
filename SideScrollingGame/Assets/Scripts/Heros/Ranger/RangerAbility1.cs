@@ -47,7 +47,7 @@ public class RangerAbility1 : HeroAbility1
      
     private void StartArrowRain() {
         float heightDiff = localArrowStartPoint.position.y - arrowLaunchPoint.position.y;
-        RaycastHit2D hit = Physics2D.Linecast(arrowLaunchPoint.position, arrowLaunchPoint.position + Vector3.up * heightDiff, GameManager.obstacleLayers);
+        RaycastHit2D hit = Physics2D.Linecast(arrowLaunchPoint.position, arrowLaunchPoint.position + Vector3.up * heightDiff, GlobalSettings.obstacleLayers);
         if (hit.collider) {
             arrowStartPoint.position = new Vector2(localArrowStartPoint.position.x, hit.point.y - 0.1f);
         } else {

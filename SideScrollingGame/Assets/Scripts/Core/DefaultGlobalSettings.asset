@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f928c33f2245bd4d81a6f499b121152, type: 3}
+  m_Name: DefaultGlobalSettings
+  m_EditorClassIdentifier: 
+  _groundLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  _obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 576
+  _creatureLayers:
+    serializedVersion: 2
+    m_Bits: 384
+  _enemyLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  _itemDropLayers:
+    serializedVersion: 2
+    m_Bits: 4096
+  _projectileLayers:
+    serializedVersion: 2
+    m_Bits: 3072
+  _itemDropPrefab: {fileID: 5050156301743778056, guid: e0f31a601a392cc42875247044fbde13, type: 3}

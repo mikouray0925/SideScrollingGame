@@ -19,7 +19,7 @@ public class ItemSlotUI : MonoBehaviour
         }
     }
 
-    private void LeftClickEvent() {
+    public void LeftClickEvent() {
         if (displayingSlot == null) return;
         Inventory.ItemSlot.SwapItem(CursorItemSlot.instance.Slot, displayingSlot);
     }

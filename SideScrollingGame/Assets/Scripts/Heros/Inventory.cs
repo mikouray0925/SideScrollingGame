@@ -25,6 +25,13 @@ public class Inventory : MonoBehaviour
         private set {}
     }
 
+    public bool AddItemToScroller(Item item) {
+        for (int i = ScrollerStartIndex; i < slots.Count; i++) {
+            if (slots[i].Add(item)) return true;
+        }
+        return false;
+    }
+
     public class ItemSlot {
         public int index {get; private set;}
         private Item item = null;

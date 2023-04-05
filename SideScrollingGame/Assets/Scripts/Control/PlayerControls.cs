@@ -98,6 +98,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PickItemDrop"",
+                    ""type"": ""Button"",
+                    ""id"": ""755f8214-9c02-4f28-9187-f00ad8c6a889"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -320,6 +329,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""ShowInfoPages"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f41cbc18-38ac-4635-a9cb-313637652d7f"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PickItemDrop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f270de0-d1ab-4e6c-a988-74f2dd3b3bdb"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PickItemDrop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -336,6 +367,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Ability2 = m_Player.FindAction("Ability2", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_ShowInfoPages = m_Player.FindAction("ShowInfoPages", throwIfNotFound: true);
+        m_Player_PickItemDrop = m_Player.FindAction("PickItemDrop", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -403,6 +435,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Ability2;
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_ShowInfoPages;
+    private readonly InputAction m_Player_PickItemDrop;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -415,6 +448,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Ability2 => m_Wrapper.m_Player_Ability2;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @ShowInfoPages => m_Wrapper.m_Player_ShowInfoPages;
+        public InputAction @PickItemDrop => m_Wrapper.m_Player_PickItemDrop;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -448,6 +482,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ShowInfoPages.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShowInfoPages;
                 @ShowInfoPages.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShowInfoPages;
                 @ShowInfoPages.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShowInfoPages;
+                @PickItemDrop.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPickItemDrop;
+                @PickItemDrop.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPickItemDrop;
+                @PickItemDrop.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPickItemDrop;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -476,6 +513,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ShowInfoPages.started += instance.OnShowInfoPages;
                 @ShowInfoPages.performed += instance.OnShowInfoPages;
                 @ShowInfoPages.canceled += instance.OnShowInfoPages;
+                @PickItemDrop.started += instance.OnPickItemDrop;
+                @PickItemDrop.performed += instance.OnPickItemDrop;
+                @PickItemDrop.canceled += instance.OnPickItemDrop;
             }
         }
     }
@@ -490,5 +530,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnAbility2(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnShowInfoPages(InputAction.CallbackContext context);
+        void OnPickItemDrop(InputAction.CallbackContext context);
     }
 }

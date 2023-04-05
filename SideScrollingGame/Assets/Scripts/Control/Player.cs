@@ -16,13 +16,17 @@ public class Player : MonoBehaviour
 
     private void PauseGame() {
         if(AppManager.instance) {
-            AppManager.instance.TriggerGamePause();
+            if (AppManager.instance.playerInfoPages.IsActive) {
+                AppManager.instance.playerInfoPages.Hide();
+            } else {
+                AppManager.instance.TriggerGamePause();
+            }
         }
     }
 
     private void ShowInfoPages() {
         if (heroController.bindingHero != null) {
-
+            AppManager.instance.playerInfoPages.Show();
         }
     }
 

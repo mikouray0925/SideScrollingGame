@@ -44,6 +44,8 @@ public class HeroController : MonoBehaviour
         input.actions["Ability1"].canceled += cxt => hero.ability1.ButtonReleaseAction();
         input.actions["Ability2"].started  += cxt => hero.ability2.UnleashAbility2();
         input.actions["Ability2"].canceled += cxt => hero.ability2.ButtonReleaseAction();
+
+        input.actions["PickItemDrop"].started += cxt => hero.picker.PickNearestItem();
         
         bindingHero = hero;
     }

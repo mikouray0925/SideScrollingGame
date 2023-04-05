@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class ItemDropper : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public ItemDrop Drop(Item item) {
+        return ItemDrop.SpawnItemDrop(item, transform.position);
+    }   
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public ItemDrop Drop(Item item, Vector2 force, ForceMode2D forceMode = ForceMode2D.Force) {
+        ItemDrop drop = ItemDrop.SpawnItemDrop(item, transform.position);
+        drop.rb.AddForce(force, forceMode);
+        return drop;
+    }  
+
 }

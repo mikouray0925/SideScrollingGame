@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class CursorItemSlot : MonoBehaviour
 {
+    [SerializeField] ItemSlotUI slotUI;
+    
     public static CursorItemSlot instance;
     Inventory.ItemSlot slot = new Inventory.ItemSlot(-1);
 
     private void Awake() {
+        slotUI.displayingSlot = slot;
         instance = this;
     }
     

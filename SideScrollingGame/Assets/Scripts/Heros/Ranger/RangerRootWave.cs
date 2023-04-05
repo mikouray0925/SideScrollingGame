@@ -50,7 +50,7 @@ public class RangerRootWave : MonoBehaviour
 
     public bool HaveValidGroundSpace() {
         foreach (Transform point in groundCheckPoints) {
-            RaycastHit2D hitInfo = Physics2D.Raycast(point.position, Vector2.down, 0.1f, GameManager.obstacleLayers);
+            RaycastHit2D hitInfo = Physics2D.Raycast(point.position, Vector2.down, 0.1f, GlobalSettings.obstacleLayers);
             if (!hitInfo.collider) return false;
         }
         return true; 

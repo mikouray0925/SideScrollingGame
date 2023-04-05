@@ -165,7 +165,7 @@ public class Movement : MonoBehaviour
     //|=========================================================
     public bool IsGrounded(Vector2 offset, float downcastDistance = 0.1f) {
         Vector2 origin = GroundCheckboxCenter + offset;
-        RaycastHit2D hit = Physics2D.BoxCast(origin, groundCheckboxSize, 0, Vector2.down, downcastDistance, GameManager.groundLayers);
+        RaycastHit2D hit = Physics2D.BoxCast(origin, groundCheckboxSize, 0, Vector2.down, downcastDistance, GlobalSettings.groundLayers);
         return (hit.collider != null && Vector2.Dot(hit.normal, Vector2.up) > 0);
     }
 

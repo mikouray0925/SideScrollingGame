@@ -10,4 +10,7 @@ public class HeroBrain : MonoBehaviour
     public HeroNormalAttack normalAttack;
     public HeroAbility1 ability1;
     public HeroAbility2 ability2;
+    
+    public ItemPicker picker;
+    public ItemDropper dropper;
 }
