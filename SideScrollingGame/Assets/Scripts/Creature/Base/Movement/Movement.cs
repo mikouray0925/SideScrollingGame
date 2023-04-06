@@ -16,6 +16,7 @@ public class Movement : MonoBehaviour
     [SerializeField] protected float acceleration;
     [SerializeField] protected float accelerationPow;
     [SerializeField] protected float maxMovingForce;
+    [SerializeField] protected float airMovementMultiplier;
     
     [Header ("Ground check")]
     [SerializeField] private   Vector2 groundCheckboxOffset;
@@ -177,7 +178,7 @@ public class Movement : MonoBehaviour
     //|=========================================================
     private void BackToGround() {
         if (isJumping) ResetJump();
-        SendMessage("OnBackToGround", null, SendMessageOptions.DontRequireReceiver);
+        BroadcastMessage("OnBackToGround", null, SendMessageOptions.DontRequireReceiver);
     }
     
     // Invoke this only when jumping starts.
@@ -207,6 +208,10 @@ public class Movement : MonoBehaviour
         return isGrounded && !isRolling && !movementLock.IsLocked;
     }
 
+    public virtual bool AbleToAirMove() {
+        return !isRolling && !movementLock.IsLocked;
+    }
+
     //|=========================================================
     //| Using force to move instead of "transform.Translate"
     //| can make the character move more natural.
@@ -219,6 +224,16 @@ public class Movement : MonoBehaviour
             float movingForce = Mathf.Pow(Mathf.Abs(speedDiff) * acceleration, accelerationPow) * Mathf.Sign(speedDiff);
             if (movingForce > maxMovingForce) movingForce = maxMovingForce;
             rbody.AddForce(movingForce * Vector2.right);
+        }
+        else if (AbleToAirMove()) {
+            float targetSpeed = TargetSpeed * airMovementMultiplier;
+            if (targetSpeed != 0) {
+                float speedDiff = TargetSpeed - rbody.velocity.x;
+                float movingForce = Mathf.Pow(Mathf.Abs(speedDiff) * acceleration, accelerationPow) * Mathf.Sign(speedDiff);
+                if (movingForce > maxMovingForce) movingForce = maxMovingForce;
+                rbody.AddForce(movingForce * Vector2.right);
+            } 
+            // else just let inertia works
         }
     }
 
@@ -269,7 +284,7 @@ public class Movement : MonoBehaviour
             avoidGrounded = true;
             Invoke(nameof(ResetAvoidGrounded), avoidGroundedTime);
 
-            SendMessage("OnJumpStart", null, SendMessageOptions.DontRequireReceiver);
+            BroadcastMessage("OnJumpStart", null, SendMessageOptions.DontRequireReceiver);
 
             return true;
         } else {   
@@ -317,7 +332,7 @@ public class Movement : MonoBehaviour
         if (AbleToRoll()) {
             Brake();
             rbody.AddForce(Mathf.Sign(transform.localScale.x) * rollingForce * Vector2.right, ForceMode2D.Impulse);
-            SendMessage("OnRollStart", null, SendMessageOptions.DontRequireReceiver);
+            BroadcastMessage("OnRollStart", null, SendMessageOptions.DontRequireReceiver);
             return true;
         } else {
             return false;

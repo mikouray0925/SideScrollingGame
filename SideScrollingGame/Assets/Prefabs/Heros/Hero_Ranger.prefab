@@ -1512,6 +1512,7 @@ MonoBehaviour:
   acceleration: 12
   accelerationPow: 0.98
   maxMovingForce: 24
+  airMovementMultiplier: 0.6
   groundCheckboxOffset: {x: 0.06, y: 0.08}
   groundCheckboxSize: {x: 0.22, y: 0.05}
   drawGroundCheckbox: 1

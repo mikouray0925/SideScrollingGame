@@ -850,6 +850,7 @@ MonoBehaviour:
   acceleration: 14
   accelerationPow: 0.98
   maxMovingForce: 28
+  airMovementMultiplier: 0.6
   groundCheckboxOffset: {x: 0.04, y: 0.08}
   groundCheckboxSize: {x: 0.32, y: 0.1}
   drawGroundCheckbox: 1
@@ -858,7 +859,7 @@ MonoBehaviour:
   gravityScale: 1
   fallingGravityMultiplier: 1.6
   avoidGroundedTime: 0.1
-  rollingForce: 10
+  rollingForce: 12
   rollingCD: 0.8
   rollingClipName: Roll
   health: {fileID: 572216528803072795}

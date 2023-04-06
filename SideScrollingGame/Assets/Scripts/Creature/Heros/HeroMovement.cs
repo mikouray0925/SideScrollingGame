@@ -8,6 +8,11 @@ public class HeroMovement : Movement
     protected Animator          anim;
     protected SpriteRenderer    rend;
 
+    public delegate void MovementOperation(HeroMovement movement);
+    public MovementOperation onJumpStart;
+    public MovementOperation onBackToGround;
+    public MovementOperation onRollStart;
+
     void Awake() {
         GrabNecessaryComponent();
         capCollider = GetComponent<CapsuleCollider2D>();
@@ -29,9 +34,15 @@ public class HeroMovement : Movement
 
     private void OnJumpStart() {
         anim.SetTrigger("jump");
+        if (onJumpStart != null) onJumpStart(this);
     }
+
+    private void OnBackToGround() {
+        if (onBackToGround != null) onBackToGround(this);
+    }   
 
     private void OnRollStart() {
         anim.SetTrigger("roll");
+        if (onRollStart != null) onRollStart(this);
     }
 }
