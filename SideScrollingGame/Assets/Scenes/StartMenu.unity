@@ -304,6 +304,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1133341968}
     m_Modifications:
+    - target: {fileID: 1728677119773291633, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: onRightClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Ring1
@@ -1640,6 +1644,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1133341968}
     m_Modifications:
+    - target: {fileID: 1728677119773291633, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: onRightClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Shoes
@@ -2540,6 +2548,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1133341968}
     m_Modifications:
+    - target: {fileID: 1728677119773291633, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: onRightClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Leggings
@@ -4272,6 +4284,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1133341968}
     m_Modifications:
+    - target: {fileID: 1728677119773291633, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: onRightClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Helmet
@@ -5052,6 +5068,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1133341968}
     m_Modifications:
+    - target: {fileID: 1728677119773291633, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: onRightClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Wristband1
@@ -6173,6 +6193,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1133341968}
     m_Modifications:
+    - target: {fileID: 1728677119773291633, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: onRightClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: ChestPlate
@@ -6535,6 +6559,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1133341968}
     m_Modifications:
+    - target: {fileID: 1728677119773291633, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: onRightClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Necklace
@@ -8228,6 +8256,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1133341968}
     m_Modifications:
+    - target: {fileID: 1728677119773291633, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: onRightClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Ring3
@@ -9251,6 +9283,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1133341968}
     m_Modifications:
+    - target: {fileID: 1728677119773291633, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: onRightClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Ring2
@@ -9603,6 +9639,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1133341968}
     m_Modifications:
+    - target: {fileID: 1728677119773291633, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: onRightClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Wristband2
