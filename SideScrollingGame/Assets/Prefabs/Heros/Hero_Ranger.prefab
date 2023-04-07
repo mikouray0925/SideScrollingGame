@@ -1244,6 +1244,7 @@ MonoBehaviour:
   dropper: {fileID: 7078877189602276816}
   speedData: {fileID: 467025731865759406}
   damageData: {fileID: 467025731746857701}
+  protection: {fileID: 4128807186142301844}
   cooldownSpeedMultiplier: {fileID: 467025732645923558}
 --- !u!114 &4558682214838516199
 MonoBehaviour:
@@ -1291,6 +1292,7 @@ Transform:
   m_Children:
   - {fileID: 467025731865759404}
   - {fileID: 467025731746857699}
+  - {fileID: 3806290875319591225}
   - {fileID: 467025732645923557}
   m_Father: {fileID: 467025732920404003}
   m_RootOrder: 0
@@ -1325,7 +1327,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 467025732615495269}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &467025732645923558
 MonoBehaviour:
@@ -1547,6 +1549,7 @@ MonoBehaviour:
   lifeRemain: 1
   rebornPercentage: 0
   isInvincible: 0
+  protection: {fileID: 4128807186142301844}
   hurtColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &467025732920404005
 MonoBehaviour:
@@ -1699,6 +1702,53 @@ MonoBehaviour:
   cooldownTime: 0.8
   cdSpeedMultiplier: {fileID: 1655432232}
   cooldownUpdatePeriod: 0.1
+--- !u!1 &4617849384479667569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3806290875319591225}
+  - component: {fileID: 4128807186142301844}
+  m_Layer: 7
+  m_Name: Protection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3806290875319591225
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4617849384479667569}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 467025732615495269}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4128807186142301844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4617849384479667569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c0f23e96a290b74aa220931ee1c6bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAddend: 0
+  addendDict:
+    _serializedList: []
 --- !u!1 &4667114754255976517
 GameObject:
   m_ObjectHideFlags: 0

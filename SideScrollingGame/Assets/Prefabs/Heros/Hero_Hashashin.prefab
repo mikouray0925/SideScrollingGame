@@ -376,6 +376,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be8623e5759e1ce40b118b297f975b92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1284845500552569786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8075059125007518658}
+  - component: {fileID: 1647183276255345264}
+  m_Layer: 7
+  m_Name: Protection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8075059125007518658
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284845500552569786}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9185046846415285738}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1647183276255345264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284845500552569786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c0f23e96a290b74aa220931ee1c6bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAddend: 0
+  addendDict:
+    _serializedList: []
 --- !u!1 &1716092413686669453
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,7 +553,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9185046846415285738}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5181893135957760008
 MonoBehaviour:
@@ -882,6 +929,7 @@ MonoBehaviour:
   lifeRemain: 1
   rebornPercentage: 0.3
   isInvincible: 0
+  protection: {fileID: 1647183276255345264}
   hurtColor: {r: 1, g: 0.61960787, b: 0.61960787, a: 1}
 --- !u!114 &579993108644978417
 MonoBehaviour:
@@ -1039,6 +1087,7 @@ Transform:
   m_Children:
   - {fileID: 1117766409414999623}
   - {fileID: 1284601293181013351}
+  - {fileID: 8075059125007518658}
   - {fileID: 5533791416578602059}
   m_Father: {fileID: 4732856035941493004}
   m_RootOrder: 0
@@ -1397,6 +1446,7 @@ MonoBehaviour:
   dropper: {fileID: 3595052082951174472}
   speedData: {fileID: 1042864981354528482}
   damageData: {fileID: 5363110324559478963}
+  protection: {fileID: 1647183276255345264}
   cooldownSpeedMultiplier: {fileID: 5181893135957760008}
 --- !u!114 &4203330720396401066
 MonoBehaviour:

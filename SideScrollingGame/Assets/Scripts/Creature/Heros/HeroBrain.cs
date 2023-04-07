@@ -19,5 +19,6 @@ public class HeroBrain : MonoBehaviour
     [Header ("Data")]
     public SpeedData speedData;
     public DamageData damageData;
+    public CombinedAddend protection;
     public CombinedMultiplier cooldownSpeedMultiplier;
 }

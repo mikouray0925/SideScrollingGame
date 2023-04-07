@@ -24,6 +24,6 @@ public class HeroHealth : Health
         anim.SetTrigger("takeHit");
         movement.Brake();
         movement.movementLock.AddLock("takeHit", 0.2f);
-        finalDamageVal = damageInfo.damage;
+        base.ProcessDamage(damageInfo, out finalDamageVal);
     }
 }

@@ -19,7 +19,7 @@ public class HeroValueDisplayer : MonoBehaviour
             healthText.text = $"{bindingHero.health.Hp}/{bindingHero.health.MaxHp}";
             speedText.text = $"{bindingHero.speedData.Speed}";
             attackText.text = $"{bindingHero.damageData.Damage}";
-
+            protectionText.text = $"{bindingHero.protection.Addend}";
             cooldownText.text = $"x{bindingHero.cooldownSpeedMultiplier.Multiplier}";
         }
     }

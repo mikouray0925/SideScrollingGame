@@ -38,7 +38,7 @@ public class CombinedAddend : MonoBehaviour
         
     }
 
-    public bool RemoveMultiplier(string tag) {
+    public bool RemoveAddend(string tag) {
         if (addendDict.Remove(tag, out float addend)) {
             currentAddend -= addend;
             return true;

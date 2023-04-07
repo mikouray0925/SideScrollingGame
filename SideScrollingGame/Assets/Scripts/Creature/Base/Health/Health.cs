@@ -16,6 +16,9 @@ public class Health : MonoBehaviour
     [Header ("other")]
     [SerializeField] public bool isInvincible;
 
+    [Header ("protection")]
+    [SerializeField] public CombinedAddend protection;
+
     protected SpriteRenderer rend;
 
     #region HealthPoint
@@ -97,7 +100,11 @@ public class Health : MonoBehaviour
                 _rb.AddForce(forceInfo.force, forceInfo.mode);
             }
         }
-        finalDamageVal = damageInfo.damage;
+        if (protection) {
+            finalDamageVal = damageInfo.damage - protection.Addend;
+        } else {
+            finalDamageVal = damageInfo.damage;
+        }
     }
 
     #endregion

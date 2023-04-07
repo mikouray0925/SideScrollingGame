@@ -22,7 +22,9 @@ MonoBehaviour:
   boolData:
     _serializedList: []
   floatData:
-    _serializedList: []
+    _serializedList:
+    - Key: protection
+      Value: 1
   intData:
     _serializedList: []
   stringData:

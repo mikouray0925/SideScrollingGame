@@ -111,7 +111,7 @@ public class Inventory : MonoBehaviour
             if (item != null) {
                 Item _item = item;
                 item = null;
-                if (onItemLeave != null) onItemLeave(item);
+                if (onItemLeave != null) onItemLeave(_item);
                 return _item;
             } else {
                 return null;
@@ -156,9 +156,10 @@ public class Inventory : MonoBehaviour
             if ( slot1.Empty() &&  slot2.Empty()) return true;
             if (!slot1.Empty() && !slot2.AbleToAdd(slot1.item)) return false;
             if (!slot2.Empty() && !slot1.AbleToAdd(slot2.item)) return false;
-            Item temp = slot1.item;
-            slot1.item = slot2.item;
-            slot2.item = temp;
+            Item toSlot1 = slot2.TakeOutItem();
+            Item toSlot2 = slot1.TakeOutItem();
+            slot1.Add(toSlot1);
+            slot2.Add(toSlot2);
             return true;
         }
     }
