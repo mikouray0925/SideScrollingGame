@@ -2463,7 +2463,7 @@ GameObject:
   - component: {fileID: 372098882}
   - component: {fileID: 372098881}
   m_Layer: 0
-  m_Name: Text
+  m_Name: Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6557,6 +6557,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1293605974}
+  - component: {fileID: 1293605975}
   m_Layer: 0
   m_Name: ValueDisplayer
   m_TagString: Untagged
@@ -6589,6 +6590,23 @@ RectTransform:
   m_AnchoredPosition: {x: 32.0355, y: -0.1269989}
   m_SizeDelta: {x: -79.9289, y: -15.9748}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1293605975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293605973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea9d0686ee271147b778fc7c4ffa611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthText: {fileID: 372098881}
+  speedText: {fileID: 1677517736}
+  attackText: {fileID: 1691207508}
+  protectionText: {fileID: 630581157}
+  cooldownText: {fileID: 147806902}
 --- !u!1 &1297014782
 GameObject:
   m_ObjectHideFlags: 0
@@ -6781,7 +6799,7 @@ MonoBehaviour:
   currentGame: {fileID: 0}
   playerHUD: {fileID: 849076656}
   playerInfoPages: {fileID: 576027427}
-  heroValDisplayer: {fileID: 0}
+  heroValDisplayer: {fileID: 1293605975}
   joystick: {fileID: 1779988446}
   optionMenu: {fileID: 1550717727}
   playerPrefab: {fileID: 12529972197755015, guid: 4e5555d1efe3e4c4283105fe84026329, type: 3}
