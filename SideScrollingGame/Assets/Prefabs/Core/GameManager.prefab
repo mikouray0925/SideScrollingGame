@@ -140,7 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 275ff1ea8bb42534f8147f17f8cadcd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
+  mainCamFollow: {fileID: 0}
+  heroCloseupCamFollow: {fileID: 0}
   _objectPool: {fileID: 1814583627}
   _impactEffectHolder: {fileID: 1230215795}
   _itemDropHolder: {fileID: 136773369933024500}

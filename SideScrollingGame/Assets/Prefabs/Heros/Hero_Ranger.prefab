@@ -1242,6 +1242,9 @@ MonoBehaviour:
   inventory: {fileID: 4558682214838516199}
   picker: {fileID: 5546066836231709932}
   dropper: {fileID: 7078877189602276816}
+  speedData: {fileID: 467025731865759406}
+  damageData: {fileID: 467025731746857701}
+  cooldownSpeedMultiplier: {fileID: 467025732645923558}
 --- !u!114 &4558682214838516199
 MonoBehaviour:
   m_ObjectHideFlags: 0

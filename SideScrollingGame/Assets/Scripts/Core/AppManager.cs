@@ -18,9 +18,10 @@ public class AppManager : MonoBehaviour
     [SerializeField] GlobalSettings globalSettings;
     public GameManager currentGame;
 
-    [Header ("UI Canvas")]
+    [Header ("UI")]
     public PlayerHUD playerHUD;
     public InterfaceUI playerInfoPages;
+    public HeroValueDisplayer heroValDisplayer;
     public InterfaceUI joystick;
     public InterfaceUI optionMenu;
 
@@ -90,7 +91,8 @@ public class AppManager : MonoBehaviour
                 if (localPlayer.heroController.bindingHero == null) {
                     SceneController.instance.objNeedToKeep.Add(value.gameObject);
                     localPlayer.heroController.Bind(value);
-                    // playerHUD.Bind(value);
+                    playerHUD.Bind(value);
+                    heroValDisplayer.Bind(value);
                 } else {
                     Debug.LogError("Local player has already binded a hero.");
                 }        
@@ -103,6 +105,7 @@ public class AppManager : MonoBehaviour
     public void UnbindLocalHero() {
         SceneController.instance.objNeedToKeep.Remove(LocalHero.gameObject);
         if (playerHUD.bindingHero == LocalHero) playerHUD.Unbind();
+        if (heroValDisplayer.bindingHero == LocalHero) heroValDisplayer.Unbind();
         localPlayer.heroController.Unbind();
     }
 

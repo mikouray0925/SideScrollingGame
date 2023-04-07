@@ -15,4 +15,9 @@ public class HeroBrain : MonoBehaviour
     public Inventory inventory;
     public ItemPicker picker;
     public ItemDropper dropper;
+
+    [Header ("Data")]
+    public SpeedData speedData;
+    public DamageData damageData;
+    public CombinedMultiplier cooldownSpeedMultiplier;
 }

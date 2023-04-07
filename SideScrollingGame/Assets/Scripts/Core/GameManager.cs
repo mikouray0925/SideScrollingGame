@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     public Transform itemDropHolder {get; private set;}
 
     [Header ("References")]
-    [SerializeField] private Transform mainCamera;
+    [SerializeField] private CameraFollow mainCamFollow;
+    [SerializeField] private CameraFollow heroCloseupCamFollow;
     [SerializeField] private Transform _objectPool;
     [SerializeField] private Transform _impactEffectHolder;
     [SerializeField] private Transform _itemDropHolder;
@@ -29,7 +30,8 @@ public class GameManager : MonoBehaviour
             if (AppManager.instance.localPlayer && 
                 AppManager.instance.localPlayer.heroController.IsBinded()) {
                 AppManager.instance.localPlayer.heroController.SetHeroPosTo(heroSpawnPos);
-                AppManager.instance.localPlayer.heroController.MakeCameraFollowHero(mainCamera.GetComponent<CameraFollow>());
+                AppManager.instance.localPlayer.heroController.MakeCameraFollowHero(mainCamFollow);
+                AppManager.instance.localPlayer.heroController.MakeCameraFollowHero(heroCloseupCamFollow);
                 print("Successfully spawn hero.");
             }
             else {

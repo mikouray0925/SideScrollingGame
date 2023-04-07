@@ -58,6 +58,12 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
+    private void OnDestroy() {
+        if (InventoryUI.instance.bindingInventory == this) {
+            InventoryUI.instance.Unbind();
+        }
+    }
+
     public class ItemSlot {
         public int index {get; private set;}
         private Item item = null;

@@ -32,7 +32,6 @@ public class HeroSelectionBox : MonoBehaviour
                 GameObject heroObj = Instantiate(heroPrefab);
                 HeroBrain hero = heroObj.GetComponent<HeroBrain>();
                 AppManager.instance.LocalHero = hero;
-                AppManager.instance.playerHUD.Bind(hero);
                 AppManager.instance.PlayGameLevel("Level1");
             } else {
                 if (!AppManager.instance) 

@@ -16,10 +16,10 @@ public class CursorItemSlot : MonoBehaviour
     
     public Inventory.ItemSlot Slot {
         get {
-            if (InventoryUI.instance && InventoryUI.instance.IsActive) {    
+            if (InventoryUI.instance) {    
                 return slot;
             } else {
-                Debug.LogError("Cannot access CursorItemSlot when InventoryUI is not active.");
+                Debug.LogError("The instance of CursorItemSlot is not set yet.");
                 return null;
             }
         }
