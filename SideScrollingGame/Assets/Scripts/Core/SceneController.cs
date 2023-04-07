@@ -42,9 +42,10 @@ public class SceneController : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         while (!asyncLoad.isDone) {
-            loadingScreen.progressSlider.value = asyncLoad.progress;
+            loadingScreen.progress = asyncLoad.progress;
             yield return null;
         }
+        loadingScreen.progress = 1f;
 
         Scene nextScene = SceneManager.GetSceneByName(sceneName);
         SceneManager.MoveGameObjectToScene(core, nextScene);
@@ -57,6 +58,9 @@ public class SceneController : MonoBehaviour
 
         SceneManager.UnloadSceneAsync(currentScene);
         isChangingScene = false;
-        if (showLoadingScreen) loadingScreen.Hide();
+        if (showLoadingScreen) {
+            while (!loadingScreen.SliderReachProgress) yield return null;
+            loadingScreen.Hide();
+        }
     }
 }

@@ -40,10 +40,10 @@ public class HeroController : MonoBehaviour
         input.actions["NormalAttack"].started  += cxt => hero.normalAttack.UnleashNormalAttack();
         input.actions["NormalAttack"].canceled += cxt => hero.normalAttack.ButtonReleaseAction();
 
-        input.actions["Ability1"].started  += cxt => hero.ability1.UnleashAbility1();
-        input.actions["Ability1"].canceled += cxt => hero.ability1.ButtonReleaseAction();
-        input.actions["Ability2"].started  += cxt => hero.ability2.UnleashAbility2();
-        input.actions["Ability2"].canceled += cxt => hero.ability2.ButtonReleaseAction();
+        input.actions["Ability1"].started  += Ability1Action;
+        input.actions["Ability1"].canceled += Ability1Action;
+        input.actions["Ability2"].started  += Ability2Action;
+        input.actions["Ability2"].canceled += Ability2Action;
 
         input.actions["PickItemDrop"].started += cxt => hero.picker.PickNearestItem();
         
@@ -60,11 +60,23 @@ public class HeroController : MonoBehaviour
         input.actions["NormalAttack"].started  -= cxt => bindingHero.normalAttack.UnleashNormalAttack();
         input.actions["NormalAttack"].canceled -= cxt => bindingHero.normalAttack.ButtonReleaseAction();
 
-        input.actions["Ability1"].started  -= cxt => bindingHero.ability1.UnleashAbility1();
-        input.actions["Ability1"].canceled -= cxt => bindingHero.ability1.ButtonReleaseAction();
-        input.actions["Ability2"].started  -= cxt => bindingHero.ability2.UnleashAbility2();
-        input.actions["Ability2"].canceled -= cxt => bindingHero.ability2.ButtonReleaseAction();
+        input.actions["Ability1"].started  -= Ability1Action;
+        input.actions["Ability1"].canceled -= Ability1Action;
+        input.actions["Ability2"].started  -= Ability2Action;
+        input.actions["Ability2"].canceled -= Ability2Action;
+
+        input.actions["PickItemDrop"].started -= cxt => bindingHero.picker.PickNearestItem();
 
         bindingHero = null;
+    }
+
+    private void Ability1Action(InputAction.CallbackContext ctx) {
+        if (ctx.started) bindingHero.ability1.UnleashAbility1();
+        else if (ctx.canceled) bindingHero.ability1.ButtonReleaseAction();
+    }
+
+    private void Ability2Action(InputAction.CallbackContext ctx) {
+        if (ctx.started) bindingHero.ability2.UnleashAbility2();
+        else if (ctx.canceled) bindingHero.ability2.ButtonReleaseAction();
     }
 }
