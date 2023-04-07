@@ -308,17 +308,21 @@ PrefabInstance:
       propertyPath: onRightClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3451375726596478191, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: hideSlotImgIfNotEmpty
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Ring1
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1139,7 +1143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640bb70522a91614fa4c61fcce2ecbcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 100796404}
+  iconImg: {fileID: 100796404}
+  slotImg: {fileID: 0}
+  hideSlotImgIfNotEmpty: 0
 --- !u!114 &100796404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1857,17 +1863,21 @@ PrefabInstance:
       propertyPath: onRightClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3451375726596478191, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: hideSlotImgIfNotEmpty
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Shoes
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2917,17 +2927,21 @@ PrefabInstance:
       propertyPath: onRightClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3451375726596478191, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: hideSlotImgIfNotEmpty
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Leggings
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -4886,17 +4900,21 @@ PrefabInstance:
       propertyPath: onRightClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3451375726596478191, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: hideSlotImgIfNotEmpty
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Helmet
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -5254,6 +5272,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   progressSlider: {fileID: 1994349214}
+  progress: 0
+  dampingTime: 0.2
 --- !u!1 &873524308
 GameObject:
   m_ObjectHideFlags: 0
@@ -5670,17 +5690,21 @@ PrefabInstance:
       propertyPath: onRightClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3451375726596478191, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: hideSlotImgIfNotEmpty
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Wristband1
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -6893,17 +6917,21 @@ PrefabInstance:
       propertyPath: onRightClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3451375726596478191, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: hideSlotImgIfNotEmpty
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: ChestPlate
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -7408,17 +7436,21 @@ PrefabInstance:
       propertyPath: onRightClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3451375726596478191, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: hideSlotImgIfNotEmpty
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Necklace
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -9341,17 +9373,21 @@ PrefabInstance:
       propertyPath: onRightClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3451375726596478191, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: hideSlotImgIfNotEmpty
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Ring3
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -10482,17 +10518,21 @@ PrefabInstance:
       propertyPath: onRightClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3451375726596478191, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: hideSlotImgIfNotEmpty
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Ring2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -10840,17 +10880,21 @@ PrefabInstance:
       propertyPath: onRightClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3451375726596478191, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
+      propertyPath: hideSlotImgIfNotEmpty
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4011868703197063110, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_Name
       value: Wristband2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6134330225425750079, guid: 367806198a254b74c91ce2f4c5701789, type: 3}
       propertyPath: m_AnchoredPosition.x

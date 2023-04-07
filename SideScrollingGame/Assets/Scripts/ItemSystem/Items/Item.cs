@@ -71,6 +71,8 @@ public class Item : ScriptableObject
 
     public virtual void OnPutOnByHero(HeroBrain wearer) {}
 
+    public virtual void BeingWornByHeroUpdate(HeroBrain wearer, float deltaTime) {}
+
     public virtual void OnTakenOffFromHero(HeroBrain wearer) {}
 
     public static bool IsUsable(Item item) {

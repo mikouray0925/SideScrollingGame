@@ -9,9 +9,28 @@ public class ItemDrop : MonoBehaviour
     [SerializeField] Image img;
     public Rigidbody2D rb {get; private set;}
 
+    [Header ("Floating")]
+    [SerializeField] RectTransform iconRect;
+    [SerializeField] bool doFloating;
+    [SerializeField] float floatingVelocity;
+    [SerializeField] float gravity;
+    private float currentVelocity;
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
     }
+
+    private void Update() {
+        if (doFloating && iconRect) {
+            Vector3 pos = iconRect.localPosition;
+            if (pos.y <= 0) {
+                currentVelocity = floatingVelocity;
+            }
+            currentVelocity += gravity * Time.deltaTime;
+            pos.y += currentVelocity * Time.deltaTime;
+            iconRect.localPosition = pos;
+        }
+    } 
 
     public static ItemDrop SpawnItemDrop(Item _item, Vector3 pos) {
         GameObject dropObj = Instantiate(

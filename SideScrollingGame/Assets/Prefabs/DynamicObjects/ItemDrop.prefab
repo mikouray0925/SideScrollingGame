@@ -172,6 +172,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   img: {fileID: 5050156300510635734}
+  iconRect: {fileID: 5050156301942565561}
+  doFloating: 1
+  floatingVelocity: 1.1
+  gravity: -3
 --- !u!1 &5050156301942565560
 GameObject:
   m_ObjectHideFlags: 0

@@ -305,7 +305,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640bb70522a91614fa4c61fcce2ecbcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1576312767942091519}
+  iconImg: {fileID: 1576312767942091519}
+  slotImg: {fileID: 6692138803582905172}
+  hideSlotImgIfNotEmpty: 0
 --- !u!114 &1728677119773291633
 MonoBehaviour:
   m_ObjectHideFlags: 0

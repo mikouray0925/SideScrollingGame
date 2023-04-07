@@ -30,6 +30,12 @@ public class Inventory : MonoBehaviour
         InventoryUI.instance.Bind(this);
     }
 
+    private void Update() {
+        for (int i = 0; i < wearableItems.Length; i++) {
+            slots[i].UpdateWearingItem(Time.deltaTime);
+        }
+    }
+
     public int QuickSlotsStartIndex {
         get {
             return wearableItems.Length;
@@ -66,7 +72,7 @@ public class Inventory : MonoBehaviour
 
     public class ItemSlot {
         public int index {get; private set;}
-        private Item item = null;
+        protected Item item = null;
         public delegate void ItemOperation(Item i);
         public ItemOperation onItemEnter;
         public ItemOperation onItemLeave;
@@ -134,6 +140,8 @@ public class Inventory : MonoBehaviour
             }
         }
 
+        public virtual void UpdateWearingItem(float deltaTime) {}
+
         public static bool MoveItem(ItemSlot src, ItemSlot dest) {
             if (src.Empty() || !dest.Empty()) return false;
             if (dest.AbleToAdd(src.item)) {
@@ -177,6 +185,11 @@ public class Inventory : MonoBehaviour
 
         private void CallItemTakenOffEvent(Item item) {
             item.OnTakenOffFromHero(onHero);
+        }
+
+        public override void UpdateWearingItem(float deltaTime) {
+            if (Empty()) return;
+            item.BeingWornByHeroUpdate(onHero, deltaTime);
         }
     }
 }

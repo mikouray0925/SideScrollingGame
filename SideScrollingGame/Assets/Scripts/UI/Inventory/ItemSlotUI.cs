@@ -5,16 +5,24 @@ using UnityEngine.UI;
 
 public class ItemSlotUI : MonoBehaviour
 {
-    [SerializeField] Image img;
+    [SerializeField] Image iconImg;
+    [SerializeField] Image slotImg;
+    [SerializeField] bool hideSlotImgIfNotEmpty;
     public Inventory.ItemSlot displayingSlot = null;
 
     private void LateUpdate() {
         if (displayingSlot != null) {
             if (!displayingSlot.Empty()) {
-                img.enabled = true;
-                img.sprite = displayingSlot.ItemIcon;
+                iconImg.enabled = true;
+                iconImg.sprite = displayingSlot.ItemIcon;
+
+                if (slotImg && hideSlotImgIfNotEmpty) slotImg.enabled = false;
+                else if (slotImg) slotImg.enabled = true;
             } else {
-                img.enabled = false;
+                iconImg.enabled = false;
+                
+                if (slotImg && hideSlotImgIfNotEmpty) slotImg.enabled = true;
+                else if (slotImg) slotImg.enabled = true;
             }
         }
     }
