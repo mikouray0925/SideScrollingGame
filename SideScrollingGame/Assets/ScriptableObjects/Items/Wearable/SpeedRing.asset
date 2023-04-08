@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: SpeedRing
   m_EditorClassIdentifier: 
   id: 0
-  itemName: AttackRing
+  itemName: SpeedRing
   description: 
-  icon: {fileID: -1846333448, guid: f7dd0d4c0b14e11499f65ffc79b443e5, type: 3}
+  icon: {fileID: 1881970728, guid: f7dd0d4c0b14e11499f65ffc79b443e5, type: 3}
   usable: 1
   wearable: 1
   type: 6
@@ -23,8 +23,8 @@ MonoBehaviour:
     _serializedList: []
   floatData:
     _serializedList:
-    - Key: damageMultiplier
-      Value: 1.1
+    - Key: speedMultiplier
+      Value: 1.2
   intData:
     _serializedList: []
   stringData:
