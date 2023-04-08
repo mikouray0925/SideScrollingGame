@@ -74,6 +74,11 @@ public class Health : MonoBehaviour
         Hp += val;
     }
 
+    public void ScaleHealth(float scaler) {
+        maxHealth *= scaler;
+        currentHealth *= scaler;
+    }
+
     #region Damage
 
     //|=======================================================
