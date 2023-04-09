@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [Header ("References")]
     [SerializeField] private CameraFollow mainCamFollow;
     [SerializeField] private CameraFollow heroCloseupCamFollow;
+    [SerializeField] private CameraFollow reflectCamFollow;
     [SerializeField] private Transform _objectPool;
     [SerializeField] private Transform _impactEffectHolder;
     [SerializeField] private Transform _itemDropHolder;
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
                 AppManager.instance.localPlayer.heroController.SetHeroPosTo(heroSpawnPos);
                 AppManager.instance.localPlayer.heroController.MakeCameraFollowHero(mainCamFollow);
                 AppManager.instance.localPlayer.heroController.MakeCameraFollowHero(heroCloseupCamFollow);
+                AppManager.instance.localPlayer.heroController.MakeCameraFollowHero(reflectCamFollow);
                 print("Successfully spawn hero.");
             }
             else {

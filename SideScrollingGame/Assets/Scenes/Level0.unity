@@ -284,8 +284,6 @@ MonoBehaviour:
   valueSlider: {fileID: 567626874}
   dampSlider: {fileID: 1723845590}
   dampingTime: 0.8
-  isDamping: 0
-  dampingVelocity: 0
 --- !u!114 &84604330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1489,7 +1487,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &713736711
 GameObject:
@@ -1676,7 +1674,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &803394135
 GameObject:
@@ -2091,8 +2089,6 @@ MonoBehaviour:
   valueSlider: {fileID: 105702838}
   dampSlider: {fileID: 1700685105}
   dampingTime: 0.8
-  isDamping: 0
-  dampingVelocity: 0
 --- !u!114 &965032006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2375,7 +2371,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1176446908
 GameObject:
@@ -2813,7 +2809,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1433126881
 GameObject:
@@ -2975,8 +2971,6 @@ MonoBehaviour:
   valueSlider: {fileID: 1048227605}
   dampSlider: {fileID: 1966716875}
   dampingTime: 0.8
-  isDamping: 0
-  dampingVelocity: 0
 --- !u!114 &1474383181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3188,8 +3182,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageData: {fileID: 1512461083}
-  cdData: {fileID: 1512461082}
-  attackCD: 2
+  attackCD: {fileID: 0}
+  anim: {fileID: 0}
+  attackClipName: 
   overlap: {fileID: 447657093}
 --- !u!114 &1512461082
 MonoBehaviour:
@@ -3219,9 +3214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  damageMultiplier: 1
-  damageMultipliers:
-    _serializedList: []
+  multiplier: {fileID: 0}
 --- !u!114 &1512461084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3236,24 +3229,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizInput: 0
   vertiInput: 0
-  lockMovement: 0
+  speedData: {fileID: 0}
+  acceleration: 7
+  accelerationPow: 1
+  maxMovingForce: 0
+  airMovementMultiplier: 0
   groundCheckboxOffset: {x: -0.1, y: 2}
   groundCheckboxSize: {x: 0.64, y: 0.03}
   drawGroundCheckbox: 1
-  avoidGrounded: 0
-  movementSpeed: 6
-  speedMultiplier: 1
-  acceleration: 7
-  accelerationPow: 1
+  isGrounded_debug: 0
   jumpForce: {x: 0, y: 0}
   gravityScale: 0
   fallingGravityMultiplier: 0
-  jumpCutApplied: 0
   avoidGroundedTime: 0
   rollingForce: 0
   rollingCD: 0
-  rollingIsInCD: 0
+  rollingClipName: 
+  health: {fileID: 0}
   canvasTransform: {fileID: 808052050}
+  movementLock: {fileID: 0}
 --- !u!114 &1512461085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3267,7 +3261,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1512461086}
-  centerPoint: {fileID: 1751048520}
+  impactPointHolder: {fileID: 0}
+  centerType: 0
+  centerReplacement: {fileID: 0}
 --- !u!114 &1512461086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3285,6 +3281,9 @@ MonoBehaviour:
   lifeRemain: 1
   rebornPercentage: 0
   isInvincible: 0
+  protection: {fileID: 0}
+  destroyDelay: 0
+  impactPointHolders: []
 --- !u!95 &1512461087
 Animator:
   serializedVersion: 4
@@ -3498,8 +3497,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageData: {fileID: 1517244602}
-  cdData: {fileID: 1517244601}
-  attackCD: 2
+  attackCD: {fileID: 0}
+  anim: {fileID: 0}
+  attackClipName: 
   overlap: {fileID: 1777421724}
 --- !u!114 &1517244601
 MonoBehaviour:
@@ -3529,9 +3529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  damageMultiplier: 1
-  damageMultipliers:
-    _serializedList: []
+  multiplier: {fileID: 0}
 --- !u!114 &1517244603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3546,24 +3544,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizInput: 0
   vertiInput: 0
-  lockMovement: 0
+  speedData: {fileID: 0}
+  acceleration: 7
+  accelerationPow: 1
+  maxMovingForce: 0
+  airMovementMultiplier: 0
   groundCheckboxOffset: {x: -0.1, y: 2}
   groundCheckboxSize: {x: 0.64, y: 0.03}
   drawGroundCheckbox: 1
-  avoidGrounded: 0
-  movementSpeed: 6
-  speedMultiplier: 1
-  acceleration: 7
-  accelerationPow: 1
+  isGrounded_debug: 0
   jumpForce: {x: 0, y: 0}
   gravityScale: 0
   fallingGravityMultiplier: 0
-  jumpCutApplied: 0
   avoidGroundedTime: 0
   rollingForce: 0
   rollingCD: 0
-  rollingIsInCD: 0
+  rollingClipName: 
+  health: {fileID: 0}
   canvasTransform: {fileID: 64776273}
+  movementLock: {fileID: 0}
 --- !u!114 &1517244604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3577,7 +3576,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1517244605}
-  centerPoint: {fileID: 1602868137}
+  impactPointHolder: {fileID: 0}
+  centerType: 0
+  centerReplacement: {fileID: 0}
 --- !u!114 &1517244605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3595,6 +3596,9 @@ MonoBehaviour:
   lifeRemain: 1
   rebornPercentage: 0
   isInvincible: 0
+  protection: {fileID: 0}
+  destroyDelay: 0
+  impactPointHolders: []
 --- !u!95 &1517244606
 Animator:
   serializedVersion: 4
@@ -4026,8 +4030,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageData: {fileID: 1687925640}
-  cdData: {fileID: 1687925639}
-  attackCD: 2
+  attackCD: {fileID: 0}
+  anim: {fileID: 0}
+  attackClipName: 
   overlap: {fileID: 1817133836}
 --- !u!114 &1687925639
 MonoBehaviour:
@@ -4057,9 +4062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  damageMultiplier: 1
-  damageMultipliers:
-    _serializedList: []
+  multiplier: {fileID: 0}
 --- !u!114 &1687925641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4074,24 +4077,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizInput: 0
   vertiInput: 0
-  lockMovement: 0
+  speedData: {fileID: 0}
+  acceleration: 7
+  accelerationPow: 1
+  maxMovingForce: 0
+  airMovementMultiplier: 0
   groundCheckboxOffset: {x: -0.1, y: 2}
   groundCheckboxSize: {x: 0.64, y: 0.03}
   drawGroundCheckbox: 1
-  avoidGrounded: 0
-  movementSpeed: 6
-  speedMultiplier: 1
-  acceleration: 7
-  accelerationPow: 1
+  isGrounded_debug: 0
   jumpForce: {x: 0, y: 0}
   gravityScale: 0
   fallingGravityMultiplier: 0
-  jumpCutApplied: 0
   avoidGroundedTime: 0
   rollingForce: 0
   rollingCD: 0
-  rollingIsInCD: 0
+  rollingClipName: 
+  health: {fileID: 0}
   canvasTransform: {fileID: 1760842404}
+  movementLock: {fileID: 0}
 --- !u!114 &1687925642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4105,7 +4109,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1687925643}
-  centerPoint: {fileID: 1213971800}
+  impactPointHolder: {fileID: 0}
+  centerType: 0
+  centerReplacement: {fileID: 0}
 --- !u!114 &1687925643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4123,6 +4129,9 @@ MonoBehaviour:
   lifeRemain: 1
   rebornPercentage: 0
   isInvincible: 0
+  protection: {fileID: 0}
+  destroyDelay: 0
+  impactPointHolders: []
 --- !u!95 &1687925644
 Animator:
   serializedVersion: 4
@@ -5340,7 +5349,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5036499522256098038
 PrefabInstance:
