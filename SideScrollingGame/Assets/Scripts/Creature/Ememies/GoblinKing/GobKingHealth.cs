@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoarHealth : Health
+public class GobKingHealth : Health
 {
-    [SerializeField] float destroyDelay;
     [SerializeField] Transform[] impactPointHolders;
     
     Collider2D col;
     Rigidbody2D rb;
     Animator anim;
     Movement movement;
-    BoarBehavior behavior;
+    GobKingBehavior behavior;
     
     private void Awake() {
         col  = GetComponent<Collider2D>();
@@ -19,12 +18,12 @@ public class BoarHealth : Health
         rend = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         movement = GetComponent<Movement>();
-        behavior = GetComponent<BoarBehavior>();
+        behavior = GetComponent<GobKingBehavior>();
     }
 
     private void OnLifeNumBecomeZero() {
         anim.SetTrigger("die");
-        //behavior.enabled = false;
+        behavior.enabled = false;
         movement.horizInput = 0;
         movement.Brake();
         movement.enabled = false;
@@ -37,11 +36,6 @@ public class BoarHealth : Health
                 Destroy(t.gameObject);
             }   
         }
-        DestroyThis();
-    }
-
-    public void DestroyThis() {
-        Destroy(gameObject, destroyDelay);
     }
 
     protected override void ProcessDamage(Damage damageInfo, out float finalDamageVal) {
