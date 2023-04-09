@@ -21,6 +21,9 @@ MonoBehaviour:
   _creatureLayers:
     serializedVersion: 2
     m_Bits: 384
+  _playerLayers:
+    serializedVersion: 2
+    m_Bits: 128
   _enemyLayers:
     serializedVersion: 2
     m_Bits: 256

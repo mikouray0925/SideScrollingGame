@@ -8,6 +8,7 @@ public class GlobalSettings : ScriptableObject
     public static LayerMask groundLayers {get; private set;}
     public static LayerMask obstacleLayers {get; private set;}
     public static LayerMask creatureLayers {get; private set;}
+    public static LayerMask playerLayers {get; private set;}
     public static LayerMask enemyLayers {get; private set;}
     public static LayerMask itemDropLayers {get; private set;}
     public static LayerMask projectileLayers {get; private set;}
@@ -15,6 +16,7 @@ public class GlobalSettings : ScriptableObject
     [SerializeField] private LayerMask _groundLayers;
     [SerializeField] private LayerMask _obstacleLayers;
     [SerializeField] private LayerMask _creatureLayers;
+    [SerializeField] private LayerMask _playerLayers;
     [SerializeField] private LayerMask _enemyLayers;
     [SerializeField] private LayerMask _itemDropLayers;
     [SerializeField] private LayerMask _projectileLayers;
@@ -28,6 +30,7 @@ public class GlobalSettings : ScriptableObject
         groundLayers = _groundLayers;
         obstacleLayers = _obstacleLayers;
         creatureLayers = _creatureLayers;
+        playerLayers = _playerLayers;
         enemyLayers = _enemyLayers;
         itemDropLayers = _itemDropLayers;
         projectileLayers = _projectileLayers;
