@@ -46,6 +46,10 @@ public class HeroController : MonoBehaviour
         input.actions["Ability2"].canceled += Ability2Action;
 
         input.actions["PickItemDrop"].started += cxt => hero.picker.PickNearestItem();
+        input.actions["QuickSlot1"].started += cxt => hero.inventory.UseQuickSlotItem(0);
+        input.actions["QuickSlot2"].started += cxt => hero.inventory.UseQuickSlotItem(1);
+        input.actions["QuickSlot3"].started += cxt => hero.inventory.UseQuickSlotItem(2);
+        input.actions["QuickSlot4"].started += cxt => hero.inventory.UseQuickSlotItem(3);
         
         bindingHero = hero;
     }

@@ -8,6 +8,7 @@ public class PlayerHUD : InterfaceUI
     [SerializeField] HealthBar healthBar;
     [SerializeField] AttackInfoDisplay ability1;
     [SerializeField] AttackInfoDisplay ability2;
+    public ItemSlotUI[] quickSlots;
     
     public HeroBrain bindingHero {get; private set;}
 

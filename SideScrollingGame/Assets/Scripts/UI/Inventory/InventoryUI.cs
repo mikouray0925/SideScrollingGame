@@ -30,6 +30,11 @@ public class InventoryUI : Page
             quickSlots[i].displayingSlot = inventory.slots[inventory.QuickSlotsStartIndex + i];
         }
 
+        ItemSlotUI[] quickSlotsInHUD = AppManager.instance.playerHUD.quickSlots;
+        for (int i = 0; i < quickSlotsInHUD.Length && i < inventory.QuickSlotNum; i++) {
+            quickSlotsInHUD[i].displayingSlot = inventory.slots[inventory.QuickSlotsStartIndex + i];
+        }
+
         // Bind scroller side
         for (int i = inventory.ScrollerStartIndex; i < inventory.slots.Count; i++) {
             GameObject slotObj = Instantiate(slotPrefeb_Scroller, slotHolder_Scroller);

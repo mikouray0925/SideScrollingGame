@@ -64,6 +64,13 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
+    public void UseQuickSlotItem(int index) {
+        if (index < 0 || index >= QuickSlotNum) return;
+        if (onHero && !slots[QuickSlotsStartIndex + index].Empty()) {
+            Item.HeroUseItem(onHero, slots[QuickSlotsStartIndex + index]);
+        }
+    }
+
     private void OnDestroy() {
         if (InventoryUI.instance.bindingInventory == this) {
             InventoryUI.instance.Unbind();
