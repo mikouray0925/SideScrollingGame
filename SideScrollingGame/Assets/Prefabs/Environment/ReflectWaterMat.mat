@@ -78,7 +78,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _PixelSize: 10
+    - _PixelSize: 1
     - _Pre_Pixelated: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -87,8 +87,8 @@ Material:
     - _ZWrite: 1
     - _isToggled: 0
     - _opacity: 0.02
-    - _scale: 3
-    - _speed: 5
+    - _scale: 6
+    - _speed: 1
     m_Colors:
     - _BlendColor: {r: 0, g: 0.38835284, b: 0.7075472, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

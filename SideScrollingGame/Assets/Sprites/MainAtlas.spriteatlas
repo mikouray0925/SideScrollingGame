@@ -45,13 +45,11 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: dd7e75c54308b3644a336e43301fe671, type: 3}
-    - {fileID: 21300000, guid: b1b735400de3ae94b89d915bfd13f9e2, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: b1b735400de3ae94b89d915bfd13f9e2, type: 3}
   - {fileID: -358958416, guid: dd7e75c54308b3644a336e43301fe671, type: 3}
   - {fileID: -1858095061, guid: dd7e75c54308b3644a336e43301fe671, type: 3}
   - {fileID: -1740677427, guid: dd7e75c54308b3644a336e43301fe671, type: 3}
@@ -517,7 +515,6 @@ SpriteAtlas:
   - {fileID: 2098538248, guid: dd7e75c54308b3644a336e43301fe671, type: 3}
   - {fileID: -1724882939, guid: dd7e75c54308b3644a336e43301fe671, type: 3}
   m_PackedSpriteNamesToIndex:
-  - Background
   - Tiles_206
   - Tiles_270
   - Tiles_266

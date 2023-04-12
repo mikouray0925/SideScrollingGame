@@ -30,6 +30,8 @@ Shader "Custom/NewSurfaceShader"{
                 }
                 fixed4 frag(v2f i) :COLOR
                 {
+
+                    i.uv.x = i.uv.x * 2 - _Time.x * 0.1;
                     fixed4 sum = fixed4(0.0, 0.0, 0.0, 0.0);
                     sum += tex2D(_bg, half2(i.uv.x - _bg_blur_param, i.uv.y - _bg_blur_param));
                     sum += tex2D(_bg, half2(i.uv.x - _bg_blur_param, i.uv.y));
