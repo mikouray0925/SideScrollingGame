@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 80259490}
   - component: {fileID: 80259489}
   m_Layer: 0
-  m_Name: Quad
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4734,7 +4734,7 @@ GameObject:
   - component: {fileID: 490711458}
   - component: {fileID: 490711457}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: WaterReflection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6501,7 +6501,7 @@ GameObject:
   - component: {fileID: 2110361660}
   - component: {fileID: 2110361659}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: Minimap Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
