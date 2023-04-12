@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5444853249121978748}
   - component: {fileID: 1350436203942369226}
   - component: {fileID: 6385310341003380842}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Boarder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1867004820367692386}
   - component: {fileID: 7120618478078958642}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: DampSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 7763348547401522519}
   - component: {fileID: 624545141857464413}
   - component: {fileID: 5948738187729995262}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 7739833911069402044}
   - component: {fileID: 4144212091662149128}
   - component: {fileID: 2152868346610568153}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Gray
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -744,7 +744,7 @@ GameObject:
   - component: {fileID: 6255047302103315526}
   - component: {fileID: 8964297867288576444}
   - component: {fileID: 9029589301569060938}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -941,7 +941,7 @@ GameObject:
   - component: {fileID: 2469379906954070179}
   - component: {fileID: 190960491302772177}
   - component: {fileID: 2234508964005062723}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1222,7 +1222,7 @@ GameObject:
   - component: {fileID: 219523568359071318}
   - component: {fileID: 5579503730067600882}
   - component: {fileID: 7047739845974115469}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Boarder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1298,7 +1298,7 @@ GameObject:
   - component: {fileID: 1457738073110081401}
   - component: {fileID: 8918342890402659374}
   - component: {fileID: 4324973329714734730}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Boarder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1436,7 +1436,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7405697478224700572}
   - component: {fileID: 7175028358508792070}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: ValueSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1526,7 +1526,7 @@ GameObject:
   - component: {fileID: 3468301862093281682}
   - component: {fileID: 7479258146421033820}
   - component: {fileID: 8597583753511714414}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Boarder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

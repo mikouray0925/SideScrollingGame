@@ -231,7 +231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7399218279372336676}
   - component: {fileID: 7399218279372336675}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: ValueSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 7399218280057494752}
   - component: {fileID: 7399218280057494782}
   - component: {fileID: 7399218280057494783}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Boarder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 7399218280074897871}
   - component: {fileID: 7399218280074897870}
   - component: {fileID: 7399218280074897869}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -558,7 +558,7 @@ GameObject:
   - component: {fileID: 7399218280078576354}
   - component: {fileID: 7399218280078576352}
   - component: {fileID: 7399218280078576353}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Boarder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -772,7 +772,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7399218280391082364}
   - component: {fileID: 7399218280391082363}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: DampSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -862,7 +862,7 @@ GameObject:
   - component: {fileID: 7399218280454431474}
   - component: {fileID: 7399218280454431472}
   - component: {fileID: 7399218280454431473}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Gray
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -939,7 +939,7 @@ GameObject:
   - component: {fileID: 7399218280487686304}
   - component: {fileID: 7399218280487686305}
   - component: {fileID: 7399218280487686306}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1371,7 +1371,7 @@ GameObject:
   - component: {fileID: 7399218281053593285}
   - component: {fileID: 7399218281053593283}
   - component: {fileID: 7399218281053593284}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Boarder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1528,7 +1528,7 @@ GameObject:
   - component: {fileID: 7399218281147336119}
   - component: {fileID: 7399218281147336117}
   - component: {fileID: 7399218281147336118}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Boarder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1654,7 +1654,7 @@ GameObject:
   - component: {fileID: 7399218281418218968}
   - component: {fileID: 7399218281418218966}
   - component: {fileID: 7399218281418218967}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
