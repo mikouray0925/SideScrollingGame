@@ -87,7 +87,7 @@ Material:
     - _ZWrite: 1
     - _isToggled: 0
     - _opacity: 0.038
-    - _scale: 6
+    - _scale: 1
     - _speed: 1
     m_Colors:
     - _BlendColor: {r: 0.06915272, g: 0.5964773, b: 0.6981132, a: 1}

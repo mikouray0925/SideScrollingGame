@@ -4626,101 +4626,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7399218280927256369, guid: 4e03fa2b8cf852749aec4d8012ace0ec, type: 3}
   m_PrefabInstance: {fileID: 272183558}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &484356435
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 484356438}
-  - component: {fileID: 484356437}
-  - component: {fileID: 484356436}
-  - component: {fileID: 484356439}
-  m_Layer: 0
-  m_Name: Minimap
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!23 &484356436
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 484356435}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: d1babb883766ed3469240b1820ed37bd, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &484356437
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 484356435}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &484356438
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 484356435}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.19, y: 5.73, z: -14.45}
-  m_LocalScale: {x: 9.451486, y: 4.69002, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!210 &484356439
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 484356435}
-  m_Enabled: 1
-  m_SortingLayerID: -1795882547
-  m_SortingLayer: 1
-  m_SortingOrder: 0
 --- !u!1 &490711456
 GameObject:
   m_ObjectHideFlags: 0
@@ -4864,8 +4769,6 @@ GameObject:
   m_Component:
   - component: {fileID: 748814506}
   - component: {fileID: 748814510}
-  - component: {fileID: 748814508}
-  - component: {fileID: 748814507}
   - component: {fileID: 748814511}
   m_Layer: 0
   m_Name: Reflect Camera
@@ -4889,39 +4792,6 @@ Transform:
   m_Father: {fileID: 709915608}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &748814507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 748814505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be8623e5759e1ce40b118b297f975b92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &748814508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 748814505}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72300297abf9d9d40812741912b62d72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  followingTarget: {fileID: 0}
-  offsetFromTarget: {x: 0, y: -5}
-  wayOfFollowing: 1
-  smoothTime: 0.2
-  positionLock: {fileID: 748814507}
-  minX: -1.08
-  minY: -0.57
-  maxX: 11.1
-  maxY: 3.88
 --- !u!20 &748814510
 Camera:
   m_ObjectHideFlags: 0
@@ -4953,7 +4823,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8151
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 5b0fe575cb74ff54a9206050462c8373, type: 2}
   m_TargetDisplay: 0
@@ -5291,7 +5161,7 @@ PrefabInstance:
     - target: {fileID: 5036499522903596341, guid: f20c75981c23e5543804b269d4d96f71, type: 3}
       propertyPath: reflectCamFollow
       value: 
-      objectReference: {fileID: 748814508}
+      objectReference: {fileID: 0}
     - target: {fileID: 5036499522903596341, guid: f20c75981c23e5543804b269d4d96f71, type: 3}
       propertyPath: heroCloseupCamFollow
       value: 
@@ -5634,7 +5504,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8183
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -6418,7 +6288,7 @@ GameObject:
   - component: {fileID: 2110361660}
   - component: {fileID: 2110361659}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: MinimapCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6478,7 +6348,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 8151
+    m_Bits: 15959
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 5622c5fe685f2994dbf833448e545421, type: 2}
   m_TargetDisplay: 0

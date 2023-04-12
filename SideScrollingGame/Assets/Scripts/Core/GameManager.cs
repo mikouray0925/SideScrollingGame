@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
                 AppManager.instance.localPlayer.heroController.SetHeroPosTo(heroSpawnPos);
                 AppManager.instance.localPlayer.heroController.MakeCameraFollowHero(mainCamFollow);
                 AppManager.instance.localPlayer.heroController.MakeCameraFollowHero(heroCloseupCamFollow);
-                AppManager.instance.localPlayer.heroController.MakeCameraFollowHero(reflectCamFollow);
                 print("Successfully spawn hero.");
             }
             else {
