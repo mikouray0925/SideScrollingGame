@@ -10,7 +10,7 @@ public class SpriteChanger : MonoBehaviour
     public UnityEvent onChange;
     public bool isChanged;
 
-    void Change() {
+    public void Change() {
         if (!isChanged && tergetRenderer && toSprite) {
             tergetRenderer.sprite = toSprite;
             onChange.Invoke();
