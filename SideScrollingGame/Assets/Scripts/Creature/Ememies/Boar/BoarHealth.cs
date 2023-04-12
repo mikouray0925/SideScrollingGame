@@ -38,6 +38,7 @@ public class BoarHealth : Health
             }   
         }
         DestroyThis();
+        SendMessageUpwards("OnEnemyKilled", null);
     }
 
     public void DestroyThis() {

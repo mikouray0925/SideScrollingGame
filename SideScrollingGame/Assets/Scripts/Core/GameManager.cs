@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     [Header ("SceneSettings")]
     [SerializeField] public Vector3 heroSpawnPos;
+    [SerializeField] public string nextLevelName;
 
     void Awake() {
         print("GameManager awaked.");
@@ -56,5 +57,9 @@ public class GameManager : MonoBehaviour
         if (!impactEffectHolder) return null;
         GameObject impact = Instantiate(impactPrefab, impactEffectHolder);
         return impact.GetComponent<ImpactEffectSystem>();
+    }
+
+    public void ToNextLevel() {
+        AppManager.instance.PlayGameLevel(nextLevelName);
     }
 }

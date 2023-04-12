@@ -36,6 +36,8 @@ public class GobKingHealth : Health
                 Destroy(t.gameObject);
             }   
         }
+
+        SendMessageUpwards("OnEnemyKilled", null);
     }
 
     protected override void ProcessDamage(Damage damageInfo, out float finalDamageVal) {

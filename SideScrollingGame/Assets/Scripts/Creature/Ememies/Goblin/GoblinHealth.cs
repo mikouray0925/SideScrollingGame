@@ -37,6 +37,8 @@ public class GoblinHealth : Health
                 Destroy(t.gameObject);
             }   
         }
+
+        SendMessageUpwards("OnEnemyKilled", null);
     }
 
     public void Destroy() {
