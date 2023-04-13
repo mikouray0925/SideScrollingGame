@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class HashashinNormalAttack : HeroNormalAttack
 {
+    [Header ("Multiplier")]
+    [SerializeField] float damageMultiplier = 1f;
+    
     [Header ("Overlaps")]
     [SerializeField] Overlap overlap1;
     [SerializeField] Overlap overlap2;
@@ -37,7 +40,7 @@ public class HashashinNormalAttack : HeroNormalAttack
             if (transform.localScale.x < 0) impact.Flip();
         }
 
-        ApplyDamage(damageableList, new Damage(this, damageData.Damage, Mathf.Sign(transform.localScale.x) * Vector2.right));
+        ApplyDamage(damageableList, new Damage(this, damageData.Damage * damageMultiplier, Mathf.Sign(transform.localScale.x) * Vector2.right));
     }
 
     private void ApplyNormalAttackDamage2() {
@@ -48,7 +51,7 @@ public class HashashinNormalAttack : HeroNormalAttack
             if (transform.localScale.x < 0) impact.Flip();
         }
         
-        ApplyDamage(damageableList, new Damage(this, damageData.Damage, Mathf.Sign(transform.localScale.x) * Vector2.right));
+        ApplyDamage(damageableList, new Damage(this, damageData.Damage * damageMultiplier, Mathf.Sign(transform.localScale.x) * Vector2.right));
     }
 
     protected override void OnAttackFinish() {

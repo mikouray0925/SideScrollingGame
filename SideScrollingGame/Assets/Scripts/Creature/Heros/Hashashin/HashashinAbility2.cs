@@ -5,6 +5,7 @@ using UnityEngine;
 public class HashashinAbility2 : HeroAbility2
 {
     [Header ("Parameters")]
+    [SerializeField] float damageMultiplier = 1f;
     [SerializeField] float tornadoStartSpeed;
 
     [Header ("References")]
@@ -30,7 +31,7 @@ public class HashashinAbility2 : HeroAbility2
 
     private void ReleaseTornado() {
         float facingSide = Mathf.Sign(transform.localScale.x);
-        Damage damageInfo = new Damage(this, damageData.Damage, facingSide * Vector2.right);
+        Damage damageInfo = new Damage(this, damageData.Damage * damageMultiplier, facingSide * Vector2.right);
         damageInfo.forces.Add(new Damage.Force(Vector2.right, ForceMode2D.Force));
         tornado.Activate(tornadoStartPoint.position, facingSide, tornadoStartSpeed, damageInfo);
     }

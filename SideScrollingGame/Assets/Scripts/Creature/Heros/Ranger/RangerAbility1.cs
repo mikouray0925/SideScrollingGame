@@ -11,6 +11,7 @@ public class RangerAbility1 : HeroAbility1
     [SerializeField] Transform localArrowStartPoint;
     [SerializeField] Transform arrowStartPoint;
     [SerializeField] float fallingRange;
+    [SerializeField] float fallingArrowDamageMultiplier = 0.2f;
     [Range (1f, 50f)]
     [SerializeField] int arrowNum;
     [Range (0.01f, 1f)]
@@ -20,6 +21,7 @@ public class RangerAbility1 : HeroAbility1
 
     [Header ("Root wave")]
     [SerializeField] RangerRootWave rootWave;
+    [SerializeField] float rootWaveDamageMultiplier = 1.2f;
 
     ObjPool<FallingSmallArrow> arrowPool;
 
@@ -59,7 +61,7 @@ public class RangerAbility1 : HeroAbility1
             Vector3 pos = rootWave.transform.position;
             pos.x = arrowStartPoint.position.x;
             rootWave.transform.position = pos;
-            rootWave.damage = new Damage(this, damageData.Damage, Vector2.down);
+            rootWave.damage = new Damage(this, damageData.Damage* rootWaveDamageMultiplier, Vector2.down);
         }
     }
 
@@ -75,7 +77,7 @@ public class RangerAbility1 : HeroAbility1
             fallingArrow.inPool = arrowPool;
             fallingArrow.transform.position = new Vector3(x, y, 0);
             fallingArrow.rb.velocity = Vector2.zero;
-            fallingArrow.damage = new Damage(this, damageData.Damage * 0.1f, Vector2.down);
+            fallingArrow.damage = new Damage(this, damageData.Damage * fallingArrowDamageMultiplier, Vector2.down);
             fallingArrow.rootWave = rootWave;
             fallingArrow.Launch();
 

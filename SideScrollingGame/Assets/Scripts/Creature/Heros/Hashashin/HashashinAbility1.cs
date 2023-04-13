@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class HashashinAbility1 : HeroAbility1
 {
+    [Header ("Multiplier")]
+    [SerializeField] float damageMultiplier = 1f;
+    
     [Header ("Overlaps")]
     [SerializeField] Overlap rangeOverlap;
     [SerializeField] Overlap damageOverlap;
@@ -44,7 +47,7 @@ public class HashashinAbility1 : HeroAbility1
     }
 
     private void ApplyAbility1Damage(int hitCount) {
-        Damage damageInfo = new Damage(this, damageData.Damage, Vector2.zero);
+        Damage damageInfo = new Damage(this, damageData.Damage * damageMultiplier, Vector2.zero);
 
         switch (hitCount) {
         case 0:

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugClock: 0
-  cooldownTime: 2
+  cooldownTime: 6
   cdSpeedMultiplier: {fileID: 467025732645923558}
   cooldownUpdatePeriod: 0.05
 --- !u!1 &31012075
@@ -597,7 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugClock: 0
-  cooldownTime: 1
+  cooldownTime: 10
   cdSpeedMultiplier: {fileID: 467025732645923558}
   cooldownUpdatePeriod: 0.05
 --- !u!1 &1572503276
@@ -1048,7 +1048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535eac6e6e764c148a4212e4402d1e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 6
   multiplier: {fileID: 467025731746857700}
 --- !u!114 &467025731746857700
 MonoBehaviour:
@@ -1545,8 +1545,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70a9160e87e8bc4b92538f011f508a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
-  currentHealth: 20
+  maxHealth: 50
+  currentHealth: 50
   lifeRemain: 1
   rebornPercentage: 0
   isInvincible: 0
@@ -1610,10 +1610,12 @@ MonoBehaviour:
   localArrowStartPoint: {fileID: 1632085729}
   arrowStartPoint: {fileID: 31012076}
   fallingRange: 4
+  fallingArrowDamageMultiplier: 0.2
   arrowNum: 30
   minIntervalTime: 0.02
   maxIntervalTime: 0.08
   rootWave: {fileID: 1900312295}
+  rootWaveDamageMultiplier: 1.2
 --- !u!114 &467025731739616116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1632,9 +1634,9 @@ MonoBehaviour:
   attackClipName: 
   baseLength: 3
   elongationRate: 20
-  damageMultiplierRate: 6
+  damageMultiplierRate: 2
   basePower: 0
-  powerIncreaseRate: 160
+  powerIncreaseRate: 120
   readyClipName: Ability2-ready
   fireClipName: Ability2-fire
   firePoint: {fileID: 1572503277}

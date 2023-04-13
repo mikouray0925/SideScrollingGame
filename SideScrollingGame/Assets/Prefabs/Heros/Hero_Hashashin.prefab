@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugClock: 0
-  cooldownTime: 1
+  cooldownTime: 4
   cdSpeedMultiplier: {fileID: 5181893135957760008}
   cooldownUpdatePeriod: 0.05
 --- !u!1 &494725186849933241
@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535eac6e6e764c148a4212e4402d1e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 8
   multiplier: {fileID: 8966859260904442243}
 --- !u!1 &1000988480937820255
 GameObject:
@@ -992,7 +992,7 @@ MonoBehaviour:
   fallingGravityMultiplier: 1.6
   avoidGroundedTime: 0.1
   rollingForce: 12
-  rollingCD: 0.8
+  rollingCD: 0.5
   rollingClipName: Roll
   health: {fileID: 572216528803072795}
   canvasTransform: {fileID: 0}
@@ -1009,8 +1009,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70a9160e87e8bc4b92538f011f508a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
-  currentHealth: 20
+  maxHealth: 50
+  currentHealth: 50
   lifeRemain: 1
   rebornPercentage: 0.3
   isInvincible: 0
@@ -1048,6 +1048,7 @@ MonoBehaviour:
   attackCD: {fileID: 8200181014926645279}
   anim: {fileID: 7329771833730404427}
   attackClipName: AttackNormal
+  damageMultiplier: 0.5
   overlap1: {fileID: 5508364464981345058}
   overlap2: {fileID: 1914228071997533340}
   impact1: {fileID: 9099440507121795449, guid: 3ad086a57fe8cfe44950c969df1cb1ad, type: 3}
@@ -1068,6 +1069,7 @@ MonoBehaviour:
   attackCD: {fileID: 4257381633250135905}
   anim: {fileID: 7329771833730404427}
   attackClipName: Ability1
+  damageMultiplier: 1.1
   rangeOverlap: {fileID: 6960979513457230954}
   damageOverlap: {fileID: 7526259405683668483}
   self: {fileID: 579993108644978417}
@@ -1089,6 +1091,7 @@ MonoBehaviour:
   attackCD: {fileID: 2007193248}
   anim: {fileID: 7329771833730404427}
   attackClipName: Ability2
+  damageMultiplier: 1.3
   tornadoStartSpeed: 25
   tornado: {fileID: 665132081}
   tornadoStartPoint: {fileID: 1171614716}
@@ -1324,7 +1327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugClock: 0
-  cooldownTime: 2
+  cooldownTime: 6
   cdSpeedMultiplier: {fileID: 5181893135957760008}
   cooldownUpdatePeriod: 0.05
 --- !u!1 &7592716026844592128

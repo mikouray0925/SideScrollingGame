@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugClock: 0
-  cooldownTime: 5
+  cooldownTime: 4
   cdSpeedMultiplier: {fileID: 5615720962560441333}
   cooldownUpdatePeriod: 0.1
 --- !u!1 &2851872325336831013
@@ -396,8 +396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aade201ea97ffd342955626085955c19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
-  currentHealth: 20
+  maxHealth: 100
+  currentHealth: 100
   lifeRemain: 1
   rebornPercentage: 0
   isInvincible: 0
@@ -1257,7 +1257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535eac6e6e764c148a4212e4402d1e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 10
   multiplier: {fileID: 8230205060104065712}
 --- !u!114 &8230205060104065712
 MonoBehaviour:

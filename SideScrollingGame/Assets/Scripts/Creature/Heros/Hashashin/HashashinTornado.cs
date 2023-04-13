@@ -14,6 +14,7 @@ public class HashashinTornado : MonoBehaviour
 
     float currentDampingVelocity;
     Damage damage;
+    HashSet<Health> damagedHealth = new HashSet<Health>();
     
     private void Awake() {
         anim = GetComponent<Animator>();
@@ -51,12 +52,20 @@ public class HashashinTornado : MonoBehaviour
         currentDampingVelocity = 0;
 
         damage = _damage;
+        damagedHealth.Clear();
         UpdateDamageForce();
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.TryGetComponent<DamageablePart>(out DamageablePart damageable)) {
-            damageable.health.TakeDamage(damage);
+            if (!damagedHealth.Contains(damageable.health)) {
+                damageable.health.TakeDamage(damage);
+                damagedHealth.Add(damageable.health);
+            } else if (damageable.health.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb)) {
+                if (damage != null && damage.forces.Count > 0) {
+                    rb.AddForce(damage.forces[0].force, damage.forces[0].mode);
+                }
+            }
         }
     }
 
