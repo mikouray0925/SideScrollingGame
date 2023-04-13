@@ -21,4 +21,15 @@ public class HeroBrain : MonoBehaviour
     public DamageData damageData;
     public CombinedAddend protection;
     public CombinedMultiplier cooldownSpeedMultiplier;
+
+    public void ReadSave(PlayerData playerData) {
+        if (playerData != null) {
+            BroadcastMessage("OnReadData", playerData, SendMessageOptions.DontRequireReceiver);
+        }
+    }
+
+    public void WriteSave(PlayerData playerData) {
+        if (playerData == null) playerData = new PlayerData();
+        BroadcastMessage("OnWriteData", playerData, SendMessageOptions.DontRequireReceiver);
+    }
 }

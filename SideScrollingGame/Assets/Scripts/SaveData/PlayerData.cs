@@ -6,6 +6,9 @@ using UnityEngine;
 public class PlayerData {
     public const string fileName = "Player.data";
 
+    public int completeLevelNum = 0;
+    public string inSceneName;
+
 
     public void Save() {
         SaveSystem.SaveData<PlayerData>(this, fileName);
@@ -15,7 +18,7 @@ public class PlayerData {
         return SaveSystem.LoadData<PlayerData>(fileName);
     }
 
-    public bool Exist() {
+    public static bool Exist() {
         return SaveSystem.HaveSaveFile(fileName);
     }
 }

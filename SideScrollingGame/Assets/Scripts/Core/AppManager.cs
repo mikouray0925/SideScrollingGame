@@ -20,6 +20,7 @@ public class AppManager : MonoBehaviour
 
     [Header ("UI")]
     public PlayerHUD playerHUD;
+    public HealthBar bossHpBar;
     public InterfaceUI playerInfoPages;
     public HeroValueDisplayer heroValDisplayer;
     public InterfaceUI joystick;

@@ -63,4 +63,11 @@ public class SceneController : MonoBehaviour
             loadingScreen.Hide();
         }
     }
+
+    public static string ActiveSceneName {
+        get {
+            return SceneManager.GetActiveScene().name;
+        }
+        private set {}
+    }
 }

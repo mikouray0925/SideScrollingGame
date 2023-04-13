@@ -21,6 +21,11 @@ public class GobKingHealth : Health
         behavior = GetComponent<GobKingBehavior>();
     }
 
+    private void OnEnable() {
+        AppManager.instance.bossHpBar.health = this;
+        AppManager.instance.bossHpBar.gameObject.SetActive(true);
+    }
+
     private void OnLifeNumBecomeZero() {
         anim.SetTrigger("die");
         behavior.enabled = false;
@@ -36,6 +41,9 @@ public class GobKingHealth : Health
                 Destroy(t.gameObject);
             }   
         }
+
+        AppManager.instance.bossHpBar.health = null;
+        AppManager.instance.bossHpBar.gameObject.SetActive(false);
 
         SendMessageUpwards("OnEnemyKilled", null);
     }

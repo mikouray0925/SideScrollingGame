@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
                 AppManager.instance.localPlayer.heroController.MakeCameraFollowHero(mainCamFollow);
                 AppManager.instance.localPlayer.heroController.MakeCameraFollowHero(heroCloseupCamFollow);
                 AppManager.instance.localPlayer.heroController.MakeCameraFollowHero(minimapCamFollow);
+                AppManager.instance.localPlayer.playerData.inSceneName = SceneController.ActiveSceneName;
+                AppManager.instance.localPlayer.SaveData();
                 print("Successfully spawn hero.");
             }
             else {
@@ -60,6 +62,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void ToNextLevel() {
+        AppManager.instance.localPlayer.playerData.completeLevelNum += 1;
         AppManager.instance.PlayGameLevel(nextLevelName);
     }
 }
