@@ -33,6 +33,8 @@ public class HeroController : MonoBehaviour
     }
 
     public void Bind(HeroBrain hero) {
+        if (bindingHero != null) Unbind();
+
         input.actions["Jump"].started  += cxt => hero.movement.Jump();
         input.actions["Jump"].canceled += cxt => hero.movement.CutoffJump();
         input.actions["Roll"].started  += cxt => hero.movement.Roll();

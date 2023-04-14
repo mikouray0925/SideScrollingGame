@@ -39,7 +39,21 @@ public class Player : MonoBehaviour
     public void LoadData() {
         if (PlayerData.Exist()) {
             playerData = PlayerData.Load();
-            if (heroController.bindingHero != null) heroController.bindingHero.ReadSave(playerData);
+            if (GlobalSettings.heroDict.TryGetValue(playerData.heroName,
+            out GameObject heroPrefab)) {
+                GameObject heroObj = Instantiate(heroPrefab);
+                HeroBrain hero = heroObj.GetComponent<HeroBrain>();
+                if (AppManager.instance.localPlayer == this) {
+                    AppManager.instance.LocalHero = hero;
+                } else {
+                    
+                }
+                hero.ReadSave(playerData);
+
+                AppManager.instance.PlayGameLevel(playerData.inSceneName);
+            } 
+        } else {
+            Debug.LogError("No data can be load for the player.");
         }
 
     }
@@ -47,6 +61,6 @@ public class Player : MonoBehaviour
     public void SaveData() {
         if (playerData == null) playerData = new PlayerData();
         if (heroController.bindingHero != null) heroController.bindingHero.WriteSave(playerData);
-        // playerData.Save();
+        playerData.Save();
     }
 }

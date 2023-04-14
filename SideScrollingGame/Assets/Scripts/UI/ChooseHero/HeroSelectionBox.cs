@@ -8,6 +8,7 @@ public class HeroSelectionBox : MonoBehaviour
     [SerializeField] float selectedScale = 1.2f;
     [SerializeField] float scalingTime = 0.2f;
     [SerializeField] HeroSelectionBoxRadio radio;
+    [SerializeField] string registeredHeroName;
     [SerializeField] GameObject heroPrefab;
 
     float currentScalingSpeed;
@@ -33,6 +34,7 @@ public class HeroSelectionBox : MonoBehaviour
                 HeroBrain hero = heroObj.GetComponent<HeroBrain>();
                 AppManager.instance.LocalHero = hero;
                 AppManager.instance.localPlayer.playerData = new PlayerData();
+                AppManager.instance.localPlayer.playerData.heroName = registeredHeroName;
                 AppManager.instance.PlayGameLevel("Level1-1");
             } else {
                 if (!AppManager.instance) 

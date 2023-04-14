@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0547d1449900b64a8461a1d607404e5, type: 3}
   m_Name: CooldownWristband
   m_EditorClassIdentifier: 
-  id: 0
+  id: 2
   itemName: CooldownWristband
   description: 
   icon: {fileID: -273676881, guid: f7dd0d4c0b14e11499f65ffc79b443e5, type: 3}

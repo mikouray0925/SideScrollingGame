@@ -34,3 +34,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 3072
   _itemDropPrefab: {fileID: 5050156301743778056, guid: e0f31a601a392cc42875247044fbde13, type: 3}
+  registeredHeros:
+    _serializedList:
+    - Key: Hashashin
+      Value: {fileID: 8007647023901492006, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
+    - Key: Ranger
+      Value: {fileID: 467025732427686132, guid: 143e291f6638ef14188ec4ed973587e0, type: 3}
+  registeredItems:
+  - {fileID: 11400000, guid: 26fea278407cdc744a045631cfd9c56c, type: 2}
+  - {fileID: 11400000, guid: 6107f0f469985b34bb0efb63d9857e33, type: 2}
+  - {fileID: 11400000, guid: 1912c1f44c6541146a590f85a0d88677, type: 2}
+  - {fileID: 11400000, guid: c2627e2a55c0a1f44abffb7bc34afab0, type: 2}
+  - {fileID: 11400000, guid: 1af51799a03d1c34ca40d345d66fc04c, type: 2}
+  - {fileID: 11400000, guid: 2ccf80d8aaaae2248b4e9c267679598e, type: 2}
+  - {fileID: 11400000, guid: 1745f050cb0e16b45a0ab4f29c2e8a6f, type: 2}
+  - {fileID: 11400000, guid: 503a4a635ad1fe644b2deb2a92da61d2, type: 2}
+  - {fileID: 11400000, guid: 7112196288651324ea0032dcc02de4da, type: 2}

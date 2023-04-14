@@ -26,4 +26,12 @@ public class HeroHealth : Health
         movement.movementLock.AddLock("takeHit", 0.2f);
         base.ProcessDamage(damageInfo, out finalDamageVal);
     }
+
+    private void OnReadData(PlayerData playerData) {
+        SetHealthPropotion(playerData.healthProportion);
+    }
+
+    private void OnWriteData(PlayerData playerData) {
+        playerData.healthProportion = Hp / MaxHp;
+    }
 }

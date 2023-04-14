@@ -4,14 +4,12 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    public const string gameSaveFolderName = "/MikouScrollerGame/";
-
     #region UtilityFunctions
     // Do not modify them.
 
     public static string gameSaveFolderPath {
         get {
-            return Application.persistentDataPath + gameSaveFolderName;
+            return Application.persistentDataPath;
         }
         private set {}
     }

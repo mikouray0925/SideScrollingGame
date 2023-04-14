@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
                 AppManager.instance.localPlayer.heroController.MakeCameraFollowHero(mainCamFollow);
                 AppManager.instance.localPlayer.heroController.MakeCameraFollowHero(heroCloseupCamFollow);
                 AppManager.instance.localPlayer.heroController.MakeCameraFollowHero(minimapCamFollow);
-                AppManager.instance.localPlayer.playerData.inSceneName = SceneController.ActiveSceneName;
+                AppManager.instance.localPlayer.playerData.inSceneName = gameObject.scene.name;
                 AppManager.instance.localPlayer.SaveData();
                 print("Successfully spawn hero.");
             }

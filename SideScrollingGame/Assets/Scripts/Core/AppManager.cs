@@ -111,6 +111,22 @@ public class AppManager : MonoBehaviour
     }
 
     //|=======================================================
+    //| When the "Continue" button is hitted, this will be called.
+    //| Set up everything for a saved game.
+    //| 
+    //| 
+    //|=======================================================
+    public void ContinueSavedGame() {
+        if (localPlayer) {
+            if (PlayerData.Exist()) {
+                localPlayer.LoadData();
+            } else {
+                StartNewGame();
+            }
+        }
+    }
+
+    //|=======================================================
     //| When the "NewGame" button is hitted, this will be called.
     //| Set up everything for a new game.
     //| 
@@ -146,7 +162,7 @@ public class AppManager : MonoBehaviour
 
     public void GoBackToMainMenu() {
         if (sceneController.isChangingScene) return;
-        playerHUD.Unbind();
+        UnbindLocalHero();
         playerHUD.Hide();
         joystick.Hide();
         sceneController.objNeedToKeep.Clear();

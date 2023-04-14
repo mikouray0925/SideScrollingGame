@@ -77,6 +77,34 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    private void OnReadData(PlayerData playerData) {
+        for (int i = 0; i < slots.Count && i < playerData.IdsOfItemsInSlots.Length; i++) {
+            slots[i].TakeOutItem();
+            if (playerData.IdsOfItemsInSlots[i] >= 0) {
+                if (GlobalSettings.itemDict.TryGetValue(playerData.IdsOfItemsInSlots[i],
+                    out Item item)) {
+                    slots[i].Add(Instantiate(item));
+                } else {
+                    Debug.LogError($"Item id{playerData.IdsOfItemsInSlots[i]} is not registered.");
+                }
+            } 
+        }
+    }
+
+    private void OnWriteData(PlayerData playerData) {
+        int i = 0;
+        for (; i < slots.Count && i < playerData.IdsOfItemsInSlots.Length; i++) {
+            if (!slots[i].Empty()) {
+                playerData.IdsOfItemsInSlots[i] = slots[i].ItemCopy.id;
+            } else {
+                playerData.IdsOfItemsInSlots[i] = -1;
+            }
+        }
+        for (; i < playerData.IdsOfItemsInSlots.Length; i++) {
+            playerData.IdsOfItemsInSlots[i] = -1;
+        }
+    }
+
     public class ItemSlot {
         public int index {get; private set;}
         protected Item item = null;

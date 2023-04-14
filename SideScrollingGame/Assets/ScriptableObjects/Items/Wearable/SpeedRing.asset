@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0547d1449900b64a8461a1d607404e5, type: 3}
   m_Name: SpeedRing
   m_EditorClassIdentifier: 
-  id: 0
+  id: 8
   itemName: SpeedRing
   description: 
   icon: {fileID: 1881970728, guid: f7dd0d4c0b14e11499f65ffc79b443e5, type: 3}

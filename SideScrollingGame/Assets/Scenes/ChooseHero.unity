@@ -275,6 +275,7 @@ MonoBehaviour:
   selectedScale: 1.2
   scalingTime: 0.2
   radio: {fileID: 1174302809}
+  registeredHeroName: Ranger
   heroPrefab: {fileID: 467025732427686132, guid: 143e291f6638ef14188ec4ed973587e0, type: 3}
 --- !u!1 &755376676
 GameObject:
@@ -971,6 +972,7 @@ MonoBehaviour:
   selectedScale: 1.2
   scalingTime: 0.2
   radio: {fileID: 1174302809}
+  registeredHeroName: Hashashin
   heroPrefab: {fileID: 8007647023901492006, guid: 51d6698cfd2051749b9cd7fae7be9aad, type: 3}
 --- !u!1 &1441791085
 GameObject:

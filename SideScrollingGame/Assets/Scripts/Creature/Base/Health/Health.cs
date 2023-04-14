@@ -74,9 +74,14 @@ public class Health : MonoBehaviour
         Hp += val;
     }
 
+    public void SetHealthPropotion(float propotion) {
+        propotion = Mathf.Clamp(propotion, 0f, 1f);
+        currentHealth = Mathf.Round(maxHealth * propotion * 10f) / 10f;
+    }
+
     public void ScaleHealth(float scaler) {
-        maxHealth *= scaler;
-        currentHealth *= scaler;
+        maxHealth = Mathf.Round(maxHealth * scaler * 10f) / 10f;
+        currentHealth = Mathf.Round(currentHealth * scaler * 10f) / 10f;
     }
 
     #region Damage
