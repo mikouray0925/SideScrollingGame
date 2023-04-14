@@ -49,8 +49,8 @@ public class Player : MonoBehaviour
                     
                 }
                 hero.ReadSave(playerData);
-
-                AppManager.instance.PlayGameLevel(playerData.inSceneName);
+                SceneController.instance.ChangeScene("HeroPreview");
+                // AppManager.instance.PlayGameLevel(playerData.inSceneName);
             } 
         } else {
             Debug.LogError("No data can be load for the player.");

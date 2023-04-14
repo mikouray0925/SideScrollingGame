@@ -21,7 +21,7 @@ public class AppManager : MonoBehaviour
     [Header ("UI")]
     public PlayerHUD playerHUD;
     public HealthBar bossHpBar;
-    public InterfaceUI playerInfoPages;
+    public PlayerInfoUI playerInfoPages;
     public HeroValueDisplayer heroValDisplayer;
     public InterfaceUI joystick;
     public InterfaceUI optionMenu;
@@ -135,6 +135,12 @@ public class AppManager : MonoBehaviour
     public void StartNewGame() {
         if (localPlayer) {
             sceneController.ChangeScene(chooseHeroSceneName);
+        }
+    }
+
+    public void PlayGameLevelWhereLocalPlayerIs() {
+        if (localPlayer && localPlayer.playerData != null) {
+            PlayGameLevel(localPlayer.playerData.inSceneName);
         }
     }
 

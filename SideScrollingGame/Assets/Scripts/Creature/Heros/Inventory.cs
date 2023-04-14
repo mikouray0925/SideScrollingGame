@@ -65,6 +65,7 @@ public class Inventory : MonoBehaviour
     }
 
     public void UseQuickSlotItem(int index) {
+        if (!this.enabled) return;
         if (index < 0 || index >= QuickSlotNum) return;
         if (onHero && !slots[QuickSlotsStartIndex + index].Empty()) {
             Item.HeroUseItem(onHero, slots[QuickSlotsStartIndex + index]);
