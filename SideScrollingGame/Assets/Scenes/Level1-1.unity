@@ -1059,9 +1059,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1290736874}
+  - {fileID: 1179257748}
   - {fileID: 794612507}
   - {fileID: 768806004}
-  - {fileID: 1179257748}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4453,7 +4453,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 209101925}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &768806005
 MonoBehaviour:
@@ -4614,7 +4614,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 209101925}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &794612508
 MonoBehaviour:
@@ -4645,10 +4645,10 @@ MonoBehaviour:
   wayOfFollowing: 0
   smoothTime: 0
   positionLock: {fileID: 794612508}
-  minX: -6.91
-  minY: -2.81
-  maxX: 16.79
-  maxY: 6.11
+  minX: -100
+  minY: -100
+  maxX: 100
+  maxY: 100
 --- !u!20 &794612510
 Camera:
   m_ObjectHideFlags: 0
@@ -5837,7 +5837,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 209101925}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1199267822
 GameObject:

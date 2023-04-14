@@ -4872,9 +4872,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1497908883}
+  - {fileID: 2110361658}
   - {fileID: 1175431248}
   - {fileID: 748814506}
-  - {fileID: 2110361658}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4909,7 +4909,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 709915608}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &748814510
 Camera:
@@ -5438,7 +5438,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 709915608}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1175431249
 MonoBehaviour:
@@ -5469,10 +5469,10 @@ MonoBehaviour:
   wayOfFollowing: 0
   smoothTime: 0
   positionLock: {fileID: 1175431249}
-  minX: -6.91
-  minY: -2.81
-  maxX: 16.79
-  maxY: 6.11
+  minX: -100
+  minY: -100
+  maxX: 100
+  maxY: 100
 --- !u!20 &1175431251
 Camera:
   m_ObjectHideFlags: 0
@@ -6697,7 +6697,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 709915608}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &2110361660
 Camera:

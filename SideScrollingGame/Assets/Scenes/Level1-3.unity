@@ -2208,7 +2208,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 648669367}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &478659694
 MonoBehaviour:
@@ -2239,10 +2239,10 @@ MonoBehaviour:
   wayOfFollowing: 0
   smoothTime: 0
   positionLock: {fileID: 478659694}
-  minX: -6.91
-  minY: -2.81
-  maxX: 16.79
-  maxY: 6.11
+  minX: -100
+  minY: -100
+  maxX: 100
+  maxY: 100
 --- !u!20 &478659696
 Camera:
   m_ObjectHideFlags: 0
@@ -2396,8 +2396,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1971479315}
-  - {fileID: 478659693}
   - {fileID: 948535329}
+  - {fileID: 478659693}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2573,7 +2573,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 648669367}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &948535330
 MonoBehaviour:
