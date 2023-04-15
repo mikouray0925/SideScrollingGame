@@ -7,10 +7,6 @@ public class PlayerInfoUI : InterfaceUI
     [SerializeField] GameObject[] previewStateObjects;
 
     public bool inPreviewState {get; private set;}
-
-    private void LateUpdate() {
-        if (inPreviewState) IsActive = true;
-    }
     
     public void EnterPreviewState() {
         foreach (GameObject obj in previewStateObjects) {
@@ -42,5 +38,6 @@ public class PlayerInfoUI : InterfaceUI
         }
 
         inPreviewState = false;
+        Hide();
     }
 }

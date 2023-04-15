@@ -15,6 +15,10 @@ public class GobKingDashAttack : Attack
     [SerializeField] string sneerClipName;
     [SerializeField] string dashClipName;
 
+    [Header ("SFX")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip impactSFX;
+
     HashSet<Health> damagedHealth = new HashSet<Health>();
     Movement movement;
     float dashDirection;
@@ -70,6 +74,7 @@ public class GobKingDashAttack : Attack
                 Damage dashDamage = new Damage(this, damageMultiplier * damageData.Damage, Mathf.Sign(transform.localScale.x) * Vector2.right);
                 dashDamage.forces.Add(new Damage.Force(Mathf.Sign(transform.localScale.x) * damageForce * Vector2.right, ForceMode2D.Force));
                 damageable.health.TakeDamage(dashDamage);
+                audioSource.PlayOneShot(impactSFX, AudioManager.effectVolume);
                 damagedHealth.Add(damageable.health);
             }
         }

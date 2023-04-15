@@ -10,6 +10,10 @@ public class GobKingHornAttack : Attack
     [SerializeField] float damageHorizForce = 0;
     [SerializeField] float damageUpForce = 0;
 
+    [Header ("SFX")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip swingSFX;
+
     Movement movement;
     
     private void Awake() {
@@ -35,6 +39,10 @@ public class GobKingHornAttack : Attack
 
     private void HornAttackAnimStartEvent() {
         AttackAnimStart();
+    }
+
+    private void PlayHornSwingSFX() {
+        audioSource.PlayOneShot(swingSFX, AudioManager.effectVolume);
     }
 
     private void ApplyHornAttackDamage() {

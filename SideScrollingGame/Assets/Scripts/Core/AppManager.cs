@@ -24,6 +24,7 @@ public class AppManager : MonoBehaviour
     public HealthBar bossHpBar;
     public PlayerInfoUI playerInfoPages;
     public HeroValueDisplayer heroValDisplayer;
+    public EndGameUI endGameWindow;
     public InterfaceUI joystick;
     public InterfaceUI optionMenu;
 
@@ -38,6 +39,7 @@ public class AppManager : MonoBehaviour
 
     [Header ("Events")]
     [SerializeField] UnityEvent beforeBackToMainMenu;
+    [SerializeField] UnityEvent afterBackToMainMenu;
     [SerializeField] UnityEvent beforeChangingLevel;
     [SerializeField] UnityEvent afterChangingLevel;
 
@@ -110,7 +112,7 @@ public class AppManager : MonoBehaviour
     }
 
     public void UnbindLocalHero() {
-        SceneController.instance.objNeedToKeep.Remove(LocalHero.gameObject);
+        if (LocalHero != null) SceneController.instance.objNeedToKeep.Remove(LocalHero.gameObject);
         if (playerHUD.bindingHero == LocalHero) playerHUD.Unbind();
         if (heroValDisplayer.bindingHero == LocalHero) heroValDisplayer.Unbind();
         localPlayer.heroController.Unbind();
@@ -176,6 +178,8 @@ public class AppManager : MonoBehaviour
         MessageCenter.SpreadGlobalMsg("BeforeBackToMainMenu");
         beforeBackToMainMenu.Invoke();
         sceneController.ChangeScene(mainMenuSceneName);
+        MessageCenter.SpreadGlobalMsg("AfterBackToMainMenu");
+        afterBackToMainMenu.Invoke();
         if (gamePaused) TriggerGamePause();
     }
 

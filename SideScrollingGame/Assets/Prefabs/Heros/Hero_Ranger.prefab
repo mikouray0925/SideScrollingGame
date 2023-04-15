@@ -1557,6 +1557,7 @@ MonoBehaviour:
   isInvincible: 0
   protection: {fileID: 4128807186142301844}
   hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  hero: {fileID: 1729072908428828431}
 --- !u!114 &467025732920404005
 MonoBehaviour:
   m_ObjectHideFlags: 0

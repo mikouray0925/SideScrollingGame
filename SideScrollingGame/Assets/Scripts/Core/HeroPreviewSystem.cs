@@ -23,4 +23,10 @@ public class HeroPreviewSystem : MonoBehaviour
             Debug.LogError("The instance of AppManager is not set.");
         }
     }
+
+    private void LateUpdate() {
+        if (AppManager.instance.playerInfoPages.inPreviewState) {
+            AppManager.instance.playerInfoPages.IsActive = true;
+        }
+    }
 }

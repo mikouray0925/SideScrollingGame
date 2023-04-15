@@ -10,6 +10,10 @@ public class BoarDashAttack : Attack
     [SerializeField] float damageMultiplier = 1f;
     [SerializeField] float damageForce = 0;
 
+    [Header ("SFX")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip impactSFX;
+
     HashSet<Health> damagedHealth = new HashSet<Health>();
     Movement movement;
     float dashDirection;
@@ -49,6 +53,7 @@ public class BoarDashAttack : Attack
             movement.Flip();
         } 
         else if (LayerUtil.Judge(other).IsInMask(GlobalSettings.playerLayers)) {
+            audioSource.PlayOneShot(impactSFX, AudioManager.effectVolume);
             if (other.TryGetComponent<DamageablePart>(out DamageablePart damageable)) {
                 if (damagedHealth.Contains(damageable.health)) return;
                 Damage dashDamage = new Damage(this, damageMultiplier * damageData.Damage, Mathf.Sign(transform.localScale.x) * Vector2.right);

@@ -13,22 +13,20 @@ public class Player : MonoBehaviour
     
     private void Awake() {
         input.actions["Pause"].started += cxt => PauseGame(); 
-        input.actions["ShowInfoPages"].started += cxt => ShowInfoPages();
+        input.actions["ShowInfoPages"].started += cxt => TriggerInfoPages();
     }
 
     private void PauseGame() {
-        if(AppManager.instance) {
+        if(AppManager.instance) AppManager.instance.TriggerGamePause();
+    }
+
+    private void TriggerInfoPages() {
+        if (heroController.bindingHero != null) {
             if (AppManager.instance.playerInfoPages.IsActive) {
                 AppManager.instance.playerInfoPages.Hide();
             } else {
-                AppManager.instance.TriggerGamePause();
+                AppManager.instance.playerInfoPages.Show();
             }
-        }
-    }
-
-    private void ShowInfoPages() {
-        if (heroController.bindingHero != null) {
-            AppManager.instance.playerInfoPages.Show();
         }
     }
 

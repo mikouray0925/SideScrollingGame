@@ -76,4 +76,9 @@ public class GameManager : MonoBehaviour
         AppManager.instance.localPlayer.playerData.completeLevelNum += 1;
         AppManager.instance.PlayGameLevel(nextLevelName);
     }
+
+    public void ShowGameWin() {
+        AppManager.instance.endGameWindow.Show();
+        AppManager.instance.endGameWindow.text.text = "You Win";
+    }
 }

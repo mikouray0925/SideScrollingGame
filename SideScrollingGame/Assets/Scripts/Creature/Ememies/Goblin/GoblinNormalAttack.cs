@@ -6,6 +6,11 @@ public class GoblinNormalAttack : Attack
 {
     [Header ("Overlap")]
     [SerializeField] Overlap overlap;
+
+    [Header ("SFX")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip swingSFX;
+    [SerializeField] AudioClip cutSFX;
     
     Movement movement;
     
@@ -35,7 +40,11 @@ public class GoblinNormalAttack : Attack
     }
 
     private void ApplyNormalAttackDamage() {
-        ApplyDamage(overlap, new Damage(this, damageData.Damage, Mathf.Sign(transform.localScale.x) * Vector2.right));
+        if (ApplyDamage(overlap, new Damage(this, damageData.Damage, Mathf.Sign(transform.localScale.x) * Vector2.right)) > 0) {
+            audioSource.PlayOneShot(cutSFX, AudioManager.effectVolume);
+        } else {
+            audioSource.PlayOneShot(swingSFX, AudioManager.effectVolume);
+        }
     }
 
     protected override void OnAttackFinish() {
