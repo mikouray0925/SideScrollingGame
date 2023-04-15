@@ -18,6 +18,11 @@ public class HashashinAbility1 : HeroAbility1
     [Header ("End")]
     [SerializeField] string attackClip2Name;
 
+    [Header ("SFX")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip teleportSFX;
+    [SerializeField] AudioClip cutSFX;
+
     Vector2 startPos;
 
     public override bool IsPlayingAttackAnimClip() {
@@ -52,17 +57,27 @@ public class HashashinAbility1 : HeroAbility1
         switch (hitCount) {
         case 0:
             damageInfo.mainDirection = Vector2.down;
-            ApplyDamage(damageOverlap, damageInfo);
+            if (ApplyDamage(damageOverlap, damageInfo) > 0) {
+                audioSource.PlayOneShot(cutSFX, AudioManager.effectVolume);
+            }
             break;
         case 1:
             damageInfo.mainDirection = Mathf.Sign(transform.localScale.x) * Vector2.left;
-            ApplyDamage(damageOverlap, damageInfo);
+            if (ApplyDamage(damageOverlap, damageInfo) > 0) {
+                audioSource.PlayOneShot(cutSFX, AudioManager.effectVolume);
+            }
             break;
         case 2:
             damageInfo.mainDirection = Mathf.Sign(transform.localScale.x) * Vector2.right;
-            ApplyDamage(damageOverlap, damageInfo);
+            if (ApplyDamage(damageOverlap, damageInfo) > 0) {
+                audioSource.PlayOneShot(cutSFX, AudioManager.effectVolume);
+            }
             break;
         }   
+    }
+
+    private void PlayTeleportSFX() {
+        audioSource.PlayOneShot(teleportSFX, AudioManager.effectVolume);
     }
 
     private void TeleportToNext(int hitCount) {

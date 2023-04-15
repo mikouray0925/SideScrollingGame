@@ -8,9 +8,14 @@ public class ItemPicker : MonoBehaviour
     [SerializeField] ItemDropper dropper;
     [SerializeField] Overlap pickableArea;
 
+    [Header ("SFX")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip pickupSFX;
+
     public bool PickNearestItem() {
         ItemDrop nearest = FindNearestItemDrop();
         if (nearest != null) {
+            audioSource.PlayOneShot(pickupSFX, AudioManager.effectVolume);
             Item pickedItem = nearest.PickItem();
             if (!inventory.AddItemToScroller(pickedItem)) {
                 dropper.Drop(pickedItem);

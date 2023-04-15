@@ -8,6 +8,11 @@ public class Arrow : Projectile
     [SerializeField] float startFallingSpeed;
     [SerializeField] GameObject impactPointPrefab;
     [SerializeField] GameObject arrowHitPrefab;
+
+    [Header ("SFX")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip hitSFX;
+    [SerializeField] AudioClip hitFleshSFX;
     
     public ObjPool<Arrow> inPool;
     bool isFalling;
@@ -41,6 +46,12 @@ public class Arrow : Projectile
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
+        if (LayerUtil.Judge(other.collider).IsInMask(GlobalSettings.creatureLayers)) {
+            AudioSource.PlayClipAtPoint(hitFleshSFX, transform.position, AudioManager.effectVolume);
+        } else {
+            AudioSource.PlayClipAtPoint(hitSFX, transform.position, AudioManager.effectVolume);
+        }
+
         GameObject arrowHit = null;
         if (GameManager.impactEffectHolder) {
             arrowHit = Instantiate(arrowHitPrefab, transform.position, transform.rotation, GameManager.impactEffectHolder);
@@ -60,7 +71,7 @@ public class Arrow : Projectile
             }
 
             if (damage != null) {
-                damage.mainDirection = rb.velocity.normalized;
+                // if (rb.velocity != Vector2.zero) damage.mainDirection = rb.velocity.normalized;
                 damageable.health.TakeDamage(damage);
             }
         }

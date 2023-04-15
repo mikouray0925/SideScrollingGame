@@ -11,6 +11,10 @@ public class HashashinAbility2 : HeroAbility2
     [Header ("References")]
     [SerializeField] HashashinTornado tornado;
     [SerializeField] Transform tornadoStartPoint;
+
+    [Header ("SFX")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip windSFX;
     
     public override bool AbleToAttack() {
         return 
@@ -33,6 +37,7 @@ public class HashashinAbility2 : HeroAbility2
         float facingSide = Mathf.Sign(transform.localScale.x);
         Damage damageInfo = new Damage(this, damageData.Damage * damageMultiplier, facingSide * Vector2.right);
         damageInfo.forces.Add(new Damage.Force(Vector2.right, ForceMode2D.Force));
+        audioSource.PlayOneShot(windSFX, AudioManager.effectVolume);
         tornado.Activate(tornadoStartPoint.position, facingSide, tornadoStartSpeed, damageInfo);
     }
 

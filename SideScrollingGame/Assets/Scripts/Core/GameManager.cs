@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Vector3 heroSpawnPos;
     [SerializeField] public string nextLevelName;
 
+    [Header ("Events")]
+    [SerializeField] UnityEvent onAwake;
+
     void Awake() {
         print("GameManager awaked.");
 
@@ -38,6 +42,7 @@ public class GameManager : MonoBehaviour
                 AppManager.instance.localPlayer.playerData.inSceneName = gameObject.scene.name;
                 AppManager.instance.localPlayer.SaveData();
                 print("Successfully spawn hero.");
+                onAwake.Invoke();
             }
             else {
                 Debug.LogError("Some instances of AppManager.localPlayer are not set.");
@@ -46,6 +51,12 @@ public class GameManager : MonoBehaviour
         else {
             Debug.LogError("The instance of AppManager is not set.");
         }
+    }
+
+    public void ChangeMusic(AudioClip music) {
+        AudioManager.instance.musicPlayer.clip = music;
+        if (!AudioManager.instance.musicPlayer.isPlaying) 
+            AudioManager.instance.musicPlayer.Play();
     }
 
     public void DeactivateAllEmeny() {

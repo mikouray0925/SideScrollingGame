@@ -827,6 +827,7 @@ GameObject:
   - component: {fileID: 5537795121930394369}
   - component: {fileID: 4974484535034787794}
   - component: {fileID: 1154986555}
+  - component: {fileID: 8415294780423547988}
   m_Layer: 7
   m_Name: Hero
   m_TagString: Player
@@ -997,6 +998,10 @@ MonoBehaviour:
   health: {fileID: 572216528803072795}
   canvasTransform: {fileID: 0}
   movementLock: {fileID: 360293455961752304}
+  audioSource: {fileID: 8415294780423547988}
+  jumpSFX: {fileID: 8300000, guid: 45bd83b71cf6c384fa08bcaec0656db0, type: 3}
+  landSFX: {fileID: 8300000, guid: 1685bc0df548e2b40819847e23744cad, type: 3}
+  rollSFX: {fileID: 8300000, guid: 5c5fa9db65b9ee5459d8865baf3f67f8, type: 3}
 --- !u!114 &572216528803072795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1053,6 +1058,11 @@ MonoBehaviour:
   overlap2: {fileID: 1914228071997533340}
   impact1: {fileID: 9099440507121795449, guid: 3ad086a57fe8cfe44950c969df1cb1ad, type: 3}
   impact2: {fileID: 1621245140455146613, guid: 70f35653e356b954ab4893512d167f95, type: 3}
+  audioSource: {fileID: 8415294780423547988}
+  swing1_SFX: {fileID: 8300000, guid: 4ce039e7e8a28fb479b47e602234d729, type: 3}
+  swing2_SFX: {fileID: 8300000, guid: 8e4d7a4610c9f974b95bbeab2e743458, type: 3}
+  cut1_SFX: {fileID: 8300000, guid: 9a577e93ba57b284884085cc051adbfa, type: 3}
+  cut2_SFX: {fileID: 8300000, guid: 44116784d12cb13469d023bca6122e3e, type: 3}
 --- !u!114 &4974484535034787794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1075,6 +1085,9 @@ MonoBehaviour:
   self: {fileID: 579993108644978417}
   damageableList: []
   attackClip2Name: Ability1-back
+  audioSource: {fileID: 8415294780423547988}
+  teleportSFX: {fileID: 8300000, guid: 95d18b44890b5bb40a8c2f860e9f28e3, type: 3}
+  cutSFX: {fileID: 8300000, guid: 7fde57430600097488c9f16e36ce07c3, type: 3}
 --- !u!114 &1154986555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1095,6 +1108,104 @@ MonoBehaviour:
   tornadoStartSpeed: 25
   tornado: {fileID: 665132081}
   tornadoStartPoint: {fileID: 1171614716}
+  audioSource: {fileID: 8415294780423547988}
+  windSFX: {fileID: 8300000, guid: 513bdd5eaf2017c4484c6e3dbb9beec4, type: 3}
+--- !u!82 &8415294780423547988
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4340137114330129127}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: ed03170e44bd92b44b4fac62851f75e7, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4454718050735448188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1379,6 +1490,8 @@ MonoBehaviour:
   inventory: {fileID: 4203330720396401066}
   dropper: {fileID: 3595052082951174472}
   pickableArea: {fileID: 5704075146897846743}
+  audioSource: {fileID: 8415294780423547988}
+  pickupSFX: {fileID: 8300000, guid: a4f22978d1640154bb18c65c69b3d381, type: 3}
 --- !u!114 &3595052082951174472
 MonoBehaviour:
   m_ObjectHideFlags: 0

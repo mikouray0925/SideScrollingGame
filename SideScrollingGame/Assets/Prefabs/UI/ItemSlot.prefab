@@ -308,6 +308,8 @@ MonoBehaviour:
   iconImg: {fileID: 1576312767942091519}
   slotImg: {fileID: 6692138803582905172}
   hideSlotImgIfNotEmpty: 0
+  pickupSFX: {fileID: 8300000, guid: a4f22978d1640154bb18c65c69b3d381, type: 3}
+  putSFX: {fileID: 8300000, guid: 01615b908398ed54cbe558ab2dd2cba6, type: 3}
 --- !u!114 &1728677119773291633
 MonoBehaviour:
   m_ObjectHideFlags: 0

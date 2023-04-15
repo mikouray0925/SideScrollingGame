@@ -5,6 +5,12 @@ using UnityEngine;
 public class FallingSmallArrow : Projectile
 {
     public RangerRootWave rootWave;
+
+    [Header ("SFX")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip hitSFX;
+    [SerializeField] AudioClip hitFleshSFX;
+
     public ObjPool<FallingSmallArrow> inPool;
     
     private void Awake() {
@@ -16,6 +22,12 @@ public class FallingSmallArrow : Projectile
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
+        if (LayerUtil.Judge(other.collider).IsInMask(GlobalSettings.creatureLayers)) {
+            AudioSource.PlayClipAtPoint(hitFleshSFX, transform.position, AudioManager.effectVolume);
+        } else {
+            AudioSource.PlayClipAtPoint(hitSFX, transform.position, AudioManager.effectVolume);
+        }
+
         List<ContactPoint2D> contacts = new List<ContactPoint2D>();
         int contactNum = other.GetContacts(contacts);
         if (rootWave && !rootWave.IsActive && contactNum > 0 &&

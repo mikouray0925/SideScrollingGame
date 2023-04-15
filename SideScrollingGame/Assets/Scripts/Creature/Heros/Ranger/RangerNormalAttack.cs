@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RangerNormalAttack : HeroNormalAttack
-{
+{   
     [Header ("Arrow")]
     [SerializeField] GameObject arrowPrefab;
     [SerializeField] Transform arrowHolder;
     [SerializeField] Transform arrowStartPoint;
     [SerializeField] float arrowStartSpeed;
+
+    [Header ("SFX")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip bowReleaseSFX;
 
     ObjPool<Arrow> arrowPool;
 
@@ -34,6 +38,10 @@ public class RangerNormalAttack : HeroNormalAttack
         } 
     }
 
+    private void PlayBowReleaseSFX() {
+        audioSource.PlayOneShot(bowReleaseSFX, AudioManager.effectVolume);
+    }
+
     private void SetupArrow(Arrow arrow) {
         arrow.inPool = arrowPool;
         arrow.transform.position = arrowStartPoint.position;
@@ -47,7 +55,7 @@ public class RangerNormalAttack : HeroNormalAttack
             );
         }
         arrow.rb.velocity = facingSide * arrowStartSpeed * Vector2.right;
-        arrow.damage = new Damage(this, damageData.Damage, Vector2.right);
+        arrow.damage = new Damage(this, damageData.Damage, facingSide * Vector2.right);
     }
 
     private void LaunchArrow() {

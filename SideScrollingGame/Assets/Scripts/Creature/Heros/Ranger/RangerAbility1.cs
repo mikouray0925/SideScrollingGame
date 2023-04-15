@@ -23,6 +23,10 @@ public class RangerAbility1 : HeroAbility1
     [SerializeField] RangerRootWave rootWave;
     [SerializeField] float rootWaveDamageMultiplier = 1.2f;
 
+    [Header ("SFX")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip bowReleaseSFX;
+
     ObjPool<FallingSmallArrow> arrowPool;
 
     protected override void Awake() {
@@ -45,6 +49,10 @@ public class RangerAbility1 : HeroAbility1
             movement.movementLock.AddLock("ability1", 1.2f);
             movement.Brake();
         } 
+    }
+
+    private void PlayArrowRainReleaseSFX() {
+        audioSource.PlayOneShot(bowReleaseSFX, AudioManager.effectVolume);
     }
      
     private void StartArrowRain() {

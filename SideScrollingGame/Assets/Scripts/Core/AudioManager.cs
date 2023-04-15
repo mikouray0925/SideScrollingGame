@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
     [Header ("Components")]
     [SerializeField] public AudioSource musicPlayer;
     [SerializeField] public AudioSource uiPlayer;
-    static float effectVolume = 1.0f;
+    public static float effectVolume = 1.0f;
 
     [Header ("Sliders")]
     [SerializeField] Slider slider_music;

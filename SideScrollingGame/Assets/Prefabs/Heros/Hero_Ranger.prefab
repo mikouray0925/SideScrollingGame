@@ -1363,6 +1363,7 @@ GameObject:
   - component: {fileID: 467025732920404007}
   - component: {fileID: 121634250}
   - component: {fileID: 467025731739616116}
+  - component: {fileID: 1275515515359981778}
   m_Layer: 7
   m_Name: Hero
   m_TagString: Player
@@ -1533,6 +1534,10 @@ MonoBehaviour:
   health: {fileID: 467025732920404006}
   canvasTransform: {fileID: 0}
   movementLock: {fileID: 1846191673015038163}
+  audioSource: {fileID: 1275515515359981778}
+  jumpSFX: {fileID: 8300000, guid: 45bd83b71cf6c384fa08bcaec0656db0, type: 3}
+  landSFX: {fileID: 8300000, guid: 1685bc0df548e2b40819847e23744cad, type: 3}
+  rollSFX: {fileID: 8300000, guid: 5c5fa9db65b9ee5459d8865baf3f67f8, type: 3}
 --- !u!114 &467025732920404006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1588,6 +1593,8 @@ MonoBehaviour:
   arrowHolder: {fileID: 467025731846588400}
   arrowStartPoint: {fileID: 467025731152889169}
   arrowStartSpeed: 60
+  audioSource: {fileID: 1275515515359981778}
+  bowReleaseSFX: {fileID: 8300000, guid: b6c9f384ec518ba45806d289a9ae09bb, type: 3}
 --- !u!114 &121634250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1616,6 +1623,8 @@ MonoBehaviour:
   maxIntervalTime: 0.08
   rootWave: {fileID: 1900312295}
   rootWaveDamageMultiplier: 1.2
+  audioSource: {fileID: 1275515515359981778}
+  bowReleaseSFX: {fileID: 8300000, guid: b6c9f384ec518ba45806d289a9ae09bb, type: 3}
 --- !u!114 &467025731739616116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1641,6 +1650,102 @@ MonoBehaviour:
   fireClipName: Ability2-fire
   firePoint: {fileID: 1572503277}
   beam: {fileID: 1946857928}
+--- !u!82 &1275515515359981778
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467025732920404030}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: ed03170e44bd92b44b4fac62851f75e7, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1342897335821355809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1801,6 +1906,8 @@ MonoBehaviour:
   inventory: {fileID: 4558682214838516199}
   dropper: {fileID: 7078877189602276816}
   pickableArea: {fileID: 1616532519472793831}
+  audioSource: {fileID: 1275515515359981778}
+  pickupSFX: {fileID: 8300000, guid: a4f22978d1640154bb18c65c69b3d381, type: 3}
 --- !u!114 &7078877189602276816
 MonoBehaviour:
   m_ObjectHideFlags: 0

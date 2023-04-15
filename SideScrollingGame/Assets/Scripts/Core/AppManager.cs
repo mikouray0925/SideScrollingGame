@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 //|=======================================================
 //| The global manager of this app.
@@ -34,6 +35,11 @@ public class AppManager : MonoBehaviour
     [Header ("Core Scene Names")]
     [SerializeField] string mainMenuSceneName;
     [SerializeField] string chooseHeroSceneName;
+
+    [Header ("Events")]
+    [SerializeField] UnityEvent beforeBackToMainMenu;
+    [SerializeField] UnityEvent beforeChangingLevel;
+    [SerializeField] UnityEvent afterChangingLevel;
 
     public static AppManager instance {get; private set;}
 
@@ -157,22 +163,18 @@ public class AppManager : MonoBehaviour
     public void PlayGameLevel(string levelName, List<GameObject> moreObjNeedToMove) {
         if (sceneController.isChangingScene) return;
         MessageCenter.SpreadGlobalMsg("BeforeChangingLevel", levelName);
+        beforeChangingLevel.Invoke();
         sceneController.ChangeScene(levelName, moreObjNeedToMove);
         MessageCenter.SpreadGlobalMsg("AfterChangingLevel",  levelName);
-    }
-
-    private void AfterChangingLevel(string levelName) {
-        joystick.Show();
-        playerHUD.Show();
+        afterChangingLevel.Invoke();
     }
 
     public void GoBackToMainMenu() {
         if (sceneController.isChangingScene) return;
         UnbindLocalHero();
-        playerHUD.Hide();
-        joystick.Hide();
         sceneController.objNeedToKeep.Clear();
         MessageCenter.SpreadGlobalMsg("BeforeBackToMainMenu");
+        beforeBackToMainMenu.Invoke();
         sceneController.ChangeScene(mainMenuSceneName);
         if (gamePaused) TriggerGamePause();
     }
