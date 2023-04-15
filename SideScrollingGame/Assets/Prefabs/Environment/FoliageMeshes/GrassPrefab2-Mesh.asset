@@ -6,19 +6,19 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GrassPrefab-Mesh
+  m_Name: GrassPrefab2-Mesh
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
     firstByte: 0
-    indexCount: 54
+    indexCount: 0
     topology: 0
     baseVertex: 0
     firstVertex: 0
-    vertexCount: 16
+    vertexCount: 0
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.8, y: 1.6, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
   m_Shapes:
     vertices: []
     shapes: []
@@ -35,31 +35,19 @@ Mesh:
   m_KeepVertices: 1
   m_KeepIndices: 1
   m_IndexFormat: 0
-  m_IndexBuffer: 00000400010004000500010001000500020005000600020002000600030006000700030004000800050008000900050005000900060009000a00060006000a0007000a000b00070008000c0009000c000d00090009000d000a000d000e000a000a000e000b000e000f000b00
+  m_IndexBuffer: 
   m_VertexData:
     serializedVersion: 3
-    m_VertexCount: 16
+    m_VertexCount: 0
     m_Channels:
     - stream: 0
       offset: 0
       format: 0
-      dimension: 3
-    - stream: 0
-      offset: 12
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 0
-      format: 0
       dimension: 0
     - stream: 0
       offset: 0
       format: 0
       dimension: 0
-    - stream: 0
-      offset: 24
-      format: 0
-      dimension: 2
     - stream: 0
       offset: 0
       format: 0
@@ -96,8 +84,20 @@ Mesh:
       offset: 0
       format: 0
       dimension: 0
-    m_DataSize: 512
-    _typelessdata: cdcc4cbfcdccccbf000000000000000000000000000080bf000000000000000039b488becdccccbf000000000000000000000000ffff7fbfabaaaa3e0000000039b4883ecdccccbf000000000000000000000000000080bfabaa2a3f00000000cdcc4c3fcdccccbf000000000000000000000000000080bf0000803f00000000cdcc4cbfb07208bf000000000000000000000000000080bf00000000abaaaa3e39b488beb07208bf000000000000000000000000000080bfabaaaa3eabaaaa3e39b4883eb07208bf000000000000000000000000000080bfabaa2a3fabaaaa3ecdcc4c3fb07208bf000000000000000000000000000080bf0000803fabaaaa3ecdcc4cbfb072083f000000000000000000000000000080bf00000000abaa2a3f39b488beb072083f000000000000000000000000000080bfabaaaa3eabaa2a3f39b4883eb072083f000000000000000000000000000080bfabaa2a3fabaa2a3fcdcc4c3fb072083f000000000000000000000000000080bf0000803fabaa2a3fcdcc4cbfcdcccc3f000000000000000000000000000080bf000000000000803f39b488becdcccc3f000000000000000000000000000080bfabaaaa3e0000803f39b4883ecdcccc3f000000000000000000000000000080bfabaa2a3f0000803fcdcc4c3fcdcccc3f000000000000000000000000000080bf0000803f0000803f
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 0
+    _typelessdata: 
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -152,7 +152,7 @@ Mesh:
     m_UVInfo: 0
   m_LocalAABB:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.8, y: 1.6, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
   m_MeshUsageFlags: 0
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 

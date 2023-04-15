@@ -57,7 +57,7 @@ SubShader {
 
             fixed4 frag (v2f i) : SV_Target
             {
-                i.texcoord.x*=2;
+                i.texcoord.x;
                 fixed4 col = tex2D(_MainTex, i.texcoord);
                 //offset 0.1180392,0.08,-0.3098039,1.0
                 col = col + _offset_color;
