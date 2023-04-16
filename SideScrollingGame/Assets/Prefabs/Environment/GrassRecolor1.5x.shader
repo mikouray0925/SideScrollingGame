@@ -65,7 +65,7 @@ SubShader {
             {
                 float noisex = floor(i.texcoord.x * 64.0) / 64.0;
                 float2 noiseuv = (noisex, noisex);
-                i.texcoord.x*=64;
+                // i.texcoord.x *= 64;
                 fixed4 col = tex2D(_MainTex, i.texcoord);
                 fixed4 noise = tex2D(_NoiseTex,noiseuv);
                 if(noise.r < _min_value || noise.r > _max_value)
