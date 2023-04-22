@@ -29,3 +29,5 @@ MonoBehaviour:
     _serializedList: []
   stringData:
     _serializedList: []
+  healEffectPrefab: {fileID: 8984570403339080495, guid: 8384706ad7a3c2147b918a6c0c319096, type: 3}
+  drinkPotionSFX: {fileID: 8300000, guid: 87946ef8ecc5eca48a5ebeb0319feeba, type: 3}

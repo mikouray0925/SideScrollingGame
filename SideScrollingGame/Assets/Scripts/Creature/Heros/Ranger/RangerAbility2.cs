@@ -19,6 +19,12 @@ public class RangerAbility2 : HeroAbility2
     [SerializeField] Transform firePoint;
     [SerializeField] RangerBeam beam;
 
+    [Header ("SFX")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip drawBowSFX;
+    [SerializeField] AudioClip chargeFinishSFX;
+    [SerializeField] AudioClip fireSFX;
+
     bool isCharging;
     bool buttonReleased;
     float chargingStartTime;
@@ -53,6 +59,7 @@ public class RangerAbility2 : HeroAbility2
             anim.SetTrigger("ability2");
             movement.movementLock.AddLock("ability2", 0.8f);
             movement.Brake();
+            audioSource.PlayOneShot(drawBowSFX, AudioManager.effectVolume);
         } 
         buttonReleased = false;
     }
@@ -68,6 +75,10 @@ public class RangerAbility2 : HeroAbility2
         buttonReleased = true;
     }
 
+    public void PlayChargeFinishSFX() {
+        audioSource.PlayOneShot(chargeFinishSFX, AudioManager.effectVolume);
+    }
+
     private void Fire() {
         if (isAttacking && isCharging) {
             isCharging = false;
@@ -75,9 +86,10 @@ public class RangerAbility2 : HeroAbility2
 
             float firingSide = Mathf.Sign(transform.localScale.x);
             float chargingTime = Time.time - chargingStartTime;
+            float damageMultiplier = 1f + damageMultiplierRate * chargingTime;
 
             Damage damageInfo = new Damage(this, damageData.Damage, firingSide * Vector2.right);
-            damageInfo.damage *= 1f + damageMultiplierRate;
+            damageInfo.damage *= 1f + damageMultiplier;
 
             Damage.Force force = new Damage.Force(
                 firingSide * (basePower + powerIncreaseRate * chargingTime) * Vector2.right,
@@ -87,6 +99,7 @@ public class RangerAbility2 : HeroAbility2
 
             beam.Activate(firingSide, baseLength + chargingTime * elongationRate,
                           firePoint.position, damageInfo);
+            audioSource.PlayOneShot(fireSFX, 0.74f * damageMultiplier * AudioManager.effectVolume);
         }
     }
 

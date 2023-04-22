@@ -1234,6 +1234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc10953c98fc54b468f3e2dca56cb46b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCollider: {fileID: 467025732920404001}
+  audioSource: {fileID: 1275515515359981778}
   health: {fileID: 467025732920404006}
   movement: {fileID: 467025732920404004}
   normalAttack: {fileID: 467025732920404007}
@@ -1646,13 +1648,17 @@ MonoBehaviour:
   attackClipName: 
   baseLength: 3
   elongationRate: 20
-  damageMultiplierRate: 2
+  damageMultiplierRate: 0.4
   basePower: 0
   powerIncreaseRate: 120
   readyClipName: Ability2-ready
   fireClipName: Ability2-fire
   firePoint: {fileID: 1572503277}
   beam: {fileID: 1946857928}
+  audioSource: {fileID: 1275515515359981778}
+  drawBowSFX: {fileID: 8300000, guid: e96b77032dcaf4c4dadd446736bb1ecf, type: 3}
+  chargeFinishSFX: {fileID: 8300000, guid: cc3b5c2c9da083c498bac401d9aa6a29, type: 3}
+  fireSFX: {fileID: 8300000, guid: 55833fab744288e4083a8e327df0ebb5, type: 3}
 --- !u!82 &1275515515359981778
 AudioSource:
   m_ObjectHideFlags: 0

@@ -5,6 +5,8 @@ using UnityEngine;
 public class HeroBrain : MonoBehaviour
 {
     [Header ("Creature system")]
+    public Collider2D mainCollider;
+    public AudioSource audioSource;
     public HeroHealth health;
     public HeroMovement movement;
     public HeroNormalAttack normalAttack;
