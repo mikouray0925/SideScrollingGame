@@ -498,6 +498,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6920010480970855904, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
+      propertyPath: possibleLoots.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920010480970855904, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
+      propertyPath: possibleLoots.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ccf80d8aaaae2248b4e9c267679598e, type: 2}
+    - target: {fileID: 6920010480970855904, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
+      propertyPath: possibleLoots.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 1af51799a03d1c34ca40d345d66fc04c, type: 2}
+    - target: {fileID: 6920010480970855904, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
+      propertyPath: possibleLoots.Array.data[2].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 1745f050cb0e16b45a0ab4f29c2e8a6f, type: 2}
+    - target: {fileID: 6920010480970855904, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
+      propertyPath: possibleLoots.Array.data[0].chance
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920010480970855904, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
+      propertyPath: possibleLoots.Array.data[1].chance
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920010480970855904, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
+      propertyPath: possibleLoots.Array.data[2].chance
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
 --- !u!4 &119219941 stripped
@@ -5420,6 +5448,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6920010480970855904, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
+      propertyPath: possibleLoots.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920010480970855904, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
+      propertyPath: possibleLoots.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 6107f0f469985b34bb0efb63d9857e33, type: 2}
+    - target: {fileID: 6920010480970855904, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
+      propertyPath: possibleLoots.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 7112196288651324ea0032dcc02de4da, type: 2}
+    - target: {fileID: 6920010480970855904, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
+      propertyPath: possibleLoots.Array.data[2].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 1912c1f44c6541146a590f85a0d88677, type: 2}
+    - target: {fileID: 6920010480970855904, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
+      propertyPath: possibleLoots.Array.data[0].chance
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920010480970855904, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
+      propertyPath: possibleLoots.Array.data[1].chance
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920010480970855904, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
+      propertyPath: possibleLoots.Array.data[2].chance
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
 --- !u!4 &1126404838 stripped
@@ -6678,6 +6734,30 @@ PrefabInstance:
     - target: {fileID: 3600597631541087064, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920010480970855904, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
+      propertyPath: possibleLoots.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920010480970855904, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
+      propertyPath: possibleLoots.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 26fea278407cdc744a045631cfd9c56c, type: 2}
+    - target: {fileID: 6920010480970855904, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
+      propertyPath: possibleLoots.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: c2627e2a55c0a1f44abffb7bc34afab0, type: 2}
+    - target: {fileID: 6920010480970855904, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
+      propertyPath: possibleLoots.Array.data[2].item
+      value: 
+      objectReference: {fileID: 11400000, guid: c2627e2a55c0a1f44abffb7bc34afab0, type: 2}
+    - target: {fileID: 6920010480970855904, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
+      propertyPath: possibleLoots.Array.data[0].chance
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920010480970855904, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
+      propertyPath: possibleLoots.Array.data[1].chance
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31950e4a0ea4efb48a05567fb59576e1, type: 3}
