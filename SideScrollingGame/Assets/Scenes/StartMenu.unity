@@ -14954,6 +14954,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skill2
       objectReference: {fileID: 0}
+    - target: {fileID: 3164715055832551922, guid: 8b354d872cb32c94a80f1a8e80fa7282, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164715055832551922, guid: 8b354d872cb32c94a80f1a8e80fa7282, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164715055832551922, guid: 8b354d872cb32c94a80f1a8e80fa7282, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9094215656152512382, guid: 8b354d872cb32c94a80f1a8e80fa7282, type: 3}
       propertyPath: m_ControlPath
       value: <Gamepad>/rightShoulder
@@ -15081,6 +15093,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3164715055832551820, guid: 8b354d872cb32c94a80f1a8e80fa7282, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164715055832551922, guid: 8b354d872cb32c94a80f1a8e80fa7282, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164715055832551922, guid: 8b354d872cb32c94a80f1a8e80fa7282, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164715055832551922, guid: 8b354d872cb32c94a80f1a8e80fa7282, type: 3}
+      propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9094215656152512382, guid: 8b354d872cb32c94a80f1a8e80fa7282, type: 3}

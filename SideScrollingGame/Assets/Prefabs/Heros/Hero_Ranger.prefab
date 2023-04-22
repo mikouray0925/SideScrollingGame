@@ -1246,6 +1246,8 @@ MonoBehaviour:
   damageData: {fileID: 467025731746857701}
   protection: {fileID: 4128807186142301844}
   cooldownSpeedMultiplier: {fileID: 467025732645923558}
+  ability1Icon: {fileID: 21300000, guid: 6da8a81e9062937449cbc4288e5935d4, type: 3}
+  ability2Icon: {fileID: 21300000, guid: 554968648ca534c4c9a91b822ab5e4d9, type: 3}
 --- !u!114 &4558682214838516199
 MonoBehaviour:
   m_ObjectHideFlags: 0

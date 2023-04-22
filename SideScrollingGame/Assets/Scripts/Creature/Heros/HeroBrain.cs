@@ -22,6 +22,10 @@ public class HeroBrain : MonoBehaviour
     public CombinedAddend protection;
     public CombinedMultiplier cooldownSpeedMultiplier;
 
+    [Header ("Sprites")]
+    public Sprite ability1Icon;
+    public Sprite ability2Icon;
+
     public void ReadSave(PlayerData playerData) {
         if (playerData != null) {
             BroadcastMessage("OnReadData", playerData, SendMessageOptions.DontRequireReceiver);
