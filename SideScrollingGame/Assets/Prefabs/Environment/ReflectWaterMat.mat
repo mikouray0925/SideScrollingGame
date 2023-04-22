@@ -91,7 +91,7 @@ Material:
     - _ZWrite: 1
     - _distortion: 0.001
     - _highlight_flow_speed: 0.002
-    - _highlight_threshold: 0.899
+    - _highlight_threshold: 0.853
     - _isToggled: 0
     - _opacity: 0.0097
     - _scale: 0
