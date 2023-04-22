@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2006900924288269760}
   - component: {fileID: 2006900924288269761}
   - component: {fileID: 2006900924288269764}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: GrassPrefab15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2006900924288269774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.759, y: -2.258, z: 0}
-  m_LocalScale: {x: 21.3333, y: 0.333333, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,11 +99,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabInstanceIsCreated: 0
-  pixelsPerUnit: 100
-  width: 1.6
-  height: 3.2
-  widthSegments: 3
-  heightSegments: 3
+  pixelsPerUnit: 16
+  width: 2
+  height: 1
+  widthSegments: 1
+  heightSegments: 1
 --- !u!114 &2006900924288269761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,9 +119,7 @@ MonoBehaviour:
   foliageBending: 1
   offsetFactor:
   - 0
-  - 0.01
-  - 0.02
-  - 0.03
+  - 0.4
   offset: {x: 0, y: 0, z: 0}
   changeAnimationSpeed: 0
   minSpeed: 0.5

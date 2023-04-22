@@ -2,18 +2,33 @@ Shader "Unlit/NewUnlitShader"
 {
     Properties
     {
+        [Header(Textures)]
+
         _MainTex ("Texture", 2D) = "white" {}
         _NoiseTex ("Texture", 2D) = "white" {}
         _HighlightTex("Texture", 2D) = "white" {}
         _dudvmapTex("Texture", 2D) = "white" {}
+
+        [Header(Blend Parameters)]
+
         _BlendPara ("Blending Paramete", Range(0,1)) = 0.25
         _BlendColor ("Blending Color", Color) = (0,0,1,1)
+
+        [Header(Pixelation Parameters)]
+
+        [MaterialToggle] _Pre_Pixelated("Pre_Pixelated", Int) = 0
         _PixelSize ("Pixel Size", float) = 0.25
+
+        [Header(Distortion Parameters)]
+
         _speed ("Flow Speed", float) = 0.5
         _scale ("Water Scale", Int) = 1
         _opacity ("Water Opacity", Range(0, 0.1)) = 0.05
         _distortion ("Distortion", Range(0, 0.1)) = 0.05
-        [MaterialToggle] _Pre_Pixelated("Pre_Pixelated", Int) = 0
+
+        [Header(Highlight Parameters)]
+        _highlight_flow_speed ("Highlight Flow Speed", Range(0, 0.01)) = 0.002
+        _highlight_threshold ("Highlight Threshold", Range(0.8, 1)) = 0.92
     }
     SubShader
     {
@@ -60,6 +75,8 @@ Shader "Unlit/NewUnlitShader"
             // Water opacity, higher opacity means the water reflects more light.
             uniform float _opacity = 0.5;
 
+            uniform float _highlight_threshold;
+            uniform float _highlight_flow_speed;
             v2f vert (appdata v)
             {
                 v2f o;
@@ -83,13 +100,13 @@ Shader "Unlit/NewUnlitShader"
                     flipi.uv = float2(dw*floor(flipi.uv.x/dw),dh*floor(flipi.uv.y/dh));
                 }
 
-                float2 offsetuv = (tex2D(_dudvmapTex, flipi.uv + _Time.z*0.02).rg *2.0f - 1.0) * _distortion;
+                float2 offsetuv = (tex2D(_dudvmapTex, flipi.uv + _Time.z*0.02).rg *2.0f - 1.0);
                 //offsetuv.x -= 1.0f;
                 //offsetuv.y -= 1.0f;
                 //offsetuv *= _distortion;
 
                 //float2 offseteduv = (flipi.uv.x , flipi.uv.y);
-                fixed2 offseteduv = flipi.uv + offsetuv;
+                fixed2 offseteduv = flipi.uv + offsetuv * _distortion;
                 fixed4 col = tex2D(_MainTex, offseteduv);
                 
                 //fixed4 col = tex2D(_MainTex, flipi.uv);
@@ -135,6 +152,9 @@ Shader "Unlit/NewUnlitShader"
 
                 // Output to screen
                 fixed4 retColor = (water1 + water2) * alpha + col;
+                //highlight using dudv
+                fixed2 dudvHighlights = tex2D(_dudvmapTex, flipi.uv + _Time.z* _highlight_flow_speed).rg;
+                if(dudvHighlights.r * dudvHighlights.g > _highlight_threshold) retColor = lerp(retColor,float4(1,1,1,1),0.8);
                 //fixed4 retColor = col;
                 return retColor;
             }

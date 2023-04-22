@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ReflectWaterMat
-  m_Shader: {fileID: 4800000, guid: 95b2630139cf71a4eb390ac5d62ae004, type: 3}
+  m_Name: 15GrassMat1obj
+  m_Shader: {fileID: 4800000, guid: ff5e47bb8dc4251458575be3a8cfdd5a, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -40,12 +40,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _HighlightTex:
-        m_Texture: {fileID: 2800000, guid: 2de6fdafec53cd545bb89018ef18b768, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 8400000, guid: 5b0fe575cb74ff54a9206050462c8373, type: 2}
+        m_Texture: {fileID: 2800000, guid: a5adefa3c27c44f42b8d3110031a3837, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -53,7 +49,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
-        m_Texture: {fileID: 2800000, guid: c4ac9cc52936e5941b24159381ef7e9e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2de6fdafec53cd545bb89018ef18b768, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -64,13 +60,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _dudvmapTex:
-        m_Texture: {fileID: 2800000, guid: ed5ad2e0c2c69a9428ad688150800951, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BlendPara: 0.483
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -82,23 +73,16 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _PixelSize: 1
-    - _Pre_Pixelated: 0
+    - _PixelSize: 0.25
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _distortion: 0.001
-    - _highlight_flow_speed: 0.002
-    - _highlight_threshold: 0.899
-    - _isToggled: 0
-    - _opacity: 0.0097
-    - _scale: 0
-    - _speed: 1
+    - _max_value: 0.37
+    - _min_value: 0
     m_Colors:
-    - _BlendColor: {r: 0, g: 0.7169812, b: 0.6289061, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _PlayerPos: {r: 0, g: 0, b: 0, a: 0}
+    - _offset_color: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
