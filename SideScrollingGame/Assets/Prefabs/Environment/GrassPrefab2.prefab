@@ -102,8 +102,8 @@ MonoBehaviour:
   pixelsPerUnit: 100
   width: 0.32
   height: 0.16
-  widthSegments: 3
-  heightSegments: 3
+  widthSegments: 1
+  heightSegments: 1
 --- !u!114 &2006900924288269761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,9 +119,7 @@ MonoBehaviour:
   foliageBending: 1
   offsetFactor:
   - 0
-  - 0.01
-  - 0.02
-  - 0.03
+  - 1
   offset: {x: 0, y: 0, z: 0}
   changeAnimationSpeed: 0
   minSpeed: 0.5
