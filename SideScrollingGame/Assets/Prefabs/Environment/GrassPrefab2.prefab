@@ -119,7 +119,7 @@ MonoBehaviour:
   foliageBending: 1
   offsetFactor:
   - 0
-  - 1
+  - 0.03
   offset: {x: 0, y: 0, z: 0}
   changeAnimationSpeed: 0
   minSpeed: 0.5
