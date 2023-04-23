@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GD.MinMaxSlider;
 
 public class GobKingBehavior : MonoBehaviour
 {
@@ -14,7 +13,6 @@ public class GobKingBehavior : MonoBehaviour
     [SerializeField] bool stopPatrolling;
 
     [Header ("Attack")]
-    [MinMaxSlider (0f, 20f)]
     [SerializeField] Vector2 dashAttackRange;
     [SerializeField] GobKingDashAttack dashAttack;
     [SerializeField] float hornAttackDistance;
