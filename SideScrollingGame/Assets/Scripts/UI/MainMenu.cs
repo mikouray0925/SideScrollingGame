@@ -15,4 +15,10 @@ public class MainMenu : MonoBehaviour
             AppManager.instance.StartNewGame();
         }
     }
+
+    public void QuitGame() {
+        if (AppManager.instance) {
+            AppManager.Quit();
+        }
+    }
 }
